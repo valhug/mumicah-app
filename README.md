@@ -1,6 +1,28 @@
-# Mumicah - Language Learning Platform
+# Mumicah Ecosystem - Monorepo
 
-A modern, AI-powered language learning platform focused on conversation practice and cultural immersion.
+A comprehensive language learning and development ecosystem consisting of three interconnected applications: **Conversate** (language learning), **DevMentor** (software engineering), and **ContentFlow** (content creation).
+
+## 🏗️ Architecture
+
+This monorepo uses **Turborepo** with **pnpm workspaces** to manage multiple applications and shared packages efficiently.
+
+```
+mumicah-ecosystem/
+├── apps/                        # Applications
+│   ├── conversate-web/          # Language learning web app (Current)
+│   ├── devmentor-web/          # Software engineering platform (Planned)
+│   ├── contentflow-web/        # Content creation platform (Planned)
+│   ├── mobile-app/             # Unified mobile app (Planned)
+│   └── admin-dashboard/        # Management console (Planned)
+├── packages/                   # Shared packages
+│   ├── shared/                 # Common utilities and types
+│   ├── ui/                     # Shared component library (Planned)
+│   ├── auth/                   # Authentication system (Planned)
+│   └── database/               # Shared database models (Planned)
+├── scripts/                    # Development scripts
+├── types/                      # Global type definitions
+└── project-planning/           # Strategic documents (private)
+```
 
 ## 🌟 Features
 
@@ -34,7 +56,7 @@ A modern, AI-powered language learning platform focused on conversation practice
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd mumicah-app
+cd mumicah-ecosystem
 ```
 
 2. Install dependencies:
@@ -44,16 +66,39 @@ pnpm install
 
 3. Set up environment variables:
 ```bash
-cp .env.example .env.local
+cp apps/conversate-web/.env.example apps/conversate-web/.env.local
 # Edit .env.local with your configuration
 ```
 
 4. Run the development server:
 ```bash
+# Start all apps
 pnpm dev
+
+# Or start specific app
+pnpm conversate:dev
 ```
 
 5. Open [http://localhost:3001](http://localhost:3001) in your browser.
+
+### Monorepo Commands
+
+```bash
+# Build all apps
+pnpm build
+
+# Start development for all apps
+pnpm dev
+
+# Run conversate-web only
+pnpm conversate:dev
+
+# Type check all packages
+pnpm type-check
+
+# Lint all packages
+pnpm lint
+```
 
 ### Environment Variables
 
@@ -67,15 +112,45 @@ Required environment variables (see `.env.example`):
 ## 📁 Project Structure
 
 ```
-src/
+apps/conversate-web/src/
 ├── app/              # Next.js App Router pages
 ├── components/       # Reusable UI components
 ├── lib/             # Utility functions and configurations
 ├── models/          # Database models
 ├── services/        # Business logic and API integrations
 ├── types/           # TypeScript type definitions
-└── utils/           # Helper functions
+└── data/            # Static data and conversation patterns
+
+packages/
+├── shared/          # Common utilities and types
+└── ui/              # Shared component library (planned)
 ```
+
+## 🌟 Ecosystem Vision
+
+### **Current: Conversate** - Language Learning Platform
+- ✅ AI-powered conversations with unique personas
+- ✅ Speech recognition and synthesis
+- ✅ Adaptive difficulty adjustment
+- ✅ Progress tracking and analytics
+
+### **Planned: DevMentor** - Software Engineering Platform
+- 🟡 AI coding mentors with different specialties
+- 🟡 Code review and feedback systems
+- 🟡 Project-based learning paths
+- 🟡 Technical skill assessments
+
+### **Planned: ContentFlow** - Content Creation Platform
+- 🟡 Multilingual content creation tools
+- 🟡 Translation assistance
+- 🟡 Community publishing platform
+- 🟡 Revenue sharing for creators
+
+### **Planned: Mobile App** - Unified Experience
+- 🟡 Single app for all three platforms
+- 🟡 Tab-based navigation
+- 🟡 Offline capabilities
+- 🟡 Voice-first interactions
 
 ## 🎯 Core Concepts
 
