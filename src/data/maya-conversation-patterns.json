@@ -1,0 +1,742 @@
+[
+  {
+    "id": "conv_01_31_1750816386277",
+    "scenario": "educational",
+    "difficulty": "beginner",
+    "context": {
+      "setting": "educational",
+      "participants": [
+        "parent",
+        "child"
+      ],
+      "topic": "geography_learning",
+      "communicativeFunction": "teaching_learning"
+    },
+    "dialogueSegments": [
+      {
+        "speaker": "speaker_1",
+        "content": "courage attends j'ai une idée est-ce que tu es libre demain pour dîner non c'est dommage demain je suis prise mais dimanche soir je suis libre d'accord pour dimanche soir chapitre 2 Jérôme et la géographie papa la Finlande c'est un beau pays oui bien sûr c'est un très",
+        "intent": "question",
+        "emotionalTone": "disappointed",
+        "responsePatterns": []
+      }
+    ],
+    "vocabularyPatterns": [
+      {
+        "theme": "geography_learning",
+        "words": [
+          {
+            "word": "géographie",
+            "definition": "geography",
+            "category": "academic_subject",
+            "usage": "courage attends j'ai une idée est-ce que tu es libre demain pour dîner non c'est dommage demain je suis prise mais dimanche soir je suis libre d'accord pour dimanche soir chapitre 2 Jérôme et la géographie papa la Finlande c'est un beau pays oui bien sûr c'est un très"
+          },
+          {
+            "word": "pays",
+            "definition": "country",
+            "category": "geography",
+            "usage": "courage attends j'ai une idée est-ce que tu es libre demain pour dîner non c'est dommage demain je suis prise mais dimanche soir je suis libre d'accord pour dimanche soir chapitre 2 Jérôme et la géographie papa la Finlande c'est un beau pays oui bien sûr c'est un très"
+          }
+        ],
+        "frequency": 2,
+        "difficulty": "beginner"
+      }
+    ],
+    "grammarStructures": [
+      {
+        "pattern": "present_tense",
+        "examples": [
+          "courage attends j'ai une idée est-ce que tu es libre demain pour dîner non c'est dommage demain je suis prise mais dimanche soir je suis libre d'accord pour dimanche soir chapitre 2 Jérôme et la géographie papa la Finlande c'est un beau pays oui bien sûr c'est un très"
+        ],
+        "level": "beginner",
+        "usage": "Present tense conjugation"
+      },
+      {
+        "pattern": "spanish_present_tense",
+        "examples": [
+          "courage attends j'ai une idée est-ce que tu es libre demain pour dîner non c'est dommage demain je suis prise mais dimanche soir je suis libre d'accord pour dimanche soir chapitre 2 Jérôme et la géographie papa la Finlande c'est un beau pays oui bien sûr c'est un très"
+        ],
+        "level": "beginner",
+        "usage": "Spanish present tense conjugation (ser/estar/tener)"
+      },
+      {
+        "pattern": "spanish_articles",
+        "examples": [
+          "courage attends j'ai une idée est-ce que tu es libre demain pour dîner non c'est dommage demain je suis prise mais dimanche soir je suis libre d'accord pour dimanche soir chapitre 2 Jérôme et la géographie papa la Finlande c'est un beau pays oui bien sûr c'est un très"
+        ],
+        "level": "beginner",
+        "usage": "Spanish definite articles (gender and number agreement)"
+      }
+    ],
+    "culturalElements": [
+      {
+        "aspect": "european_awareness",
+        "description": "French education emphasizes European geography and cultural diversity",
+        "example": "Discussion of European Union countries and languages",
+        "significance": "Reflects France's position in European context"
+      }
+    ],
+    "personaMapping": {
+      "maya": {
+        "score": 6,
+        "matchingTraits": [
+          "educational"
+        ],
+        "applicableScenarios": [
+          "grammar_lessons",
+          "vocabulary_building",
+          "error_correction"
+        ],
+        "adaptationNotes": [
+          "Use patient and encouraging tone",
+          "Provide clear explanations for corrections"
+        ]
+      },
+      "alex": {
+        "score": 2,
+        "matchingTraits": [
+          "curious"
+        ],
+        "applicableScenarios": [
+          "casual_chat",
+          "daily_activities",
+          "social_interactions"
+        ],
+        "adaptationNotes": [
+          "Maintain casual and friendly tone",
+          "Use contemporary expressions"
+        ]
+      },
+      "luna": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "cultural_exploration",
+          "travel_planning",
+          "food_discussion"
+        ],
+        "adaptationNotes": [
+          "Emphasize cultural context",
+          "Provide background information"
+        ]
+      }
+    }
+  },
+  {
+    "id": "conv_01_59_1750816386278",
+    "scenario": "educational",
+    "difficulty": "beginner",
+    "context": {
+      "setting": "educational",
+      "participants": [
+        "speaker_a",
+        "speaker_b"
+      ],
+      "topic": "geography_learning",
+      "communicativeFunction": "teaching_learning"
+    },
+    "dialogueSegments": [
+      {
+        "speaker": "speaker_1",
+        "content": "beau pays il y a des centaines de lacs et de forêts et la capitale de la Finlande c'est Oslo quoi Oslo mais non ce n'est pas la capitale de la Finlande c'est la capitale de la Norvège la capitale de la Finlande c'est Helsinki c'est difficile la géographie mais non ce n'est pas difficile c'est",
+        "intent": "response",
+        "emotionalTone": "concerned",
+        "responsePatterns": []
+      }
+    ],
+    "vocabularyPatterns": [
+      {
+        "theme": "geography_learning",
+        "words": [
+          {
+            "word": "géographie",
+            "definition": "geography",
+            "category": "academic_subject",
+            "usage": "beau pays il y a des centaines de lacs et de forêts et la capitale de la Finlande c'est Oslo quoi Oslo mais non ce n'est pas la capitale de la Finlande c'est la capitale de la Norvège la capitale de la Finlande c'est Helsinki c'est difficile la géographie mais non ce n'est pas difficile c'est"
+          },
+          {
+            "word": "capitale",
+            "definition": "capital city",
+            "category": "geography",
+            "usage": "beau pays il y a des centaines de lacs et de forêts et la capitale de la Finlande c'est Oslo quoi Oslo mais non ce n'est pas la capitale de la Finlande c'est la capitale de la Norvège la capitale de la Finlande c'est Helsinki c'est difficile la géographie mais non ce n'est pas difficile c'est"
+          },
+          {
+            "word": "pays",
+            "definition": "country",
+            "category": "geography",
+            "usage": "beau pays il y a des centaines de lacs et de forêts et la capitale de la Finlande c'est Oslo quoi Oslo mais non ce n'est pas la capitale de la Finlande c'est la capitale de la Norvège la capitale de la Finlande c'est Helsinki c'est difficile la géographie mais non ce n'est pas difficile c'est"
+          }
+        ],
+        "frequency": 3,
+        "difficulty": "beginner"
+      }
+    ],
+    "grammarStructures": [
+      {
+        "pattern": "negation_ne_pas",
+        "examples": [
+          "beau pays il y a des centaines de lacs et de forêts et la capitale de la Finlande c'est Oslo quoi Oslo mais non ce n'est pas la capitale de la Finlande c'est la capitale de la Norvège la capitale de la Finlande c'est Helsinki c'est difficile la géographie mais non ce n'est pas difficile c'est"
+        ],
+        "level": "beginner",
+        "usage": "Standard negation in French"
+      },
+      {
+        "pattern": "present_tense",
+        "examples": [
+          "beau pays il y a des centaines de lacs et de forêts et la capitale de la Finlande c'est Oslo quoi Oslo mais non ce n'est pas la capitale de la Finlande c'est la capitale de la Norvège la capitale de la Finlande c'est Helsinki c'est difficile la géographie mais non ce n'est pas difficile c'est"
+        ],
+        "level": "beginner",
+        "usage": "Present tense conjugation"
+      },
+      {
+        "pattern": "spanish_present_tense",
+        "examples": [],
+        "level": "beginner",
+        "usage": "Spanish present tense conjugation (ser/estar/tener)"
+      },
+      {
+        "pattern": "spanish_articles",
+        "examples": [
+          "beau pays il y a des centaines de lacs et de forêts et la capitale de la Finlande c'est Oslo quoi Oslo mais non ce n'est pas la capitale de la Finlande c'est la capitale de la Norvège la capitale de la Finlande c'est Helsinki c'est difficile la géographie mais non ce n'est pas difficile c'est"
+        ],
+        "level": "beginner",
+        "usage": "Spanish definite articles (gender and number agreement)"
+      }
+    ],
+    "culturalElements": [
+      {
+        "aspect": "european_awareness",
+        "description": "French education emphasizes European geography and cultural diversity",
+        "example": "Discussion of European Union countries and languages",
+        "significance": "Reflects France's position in European context"
+      }
+    ],
+    "personaMapping": {
+      "maya": {
+        "score": 6,
+        "matchingTraits": [
+          "educational"
+        ],
+        "applicableScenarios": [
+          "grammar_lessons",
+          "vocabulary_building",
+          "error_correction"
+        ],
+        "adaptationNotes": [
+          "Use patient and encouraging tone",
+          "Provide clear explanations for corrections"
+        ]
+      },
+      "alex": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "casual_chat",
+          "daily_activities",
+          "social_interactions"
+        ],
+        "adaptationNotes": [
+          "Maintain casual and friendly tone",
+          "Use contemporary expressions"
+        ]
+      },
+      "luna": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "cultural_exploration",
+          "travel_planning",
+          "food_discussion"
+        ],
+        "adaptationNotes": [
+          "Emphasize cultural context",
+          "Provide background information"
+        ]
+      }
+    }
+  },
+  {
+    "id": "conv_08_55_1750816386279",
+    "scenario": "educational",
+    "difficulty": "intermediate",
+    "context": {
+      "setting": "educational",
+      "participants": [
+        "customer",
+        "service_provider"
+      ],
+      "topic": "geography_learning",
+      "communicativeFunction": "teaching_learning"
+    },
+    "dialogueSegments": [
+      {
+        "speaker": "speaker_1",
+        "content": "chez Jérôme ah bon et pourquoi est-ce que tu vas chez Jérôme pour travaill la géographie son père est prof de goéo ah bon c'est bien tu ne reviens pas trop tardin mais non je reviens pour dîner chapitre 6 au club de gym bonjour madame je peux vous renseigner oui je voudrais des",
+        "intent": "question",
+        "emotionalTone": "neutral",
+        "responsePatterns": []
+      }
+    ],
+    "vocabularyPatterns": [
+      {
+        "theme": "geography_learning",
+        "words": [
+          {
+            "word": "géographie",
+            "definition": "geography",
+            "category": "academic_subject",
+            "usage": "chez Jérôme ah bon et pourquoi est-ce que tu vas chez Jérôme pour travaill la géographie son père est prof de goéo ah bon c'est bien tu ne reviens pas trop tardin mais non je reviens pour dîner chapitre 6 au club de gym bonjour madame je peux vous renseigner oui je voudrais des"
+          }
+        ],
+        "frequency": 1,
+        "difficulty": "intermediate"
+      }
+    ],
+    "grammarStructures": [
+      {
+        "pattern": "negation_ne_pas",
+        "examples": [
+          "chez Jérôme ah bon et pourquoi est-ce que tu vas chez Jérôme pour travaill la géographie son père est prof de goéo ah bon c'est bien tu ne reviens pas trop tardin mais non je reviens pour dîner chapitre 6 au club de gym bonjour madame je peux vous renseigner oui je voudrais des"
+        ],
+        "level": "beginner",
+        "usage": "Standard negation in French"
+      },
+      {
+        "pattern": "present_tense",
+        "examples": [
+          "chez Jérôme ah bon et pourquoi est-ce que tu vas chez Jérôme pour travaill la géographie son père est prof de goéo ah bon c'est bien tu ne reviens pas trop tardin mais non je reviens pour dîner chapitre 6 au club de gym bonjour madame je peux vous renseigner oui je voudrais des"
+        ],
+        "level": "beginner",
+        "usage": "Present tense conjugation"
+      },
+      {
+        "pattern": "spanish_present_tense",
+        "examples": [
+          "chez Jérôme ah bon et pourquoi est-ce que tu vas chez Jérôme pour travaill la géographie son père est prof de goéo ah bon c'est bien tu ne reviens pas trop tardin mais non je reviens pour dîner chapitre 6 au club de gym bonjour madame je peux vous renseigner oui je voudrais des"
+        ],
+        "level": "beginner",
+        "usage": "Spanish present tense conjugation (ser/estar/tener)"
+      },
+      {
+        "pattern": "spanish_articles",
+        "examples": [
+          "chez Jérôme ah bon et pourquoi est-ce que tu vas chez Jérôme pour travaill la géographie son père est prof de goéo ah bon c'est bien tu ne reviens pas trop tardin mais non je reviens pour dîner chapitre 6 au club de gym bonjour madame je peux vous renseigner oui je voudrais des"
+        ],
+        "level": "beginner",
+        "usage": "Spanish definite articles (gender and number agreement)"
+      }
+    ],
+    "culturalElements": [
+      {
+        "aspect": "formality_levels",
+        "description": "French uses tu (informal) and vous (formal) to indicate relationship and respect levels",
+        "example": "The conversation switches between tu and vous",
+        "significance": "Understanding when to use formal vs informal address is crucial in French culture"
+      },
+      {
+        "aspect": "european_awareness",
+        "description": "French education emphasizes European geography and cultural diversity",
+        "example": "Discussion of European Union countries and languages",
+        "significance": "Reflects France's position in European context"
+      }
+    ],
+    "personaMapping": {
+      "maya": {
+        "score": 6,
+        "matchingTraits": [
+          "educational"
+        ],
+        "applicableScenarios": [
+          "grammar_lessons",
+          "vocabulary_building",
+          "error_correction"
+        ],
+        "adaptationNotes": [
+          "Use patient and encouraging tone",
+          "Provide clear explanations for corrections"
+        ]
+      },
+      "alex": {
+        "score": 2,
+        "matchingTraits": [
+          "curious"
+        ],
+        "applicableScenarios": [
+          "casual_chat",
+          "daily_activities",
+          "social_interactions"
+        ],
+        "adaptationNotes": [
+          "Maintain casual and friendly tone",
+          "Use contemporary expressions"
+        ]
+      },
+      "luna": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "cultural_exploration",
+          "travel_planning",
+          "food_discussion"
+        ],
+        "adaptationNotes": [
+          "Emphasize cultural context",
+          "Provide background information"
+        ]
+      }
+    }
+  },
+  {
+    "id": "conv_11_02_1750816386281",
+    "scenario": "educational",
+    "difficulty": "intermediate",
+    "context": {
+      "setting": "educational",
+      "participants": [
+        "speaker_a",
+        "speaker_b"
+      ],
+      "topic": "geography_learning",
+      "communicativeFunction": "teaching_learning"
+    },
+    "dialogueSegments": [
+      {
+        "speaker": "speaker_1",
+        "content": "rien dis-moi tu connais bien la géographie euh oui assez bien tu connais une ville qui s'appelle lot je ne sais pas comment on prononce mais oui bien sûr c'est en Pologne mais les Polonais ne prononcent pas comme ça tu sais où c'est exactement je ne",
+        "intent": "question",
+        "emotionalTone": "neutral",
+        "responsePatterns": []
+      }
+    ],
+    "vocabularyPatterns": [
+      {
+        "theme": "geography_learning",
+        "words": [
+          {
+            "word": "géographie",
+            "definition": "geography",
+            "category": "academic_subject",
+            "usage": "rien dis-moi tu connais bien la géographie euh oui assez bien tu connais une ville qui s'appelle lot je ne sais pas comment on prononce mais oui bien sûr c'est en Pologne mais les Polonais ne prononcent pas comme ça tu sais où c'est exactement je ne"
+          }
+        ],
+        "frequency": 1,
+        "difficulty": "intermediate"
+      }
+    ],
+    "grammarStructures": [
+      {
+        "pattern": "negation_ne_pas",
+        "examples": [
+          "rien dis-moi tu connais bien la géographie euh oui assez bien tu connais une ville qui s'appelle lot je ne sais pas comment on prononce mais oui bien sûr c'est en Pologne mais les Polonais ne prononcent pas comme ça tu sais où c'est exactement je ne"
+        ],
+        "level": "beginner",
+        "usage": "Standard negation in French"
+      },
+      {
+        "pattern": "present_tense",
+        "examples": [],
+        "level": "beginner",
+        "usage": "Present tense conjugation"
+      },
+      {
+        "pattern": "spanish_present_tense",
+        "examples": [],
+        "level": "beginner",
+        "usage": "Spanish present tense conjugation (ser/estar/tener)"
+      },
+      {
+        "pattern": "spanish_articles",
+        "examples": [
+          "rien dis-moi tu connais bien la géographie euh oui assez bien tu connais une ville qui s'appelle lot je ne sais pas comment on prononce mais oui bien sûr c'est en Pologne mais les Polonais ne prononcent pas comme ça tu sais où c'est exactement je ne"
+        ],
+        "level": "beginner",
+        "usage": "Spanish definite articles (gender and number agreement)"
+      }
+    ],
+    "culturalElements": [
+      {
+        "aspect": "european_awareness",
+        "description": "French education emphasizes European geography and cultural diversity",
+        "example": "Discussion of European Union countries and languages",
+        "significance": "Reflects France's position in European context"
+      }
+    ],
+    "personaMapping": {
+      "maya": {
+        "score": 6,
+        "matchingTraits": [
+          "educational"
+        ],
+        "applicableScenarios": [
+          "grammar_lessons",
+          "vocabulary_building",
+          "error_correction"
+        ],
+        "adaptationNotes": [
+          "Use patient and encouraging tone",
+          "Provide clear explanations for corrections"
+        ]
+      },
+      "alex": {
+        "score": 2,
+        "matchingTraits": [
+          "curious"
+        ],
+        "applicableScenarios": [
+          "casual_chat",
+          "daily_activities",
+          "social_interactions"
+        ],
+        "adaptationNotes": [
+          "Maintain casual and friendly tone",
+          "Use contemporary expressions"
+        ]
+      },
+      "luna": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "cultural_exploration",
+          "travel_planning",
+          "food_discussion"
+        ],
+        "adaptationNotes": [
+          "Emphasize cultural context",
+          "Provide background information"
+        ]
+      }
+    }
+  },
+  {
+    "id": "conv_12_15_1750816386281",
+    "scenario": "educational",
+    "difficulty": "intermediate",
+    "context": {
+      "setting": "educational",
+      "participants": [
+        "speaker_a",
+        "speaker_b"
+      ],
+      "topic": "geography_learning",
+      "communicativeFunction": "teaching_learning"
+    },
+    "dialogueSegments": [
+      {
+        "speaker": "speaker_1",
+        "content": "nom de cette ville polonaise je connais bien la géographie parce que je voyage beaucoup je ne sais pas pourquoi je ne parle pas bien les langues étrangères moi je sais pourquoi c'est parce que tu n'as pas de bons prof c'est peut-être",
+        "intent": "question",
+        "emotionalTone": "neutral",
+        "responsePatterns": []
+      }
+    ],
+    "vocabularyPatterns": [
+      {
+        "theme": "geography_learning",
+        "words": [
+          {
+            "word": "géographie",
+            "definition": "geography",
+            "category": "academic_subject",
+            "usage": "nom de cette ville polonaise je connais bien la géographie parce que je voyage beaucoup je ne sais pas pourquoi je ne parle pas bien les langues étrangères moi je sais pourquoi c'est parce que tu n'as pas de bons prof c'est peut-être"
+          },
+          {
+            "word": "langues",
+            "definition": "languages",
+            "category": "linguistics",
+            "usage": "nom de cette ville polonaise je connais bien la géographie parce que je voyage beaucoup je ne sais pas pourquoi je ne parle pas bien les langues étrangères moi je sais pourquoi c'est parce que tu n'as pas de bons prof c'est peut-être"
+          }
+        ],
+        "frequency": 2,
+        "difficulty": "intermediate"
+      }
+    ],
+    "grammarStructures": [
+      {
+        "pattern": "negation_ne_pas",
+        "examples": [
+          "nom de cette ville polonaise je connais bien la géographie parce que je voyage beaucoup je ne sais pas pourquoi je ne parle pas bien les langues étrangères moi je sais pourquoi c'est parce que tu n'as pas de bons prof c'est peut-être"
+        ],
+        "level": "beginner",
+        "usage": "Standard negation in French"
+      },
+      {
+        "pattern": "present_tense",
+        "examples": [],
+        "level": "beginner",
+        "usage": "Present tense conjugation"
+      },
+      {
+        "pattern": "spanish_present_tense",
+        "examples": [],
+        "level": "beginner",
+        "usage": "Spanish present tense conjugation (ser/estar/tener)"
+      },
+      {
+        "pattern": "spanish_articles",
+        "examples": [
+          "nom de cette ville polonaise je connais bien la géographie parce que je voyage beaucoup je ne sais pas pourquoi je ne parle pas bien les langues étrangères moi je sais pourquoi c'est parce que tu n'as pas de bons prof c'est peut-être"
+        ],
+        "level": "beginner",
+        "usage": "Spanish definite articles (gender and number agreement)"
+      }
+    ],
+    "culturalElements": [
+      {
+        "aspect": "european_awareness",
+        "description": "French education emphasizes European geography and cultural diversity",
+        "example": "Discussion of European Union countries and languages",
+        "significance": "Reflects France's position in European context"
+      }
+    ],
+    "personaMapping": {
+      "maya": {
+        "score": 6,
+        "matchingTraits": [
+          "educational"
+        ],
+        "applicableScenarios": [
+          "grammar_lessons",
+          "vocabulary_building",
+          "error_correction"
+        ],
+        "adaptationNotes": [
+          "Use patient and encouraging tone",
+          "Provide clear explanations for corrections"
+        ]
+      },
+      "alex": {
+        "score": 2,
+        "matchingTraits": [
+          "curious"
+        ],
+        "applicableScenarios": [
+          "casual_chat",
+          "daily_activities",
+          "social_interactions"
+        ],
+        "adaptationNotes": [
+          "Maintain casual and friendly tone",
+          "Use contemporary expressions"
+        ]
+      },
+      "luna": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "cultural_exploration",
+          "travel_planning",
+          "food_discussion"
+        ],
+        "adaptationNotes": [
+          "Emphasize cultural context",
+          "Provide background information"
+        ]
+      }
+    }
+  },
+  {
+    "id": "conv_22_53_1750816386299",
+    "scenario": "educational",
+    "difficulty": "intermediate",
+    "context": {
+      "setting": "educational",
+      "participants": [
+        "speaker_a",
+        "speaker_b"
+      ],
+      "topic": "geography_learning",
+      "communicativeFunction": "teaching_learning"
+    },
+    "dialogueSegments": [
+      {
+        "speaker": "speaker_1",
+        "content": "géographie ce qui suivent régulièrement cette émission le savent bon alors Paloma qu'est-ce qui t'a amené à Dijon en fait j'ai toujours voulu partir étudier en France et comme mon université et celle de Dijon ont un partenariat c'était plus facile pour moi de choisir Dijon et puis dans ma fac",
+        "intent": "statement",
+        "emotionalTone": "neutral",
+        "responsePatterns": []
+      }
+    ],
+    "vocabularyPatterns": [
+      {
+        "theme": "geography_learning",
+        "words": [
+          {
+            "word": "géographie",
+            "definition": "geography",
+            "category": "academic_subject",
+            "usage": "géographie ce qui suivent régulièrement cette émission le savent bon alors Paloma qu'est-ce qui t'a amené à Dijon en fait j'ai toujours voulu partir étudier en France et comme mon université et celle de Dijon ont un partenariat c'était plus facile pour moi de choisir Dijon et puis dans ma fac"
+          }
+        ],
+        "frequency": 1,
+        "difficulty": "intermediate"
+      }
+    ],
+    "grammarStructures": [
+      {
+        "pattern": "present_tense",
+        "examples": [
+          "géographie ce qui suivent régulièrement cette émission le savent bon alors Paloma qu'est-ce qui t'a amené à Dijon en fait j'ai toujours voulu partir étudier en France et comme mon université et celle de Dijon ont un partenariat c'était plus facile pour moi de choisir Dijon et puis dans ma fac"
+        ],
+        "level": "beginner",
+        "usage": "Present tense conjugation"
+      },
+      {
+        "pattern": "spanish_present_tense",
+        "examples": [],
+        "level": "beginner",
+        "usage": "Spanish present tense conjugation (ser/estar/tener)"
+      }
+    ],
+    "culturalElements": [
+      {
+        "aspect": "european_awareness",
+        "description": "French education emphasizes European geography and cultural diversity",
+        "example": "Discussion of European Union countries and languages",
+        "significance": "Reflects France's position in European context"
+      }
+    ],
+    "personaMapping": {
+      "maya": {
+        "score": 6,
+        "matchingTraits": [
+          "educational"
+        ],
+        "applicableScenarios": [
+          "grammar_lessons",
+          "vocabulary_building",
+          "error_correction"
+        ],
+        "adaptationNotes": [
+          "Use patient and encouraging tone",
+          "Provide clear explanations for corrections"
+        ]
+      },
+      "alex": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "casual_chat",
+          "daily_activities",
+          "social_interactions"
+        ],
+        "adaptationNotes": [
+          "Maintain casual and friendly tone",
+          "Use contemporary expressions"
+        ]
+      },
+      "luna": {
+        "score": 2,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "cultural_exploration",
+          "travel_planning",
+          "food_discussion"
+        ],
+        "adaptationNotes": [
+          "Emphasize cultural context",
+          "Provide background information"
+        ]
+      }
+    }
+  }
+]

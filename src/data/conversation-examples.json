@@ -1,0 +1,2570 @@
+{
+  "maya": {
+    "totalExamples": 6,
+    "byDifficulty": {
+      "beginner": [
+        {
+          "id": "conv_01_31_1750816386277",
+          "scenario": "educational",
+          "context": {
+            "setting": "educational",
+            "participants": [
+              "parent",
+              "child"
+            ],
+            "topic": "geography_learning",
+            "communicativeFunction": "teaching_learning"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "courage attends j'ai une idée est-ce que tu es libre demain pour dîner non c'est dommage demain je suis prise mais dimanche soir je suis libre d'accord pour dimanche soir chapitre 2 Jérôme et la géographie papa la Finlande c'est un beau pays oui bien sûr c'est un très",
+              "intent": "question",
+              "emotionalTone": "disappointed",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "géographie",
+              "definition": "geography",
+              "category": "academic_subject",
+              "usage": "courage attends j'ai une idée est-ce que tu es libre demain pour dîner non c'est dommage demain je suis prise mais dimanche soir je suis libre d'accord pour dimanche soir chapitre 2 Jérôme et la géographie papa la Finlande c'est un beau pays oui bien sûr c'est un très"
+            },
+            {
+              "word": "pays",
+              "definition": "country",
+              "category": "geography",
+              "usage": "courage attends j'ai une idée est-ce que tu es libre demain pour dîner non c'est dommage demain je suis prise mais dimanche soir je suis libre d'accord pour dimanche soir chapitre 2 Jérôme et la géographie papa la Finlande c'est un beau pays oui bien sûr c'est un très"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "european_awareness"
+          ]
+        },
+        {
+          "id": "conv_01_59_1750816386278",
+          "scenario": "educational",
+          "context": {
+            "setting": "educational",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "geography_learning",
+            "communicativeFunction": "teaching_learning"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "beau pays il y a des centaines de lacs et de forêts et la capitale de la Finlande c'est Oslo quoi Oslo mais non ce n'est pas la capitale de la Finlande c'est la capitale de la Norvège la capitale de la Finlande c'est Helsinki c'est difficile la géographie mais non ce n'est pas difficile c'est",
+              "intent": "response",
+              "emotionalTone": "concerned",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "géographie",
+              "definition": "geography",
+              "category": "academic_subject",
+              "usage": "beau pays il y a des centaines de lacs et de forêts et la capitale de la Finlande c'est Oslo quoi Oslo mais non ce n'est pas la capitale de la Finlande c'est la capitale de la Norvège la capitale de la Finlande c'est Helsinki c'est difficile la géographie mais non ce n'est pas difficile c'est"
+            },
+            {
+              "word": "capitale",
+              "definition": "capital city",
+              "category": "geography",
+              "usage": "beau pays il y a des centaines de lacs et de forêts et la capitale de la Finlande c'est Oslo quoi Oslo mais non ce n'est pas la capitale de la Finlande c'est la capitale de la Norvège la capitale de la Finlande c'est Helsinki c'est difficile la géographie mais non ce n'est pas difficile c'est"
+            },
+            {
+              "word": "pays",
+              "definition": "country",
+              "category": "geography",
+              "usage": "beau pays il y a des centaines de lacs et de forêts et la capitale de la Finlande c'est Oslo quoi Oslo mais non ce n'est pas la capitale de la Finlande c'est la capitale de la Norvège la capitale de la Finlande c'est Helsinki c'est difficile la géographie mais non ce n'est pas difficile c'est"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "european_awareness"
+          ]
+        }
+      ],
+      "intermediate": [
+        {
+          "id": "conv_08_55_1750816386279",
+          "scenario": "educational",
+          "context": {
+            "setting": "educational",
+            "participants": [
+              "customer",
+              "service_provider"
+            ],
+            "topic": "geography_learning",
+            "communicativeFunction": "teaching_learning"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "chez Jérôme ah bon et pourquoi est-ce que tu vas chez Jérôme pour travaill la géographie son père est prof de goéo ah bon c'est bien tu ne reviens pas trop tardin mais non je reviens pour dîner chapitre 6 au club de gym bonjour madame je peux vous renseigner oui je voudrais des",
+              "intent": "question",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "géographie",
+              "definition": "geography",
+              "category": "academic_subject",
+              "usage": "chez Jérôme ah bon et pourquoi est-ce que tu vas chez Jérôme pour travaill la géographie son père est prof de goéo ah bon c'est bien tu ne reviens pas trop tardin mais non je reviens pour dîner chapitre 6 au club de gym bonjour madame je peux vous renseigner oui je voudrais des"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "formality_levels",
+            "european_awareness"
+          ]
+        },
+        {
+          "id": "conv_11_02_1750816386281",
+          "scenario": "educational",
+          "context": {
+            "setting": "educational",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "geography_learning",
+            "communicativeFunction": "teaching_learning"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "rien dis-moi tu connais bien la géographie euh oui assez bien tu connais une ville qui s'appelle lot je ne sais pas comment on prononce mais oui bien sûr c'est en Pologne mais les Polonais ne prononcent pas comme ça tu sais où c'est exactement je ne",
+              "intent": "question",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "géographie",
+              "definition": "geography",
+              "category": "academic_subject",
+              "usage": "rien dis-moi tu connais bien la géographie euh oui assez bien tu connais une ville qui s'appelle lot je ne sais pas comment on prononce mais oui bien sûr c'est en Pologne mais les Polonais ne prononcent pas comme ça tu sais où c'est exactement je ne"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "european_awareness"
+          ]
+        },
+        {
+          "id": "conv_12_15_1750816386281",
+          "scenario": "educational",
+          "context": {
+            "setting": "educational",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "geography_learning",
+            "communicativeFunction": "teaching_learning"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "nom de cette ville polonaise je connais bien la géographie parce que je voyage beaucoup je ne sais pas pourquoi je ne parle pas bien les langues étrangères moi je sais pourquoi c'est parce que tu n'as pas de bons prof c'est peut-être",
+              "intent": "question",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "géographie",
+              "definition": "geography",
+              "category": "academic_subject",
+              "usage": "nom de cette ville polonaise je connais bien la géographie parce que je voyage beaucoup je ne sais pas pourquoi je ne parle pas bien les langues étrangères moi je sais pourquoi c'est parce que tu n'as pas de bons prof c'est peut-être"
+            },
+            {
+              "word": "langues",
+              "definition": "languages",
+              "category": "linguistics",
+              "usage": "nom de cette ville polonaise je connais bien la géographie parce que je voyage beaucoup je ne sais pas pourquoi je ne parle pas bien les langues étrangères moi je sais pourquoi c'est parce que tu n'as pas de bons prof c'est peut-être"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "european_awareness"
+          ]
+        },
+        {
+          "id": "conv_22_53_1750816386299",
+          "scenario": "educational",
+          "context": {
+            "setting": "educational",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "geography_learning",
+            "communicativeFunction": "teaching_learning"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "géographie ce qui suivent régulièrement cette émission le savent bon alors Paloma qu'est-ce qui t'a amené à Dijon en fait j'ai toujours voulu partir étudier en France et comme mon université et celle de Dijon ont un partenariat c'était plus facile pour moi de choisir Dijon et puis dans ma fac",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "géographie",
+              "definition": "geography",
+              "category": "academic_subject",
+              "usage": "géographie ce qui suivent régulièrement cette émission le savent bon alors Paloma qu'est-ce qui t'a amené à Dijon en fait j'ai toujours voulu partir étudier en France et comme mon université et celle de Dijon ont un partenariat c'était plus facile pour moi de choisir Dijon et puis dans ma fac"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": [
+            "european_awareness"
+          ]
+        }
+      ],
+      "advanced": []
+    }
+  },
+  "alex": {
+    "totalExamples": 7,
+    "byDifficulty": {
+      "beginner": [
+        {
+          "id": "conv_13_37_1750816386281",
+          "scenario": "family_home",
+          "context": {
+            "setting": "family_home",
+            "participants": [
+              "parent",
+              "child"
+            ],
+            "topic": "family_life",
+            "communicativeFunction": "family_interaction"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "comme tu veux ma chérie euh cette veste est un peu bizarre non comment ça bizarre ma veste est à la mode c'est tout papa elle est super sa veste ah bon est-ce que votre mère est prête presque ah il me fatigue avec leurs questions leurs problèmes leurs chaussures leurs",
+              "intent": "question",
+              "emotionalTone": "enthusiastic",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": []
+        },
+        {
+          "id": "conv_47_02_1750816386285",
+          "scenario": "general",
+          "context": {
+            "setting": "general",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "daily_conversation",
+            "communicativeFunction": "social_interaction"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "installations c'est vrai maintenant il nous faut penser à un bon slogan et bien en fait j'ai fait un petit sondage et je pense que j'ai trouvé le slogan parfait excellent qu'est-ce que c'est laisse-moi d'abord te montrer les résultats du sondage j'espère qu'avec ça les gens voudront rester en",
+              "intent": "question",
+              "emotionalTone": "enthusiastic",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": []
+        },
+        {
+          "id": "conv_73_59_1750816386289",
+          "scenario": "general",
+          "context": {
+            "setting": "general",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "daily_conversation",
+            "communicativeFunction": "social_interaction"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "en ville j'adore les villes avec beaucoup de galeries et musé une super idée peut-être pourrions-nous trouver un endroit où il y a de jolies promenad à faire oui ou peut-être un parc national de grands château à la campagne çaî vraiment bien mais où allons-nous trouver",
+              "intent": "question",
+              "emotionalTone": "enthusiastic",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": []
+        },
+        {
+          "id": "conv_17_07_1750816386298",
+          "scenario": "general",
+          "context": {
+            "setting": "general",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "daily_conversation",
+            "communicativeFunction": "social_interaction"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "depuis toujours ah bah c'est génial alors j'ai l'impression que ça ne te fait pas vraiment plaisir tu es pas jaloux quand même moi jaloux pas du tout juste que c'est un peu rapide je trouve et puis je te connais arrête tu sais je n'ai plus 15 ans et",
+              "intent": "question",
+              "emotionalTone": "enthusiastic",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": []
+        },
+        {
+          "id": "conv_34_36_1750816386302",
+          "scenario": "general",
+          "context": {
+            "setting": "general",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "daily_conversation",
+            "communicativeFunction": "social_interaction"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "j'étais crevé oui mais je pensais que tu passerais un petit coup quand même ouais moi aussi mais je suis tombé sur un super film à la télé du coup j'ai perdu la motivation ah ouais ouais film trop drôle le sens de la fête avec Jean-Pierre Bacri Jean-Pierre Bacri jamais entendu parler",
+              "intent": "question",
+              "emotionalTone": "enthusiastic",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": []
+        },
+        {
+          "id": "conv_35_11_1750816386302",
+          "scenario": "general",
+          "context": {
+            "setting": "general",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "daily_conversation",
+            "communicativeFunction": "social_interaction"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "où il y a Alain Chabat qui se transforme en chien ah oui bien sûr je suis bête Jean-Pierre Bacri mais il est mort il y a pas longtemps non oui exactement c'est trop con moi je l'ai adoré cet acteur il était super drôle en tout cas hier soir je me suis vraiment bien marré devant le",
+              "intent": "question",
+              "emotionalTone": "enthusiastic",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": []
+        },
+        {
+          "id": "conv_60_46_1750816386307",
+          "scenario": "general",
+          "context": {
+            "setting": "general",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "daily_conversation",
+            "communicativeFunction": "social_interaction"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "infectieuses mais c'est génial ça qu'est-ce que je te disais ah ouais le seul problème c'est qu'on n'est pas les premiers sur le coup il y a déjà pas mal d'articles sur le sujet j'ai l'impression ouais mais c'est surtout dans la presse régionale au niveau",
+              "intent": "question",
+              "emotionalTone": "enthusiastic",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": []
+        }
+      ],
+      "intermediate": [],
+      "advanced": []
+    }
+  },
+  "luna": {
+    "totalExamples": 54,
+    "byDifficulty": {
+      "beginner": [
+        {
+          "id": "conv_15_15_1750816386281",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "Isabelle"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "la farine une livre de beurre qu ou C pommes quelques pois j'ai un peu de farine si tu veux non ça ne suffit pas il me faut 1 kg de farine et aussi un pot de crème fraîche tiens voilà Isabelle salut tu veux du café ou du thé un grand bol de café bien fort avec du pain et du beurre non pas",
+              "intent": "response",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "la farine une livre de beurre qu ou C pommes quelques pois j'ai un peu de farine si tu veux non ça ne suffit pas il me faut 1 kg de farine et aussi un pot de crème fraîche tiens voilà Isabelle salut tu veux du café ou du thé un grand bol de café bien fort avec du pain et du beurre non pas"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_18_38_1750816386282",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "levez en général je me lève à 8h je ne me prépare pas tout de suite je reste en pyjama d'abord je m'occupe de mon courrier j'ouvre mes mails je me demande pourquoi je reçois tellement de messages et ensuite et bien je prends un bon café",
+              "intent": "question",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "levez en général je me lève à 8h je ne me prépare pas tout de suite je reste en pyjama d'abord je m'occupe de mon courrier j'ouvre mes mails je me demande pourquoi je reçois tellement de messages et ensuite et bien je prends un bon café"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_21_13_1750816386282",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "n'aime pas du tout le cinéma mais tu peux sortir aller dans un café parler à des gens oui quelquefois je vais prendre un café dans un bistro mais jamais personne ne me parle si je comprends bien personne ne m'aime arrête d'être passif si négatif ce n'est pas une catastrophe allez viens on va déjeuner",
+              "intent": "response",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "n'aime pas du tout le cinéma mais tu peux sortir aller dans un café parler à des gens oui quelquefois je vais prendre un café dans un bistro mais jamais personne ne me parle si je comprends bien personne ne m'aime arrête d'être passif si négatif ce n'est pas une catastrophe allez viens on va déjeuner"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_27_22_1750816386283",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "clients alors je suis content tu as dîné oui j'ai dîné qu'est-ce que tu as mangé j'ai mangé simplement une tranche de jambon un morceau de fromage et une banane tu vois c'est simple je n'ai pas préparé de vrai dîner tu as regardé les",
+              "intent": "question",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "dîner",
+              "definition": "dinner",
+              "category": "food",
+              "usage": "clients alors je suis content tu as dîné oui j'ai dîné qu'est-ce que tu as mangé j'ai mangé simplement une tranche de jambon un morceau de fromage et une banane tu vois c'est simple je n'ai pas préparé de vrai dîner tu as regardé les"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_28_14_1750816386283",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "invité Sandrine et Léon à dîner ah oui ils ont accepté bien sûr j'ai téléphoné à Sandrine ce matin et j'ai proposé une date samedi 17 ça te va samedi oui très bien j'ai entendu dire que Mar et toi allz vous marier félicitation je suis si occupé en ce moment à préparer le mariage quez cérémonieig",
+              "intent": "response",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "dîner",
+              "definition": "dinner",
+              "category": "food",
+              "usage": "invité Sandrine et Léon à dîner ah oui ils ont accepté bien sûr j'ai téléphoné à Sandrine ce matin et j'ai proposé une date samedi 17 ça te va samedi oui très bien j'ai entendu dire que Mar et toi allz vous marier félicitation je suis si occupé en ce moment à préparer le mariage quez cérémonieig"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_06_44_1750816386296",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "exemple je vous recommande le café des chats dans le troisième arrondissement c'est un endroit extraordinaire où vous pouvez siroter tranquillement un thé entouré d'une dizaine de chats tous plus gentils les uns que les autres ah désolé mais moi je suis allergique au chat vous",
+              "intent": "question",
+              "emotionalTone": "disappointed",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "exemple je vous recommande le café des chats dans le troisième arrondissement c'est un endroit extraordinaire où vous pouvez siroter tranquillement un thé entouré d'une dizaine de chats tous plus gentils les uns que les autres ah désolé mais moi je suis allergique au chat vous"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_26_46_1750816386300",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "exceptionnel il y a toujours de nouvelles choses à voir avec à découvrir il suffit de lever la tête et j'aime bien l'atmosphère dans les cafés les bistrots tu sors beaucoup de plus en plus oui maintenant qu'il fait beau je",
+              "intent": "response",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "exceptionnel il y a toujours de nouvelles choses à voir avec à découvrir il suffit de lever la tête et j'aime bien l'atmosphère dans les cafés les bistrots tu sors beaucoup de plus en plus oui maintenant qu'il fait beau je"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_26_60_1750816386300",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "passe beaucoup de temps un terrasse attention c'est le début de la fin on commence comme ça et après on passe plus de temps au café qu'à la fac non mais je n'oublie pas mes études c'est juste que",
+              "intent": "response",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "passe beaucoup de temps un terrasse attention c'est le début de la fin on commence comme ça et après on passe plus de temps au café qu'à la fac non mais je n'oublie pas mes études c'est juste que"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_41_42_1750816386304",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "mais on peut plus parler avec toi tu as toujours le nez dans ton téléphone non mais la surjean c'est Charles désolé oui pas de toute façon c'est toujours urgent moi la prochaine fois mon café j'irai le boire toute seule",
+              "intent": "response",
+              "emotionalTone": "disappointed",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "mais on peut plus parler avec toi tu as toujours le nez dans ton téléphone non mais la surjean c'est Charles désolé oui pas de toute façon c'est toujours urgent moi la prochaine fois mon café j'irai le boire toute seule"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_43_05_1750816386304",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "semble que tu n'es pas la dernière à taper les messages quand on boit un café oui mais moi je me soigne ah bon tu te Soignes et oui l'autre jour j'ai vu une émission à la télé sur Arte il y avait",
+              "intent": "question",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "semble que tu n'es pas la dernière à taper les messages quand on boit un café oui mais moi je me soigne ah bon tu te Soignes et oui l'autre jour j'ai vu une émission à la télé sur Arte il y avait"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_44_17_1750816386304",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "non mais je dis pas ça non plus il suffit juste d'appliquer quelques recettes ah ouais et je peux savoir lesquels je sais pas juste s'aménager quelques moments dans la journée sans téléphone quand tu vas te promener par exemple ou le soir avant de te coucher ou quand tu bois un café avec une copine",
+              "intent": "question",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "non mais je dis pas ça non plus il suffit juste d'appliquer quelques recettes ah ouais et je peux savoir lesquels je sais pas juste s'aménager quelques moments dans la journée sans téléphone quand tu vas te promener par exemple ou le soir avant de te coucher ou quand tu bois un café avec une copine"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_78_18_1750816386311",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "mardi on va bien réussir à s'arranger merci ma Jeanne c'est vraiment cool tu es une vraie pote toi ciao ciao bonjour à tous d'un autre émission d'aujourd'hui j'ai le plaisir d'accueillir Jean-Marc bistrot Jean-Marc bistrot vous êtes docteur un histoire et auteur d'un essai intitulé Les Cafés en",
+              "intent": "greeting",
+              "emotionalTone": "concerned",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "mardi on va bien réussir à s'arranger merci ma Jeanne c'est vraiment cool tu es une vraie pote toi ciao ciao bonjour à tous d'un autre émission d'aujourd'hui j'ai le plaisir d'accueillir Jean-Marc bistrot Jean-Marc bistrot vous êtes docteur un histoire et auteur d'un essai intitulé Les Cafés en"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": [
+            "formality_levels",
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_78_42_1750816386311",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "France un petit ouvrage absolument savoureux que j'ai personnellement dégusté avec un grand plaisir merci alors Jean-Marc bistrot dites-nous tout à quand remonte les premiers cafés en",
+              "intent": "question",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "France un petit ouvrage absolument savoureux que j'ai personnellement dégusté avec un grand plaisir merci alors Jean-Marc bistrot dites-nous tout à quand remonte les premiers cafés en"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_78_56_1750816386311",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "France alors les premiers établissements qui portent ce nom ouvrent leur porte en France au 17e siècle ils suivent de peu l'arrivée d'un autre pays d'une nouvelle boisson le café tout droit venu de Constantinople oui parce que le café le",
+              "intent": "response",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "France alors les premiers établissements qui portent ce nom ouvrent leur porte en France au 17e siècle ils suivent de peu l'arrivée d'un autre pays d'une nouvelle boisson le café tout droit venu de Constantinople oui parce que le café le"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_79_09_1750816386311",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "lieu est évidemment lié au café la boisson tout à fait parce qu'il existait bien entendu avant le 17e siècle des endroits où les gens se rencontraient pour discuter et pour boire des débits de boissons comme les fameuses tavernes",
+              "intent": "question",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "lieu est évidemment lié au café la boisson tout à fait parce qu'il existait bien entendu avant le 17e siècle des endroits où les gens se rencontraient pour discuter et pour boire des débits de boissons comme les fameuses tavernes"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_79_41_1750816386311",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "ou la pensée des Lumières se diffuse on y parle de politique de philosophie de religion d'art et on y échange des idées on évoque l'actualité on assiste surtout à une sorte de démocratisation de la parole car les cafés ne sont pas seulement fréquentés par les riches bourgeois ou les gentils mais on y",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "ou la pensée des Lumières se diffuse on y parle de politique de philosophie de religion d'art et on y échange des idées on évoque l'actualité on assiste surtout à une sorte de démocratisation de la parole car les cafés ne sont pas seulement fréquentés par les riches bourgeois ou les gentils mais on y"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_80_11_1750816386311",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "France et qu'est-ce qu'on boit à cette époque dans les cafés seulement du café ah non pas du tout c'est un peu comme aujourd'hui on peut y boire tout et n'importe quoi enfin surtout n'importe quoi je dirais on a le témoignage de",
+              "intent": "response",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "France et qu'est-ce qu'on boit à cette époque dans les cafés seulement du café ah non pas du tout c'est un peu comme aujourd'hui on peut y boire tout et n'importe quoi enfin surtout n'importe quoi je dirais on a le témoignage de"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_80_23_1750816386311",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "Louis Sébastien Mercier un écrivain du XVIIIe siècle qui nous explique je cite en général le café qu'on y prend est mauvais et trop brûlé la limonade dangereuse les liqueurs malsaines et à l'esprit de vin mais le bon parisiens",
+              "intent": "response",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "Louis Sébastien Mercier un écrivain du XVIIIe siècle qui nous explique je cite en général le café qu'on y prend est mauvais et trop brûlé la limonade dangereuse les liqueurs malsaines et à l'esprit de vin mais le bon parisiens"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_80_58_1750816386312",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "pas très réjouissant oui c'est vrai malheureusement l'évolution récente des cafés est assez inquiétante vous nous expliquez qu'il y avait environ 200000 cafés dans les années 60 et qu'il n'y en a plus que 30 000 environ aujourd'hui",
+              "intent": "response",
+              "emotionalTone": "disappointed",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "pas très réjouissant oui c'est vrai malheureusement l'évolution récente des cafés est assez inquiétante vous nous expliquez qu'il y avait environ 200000 cafés dans les années 60 et qu'il n'y en a plus que 30 000 environ aujourd'hui"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_81_55_1750816386312",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "bistrots alors vous parlez trop plus positive est-ce que vous pourriez nous dire deux mots sur la richesse lexicale que vous évoquez dans votre livre oui alors je me suis amusé à recenser les termes qu'on utilisait pour parler de ces établissements et j'en ai trouvé plus d'une dizaine donc le café",
+              "intent": "question",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "bistrots alors vous parlez trop plus positive est-ce que vous pourriez nous dire deux mots sur la richesse lexicale que vous évoquez dans votre livre oui alors je me suis amusé à recenser les termes qu'on utilisait pour parler de ces établissements et j'en ai trouvé plus d'une dizaine donc le café"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_82_12_1750816386312",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "et le bistrot évidemment mais aussi le troquer le bar le rade la gargote le bougnat la taverne le cabaret La saumonoir alors beaucoup de ces mots ont vieilli et sont sortis de l'usage bien sûr mille témoignent je crois de l'importance que le café a eu et a encore dans notre histoire de ces",
+              "intent": "response",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "et le bistrot évidemment mais aussi le troquer le bar le rade la gargote le bougnat la taverne le cabaret La saumonoir alors beaucoup de ces mots ont vieilli et sont sortis de l'usage bien sûr mille témoignent je crois de l'importance que le café a eu et a encore dans notre histoire de ces"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_01_33_1750816386321",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "Aires y la otra es eh Ciudad de México Claro Y para terminar otro dato que puede interesar a los amantes del café ¿Qué países son los mayores productores de café en Centroamérica ni idea Pues son Guatemala y Honduras Pero en América del Sur hay un país que produce más café",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "Aires y la otra es eh Ciudad de México Claro Y para terminar otro dato que puede interesar a los amantes del café ¿Qué países son los mayores productores de café en Centroamérica ni idea Pues son Guatemala y Honduras Pero en América del Sur hay un país que produce más café"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_06_48_1750816386322",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "son el cine y la música Me encanta ver películas con mis amigos y después hablar sobre ellas mientras cenamos en casa de alguien Y también me gusta ir al cine A veces voy sola al cine Además me",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "cena",
+              "definition": "dinner",
+              "category": "food",
+              "usage": "son el cine y la música Me encanta ver películas con mis amigos y después hablar sobre ellas mientras cenamos en casa de alguien Y también me gusta ir al cine A veces voy sola al cine Además me"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_14_16_1750816386323",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "y consumo ah sí Si no es mucho tiempo No solo dos preguntitas Estamos haciendo un estudio sobre el consumo de bebidas ¿Por las mañanas tomas té o café pues normalmente café pero a veces tomo té Vale A ver el café ¿cómo lo tomas ¿solo",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "y consumo ah sí Si no es mucho tiempo No solo dos preguntitas Estamos haciendo un estudio sobre el consumo de bebidas ¿Por las mañanas tomas té o café pues normalmente café pero a veces tomo té Vale A ver el café ¿cómo lo tomas ¿solo"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_15_17_1750816386324",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "sí a veces pero me gustan mucho las cervezas artesanas y las compro en tiendas especializadas y el vino lo tomo con las comidas en días especiales ¿Y dónde lo compras normalmente en el supermercado Tinto blanco rosado Tinto El blanco no me gusta y el rosado tampoco Muy bien",
+              "intent": "statement",
+              "emotionalTone": "enthusiastic",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "comida",
+              "definition": "food/meal",
+              "category": "food",
+              "usage": "sí a veces pero me gustan mucho las cervezas artesanas y las compro en tiendas especializadas y el vino lo tomo con las comidas en días especiales ¿Y dónde lo compras normalmente en el supermercado Tinto blanco rosado Tinto El blanco no me gusta y el rosado tampoco Muy bien"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_24_53_1750816386325",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "cuáles son las ciudades más pobladas del mundo hispano una pista Una de ellas es Buenos Aires y la otra es eh Ciudad de México Claro Y para terminar otro dato que puede interesar a los amantes del café ¿Qué países son los mayores productores de café en Centroamérica ni idea Pues",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "cuáles son las ciudades más pobladas del mundo hispano una pista Una de ellas es Buenos Aires y la otra es eh Ciudad de México Claro Y para terminar otro dato que puede interesar a los amantes del café ¿Qué países son los mayores productores de café en Centroamérica ni idea Pues"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_25_12_1750816386325",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "son Guatemala y Honduras Pero en América del Sur hay un país que produce más café Colombia Claro ¿Cuántos habitantes tiene Argentina unos 75 u 80 m000ones ¿no argentina tiene poco más de 40 millones de habitantes solo Sí hay zonas con muy poca población",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "son Guatemala y Honduras Pero en América del Sur hay un país que produce más café Colombia Claro ¿Cuántos habitantes tiene Argentina unos 75 u 80 m000ones ¿no argentina tiene poco más de 40 millones de habitantes solo Sí hay zonas con muy poca población"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_30_12_1750816386326",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "habladora Las cosas que más me gustan son el cine y la música Me encanta ver películas con mis amigos y después hablar sobre ellas mientras cenamos en casa de alguien Y también me gusta ir al cine A veces voy sola al cine Además me encanta ir a conciertos y mi sueño es ir",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "cena",
+              "definition": "dinner",
+              "category": "food",
+              "usage": "habladora Las cosas que más me gustan son el cine y la música Me encanta ver películas con mis amigos y después hablar sobre ellas mientras cenamos en casa de alguien Y también me gusta ir al cine A veces voy sola al cine Además me encanta ir a conciertos y mi sueño es ir"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_37_42_1750816386327",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "y consumo ah sí si no es mucho tiempo No solo dos preguntitas Estamos haciendo un estudio sobre el consumo de bebidas ¿Por las mañanas tomas té o café pues normalmente café pero a veces tomo té Vale A ver el café ¿cómo lo tomas ¿solo",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "y consumo ah sí si no es mucho tiempo No solo dos preguntitas Estamos haciendo un estudio sobre el consumo de bebidas ¿Por las mañanas tomas té o café pues normalmente café pero a veces tomo té Vale A ver el café ¿cómo lo tomas ¿solo"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_38_44_1750816386327",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "sí a veces pero me gustan mucho las cervezas artesanas y las compro en tiendas especializadas y el vino lo tomo con las comidas en días especiales ¿Y dónde lo compras normalmente en el supermercado Tinto blanco rosado Tinto El blanco no me gusta y el rosado tampoco Muy bien",
+              "intent": "statement",
+              "emotionalTone": "enthusiastic",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "comida",
+              "definition": "food/meal",
+              "category": "food",
+              "usage": "sí a veces pero me gustan mucho las cervezas artesanas y las compro en tiendas especializadas y el vino lo tomo con las comidas en días especiales ¿Y dónde lo compras normalmente en el supermercado Tinto blanco rosado Tinto El blanco no me gusta y el rosado tampoco Muy bien"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_48_21_1750816386329",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "cuáles son las ciudades más pobladas del mundo hispano una pista Una de ellas es Buenos Aires y la otra es eh Ciudad de México Claro Y para terminar otro dato que puede interesar a los amantes del café ¿Qué países son los mayores productores de café en Centroamérica ni idea Pues",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "cuáles son las ciudades más pobladas del mundo hispano una pista Una de ellas es Buenos Aires y la otra es eh Ciudad de México Claro Y para terminar otro dato que puede interesar a los amantes del café ¿Qué países son los mayores productores de café en Centroamérica ni idea Pues"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_48_40_1750816386329",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "son Guatemala y Honduras Pero en América del Sur hay un país que produce más café Colombia Claro ¿Cuántos habitantes tiene Argentina unos 75 u 80 m000ones ¿no argentina tiene poco más de 40 millones de habitantes solo Sí hay zonas con muy poca población",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "son Guatemala y Honduras Pero en América del Sur hay un país que produce más café Colombia Claro ¿Cuántos habitantes tiene Argentina unos 75 u 80 m000ones ¿no argentina tiene poco más de 40 millones de habitantes solo Sí hay zonas con muy poca población"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_53_45_1750816386330",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "películas con mis amigos y después hablar sobre ellas mientras cenamos en casa de alguien Y también me gusta ir al cine A veces voy sola al cine Además me encanta ir a conciertos y mi sueño es ir",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "cena",
+              "definition": "dinner",
+              "category": "food",
+              "usage": "películas con mis amigos y después hablar sobre ellas mientras cenamos en casa de alguien Y también me gusta ir al cine A veces voy sola al cine Además me encanta ir a conciertos y mi sueño es ir"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_61_10_1750816386331",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "y consumo ah sí si no es mucho tiempo No solo dos preguntitas Estamos haciendo un estudio sobre el consumo de bebidas ¿Por las mañanas tomas té o café pues normalmente café pero a veces tomo té Vale A ver el café ¿cómo lo tomas ¿solo",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "y consumo ah sí si no es mucho tiempo No solo dos preguntitas Estamos haciendo un estudio sobre el consumo de bebidas ¿Por las mañanas tomas té o café pues normalmente café pero a veces tomo té Vale A ver el café ¿cómo lo tomas ¿solo"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_62_06_1750816386332",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "vino tomo sobre todo cerveza ¿La compras en el supermercado sí a veces pero me gustan mucho las cervezas artesanas y las compro en tiendas especializadas y el vino lo tomo con las comidas en días especiales ¿Y dónde lo compras normalmente en el supermercado",
+              "intent": "statement",
+              "emotionalTone": "enthusiastic",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "comida",
+              "definition": "food/meal",
+              "category": "food",
+              "usage": "vino tomo sobre todo cerveza ¿La compras en el supermercado sí a veces pero me gustan mucho las cervezas artesanas y las compro en tiendas especializadas y el vino lo tomo con las comidas en días especiales ¿Y dónde lo compras normalmente en el supermercado"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_71_56_1750816386333",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "cuáles son las ciudades más pobladas del mundo hispano una pista Una de ellas es Buenos Aires y la otra es eh Ciudad de México Claro Y para terminar otro dato que puede interesar a los amantes del café ¿Qué países son los mayores productores de café en Centroamérica ni idea Pues",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "cuáles son las ciudades más pobladas del mundo hispano una pista Una de ellas es Buenos Aires y la otra es eh Ciudad de México Claro Y para terminar otro dato que puede interesar a los amantes del café ¿Qué países son los mayores productores de café en Centroamérica ni idea Pues"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_72_16_1750816386333",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "son Guatemala y Honduras pero en América del Sur hay un país que produce más café Colombia Claro ¿Cuántos habitantes tiene Argentina unos 75 u 80 millones No Argentina tiene poco más de 40 millones de habitantes Solo sí hay zonas con muy poca población En el oeste están los Andes ¿no sí Y la",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "son Guatemala y Honduras pero en América del Sur hay un país que produce más café Colombia Claro ¿Cuántos habitantes tiene Argentina unos 75 u 80 millones No Argentina tiene poco más de 40 millones de habitantes Solo sí hay zonas con muy poca población En el oeste están los Andes ¿no sí Y la"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_77_16_1750816386334",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "Las cosas que más me gustan son el cine y la música Me encanta ver películas con mis amigos y después hablar sobre ellas mientras cenamos en casa de alguien Y también me gusta ir al cine A veces voy sola al cine Además me encanta ir a",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "cena",
+              "definition": "dinner",
+              "category": "food",
+              "usage": "Las cosas que más me gustan son el cine y la música Me encanta ver películas con mis amigos y después hablar sobre ellas mientras cenamos en casa de alguien Y también me gusta ir al cine A veces voy sola al cine Además me encanta ir a"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_79_23_1750816386334",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "Perdone por favor ¿qué hora tiene e las 5:15 Gracias ¿Y cómo es un día normal para ti pues me levanto a las 7:30 de la mañana eh me ducho después desayuno tranquilamente y cojo la moto y voy",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "desayuno",
+              "definition": "breakfast",
+              "category": "food",
+              "usage": "Perdone por favor ¿qué hora tiene e las 5:15 Gracias ¿Y cómo es un día normal para ti pues me levanto a las 7:30 de la mañana eh me ducho después desayuno tranquilamente y cojo la moto y voy"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_84_52_1750816386335",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "estudio sobre el consumo de bebidas ¿Por las mañanas tomas té o café pues normalmente café pero a veces tomo té Vale A ver el café ¿cómo lo tomas ¿solo ¿con leche Lo tomo con un poco de leche pero sin azúcar Muy bien ¿Y el té ¿cómo",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "estudio sobre el consumo de bebidas ¿Por las mañanas tomas té o café pues normalmente café pero a veces tomo té Vale A ver el café ¿cómo lo tomas ¿solo ¿con leche Lo tomo con un poco de leche pero sin azúcar Muy bien ¿Y el té ¿cómo"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_85_47_1750816386335",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "sí a veces pero me gustan mucho las cervezas artesanas y las compro en tiendas especializadas Y el vino lo tomo con las comidas en días especiales ¿Y dónde lo compras normalmente en el supermercado Tinto blanco rosado Tinto El blanco no me gusta y el rosado tampoco Muy bien",
+              "intent": "statement",
+              "emotionalTone": "enthusiastic",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "comida",
+              "definition": "food/meal",
+              "category": "food",
+              "usage": "sí a veces pero me gustan mucho las cervezas artesanas y las compro en tiendas especializadas Y el vino lo tomo con las comidas en días especiales ¿Y dónde lo compras normalmente en el supermercado Tinto blanco rosado Tinto El blanco no me gusta y el rosado tampoco Muy bien"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_95_23_1750816386336",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "cuáles son las ciudades más pobladas del mundo hispano una pista Una de ellas es Buenos Aires y la otra es eh Ciudad de México Claro Y para terminar otro dato que puede interesar a los amantes del café ¿Qué países son los mayores productores de café en Centroamérica ni idea Pues",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "cuáles son las ciudades más pobladas del mundo hispano una pista Una de ellas es Buenos Aires y la otra es eh Ciudad de México Claro Y para terminar otro dato que puede interesar a los amantes del café ¿Qué países son los mayores productores de café en Centroamérica ni idea Pues"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_95_42_1750816386336",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "son Guatemala y Honduras Pero en América del Sur hay un país que produce más café Colombia Claro ¿Cuántos habitantes tiene Argentina unos 75 u 80 m000ones ¿no argentina tiene poco más de 40 millones de habitantes solo Sí hay zonas con muy poca población",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "son Guatemala y Honduras Pero en América del Sur hay un país que produce más café Colombia Claro ¿Cuántos habitantes tiene Argentina unos 75 u 80 m000ones ¿no argentina tiene poco más de 40 millones de habitantes solo Sí hay zonas con muy poca población"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        }
+      ],
+      "intermediate": [
+        {
+          "id": "conv_14_22_1750816386281",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "petit-déjeuner qu'est-ce que tu veux pour ton petit déjeuner du thé du café du thé s'il te plaît avec du ah oui avec un peu de lait et du sucre tu prends du pain ou tu préfères des céréales tu sais je suis typiquement",
+              "intent": "question",
+              "emotionalTone": "neutral",
+              "responsePatterns": [
+                "polite_request"
+              ]
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "petit-déjeuner",
+              "definition": "breakfast",
+              "category": "food",
+              "usage": "petit-déjeuner qu'est-ce que tu veux pour ton petit déjeuner du thé du café du thé s'il te plaît avec du ah oui avec un peu de lait et du sucre tu prends du pain ou tu préfères des céréales tu sais je suis typiquement"
+            },
+            {
+              "word": "café",
+              "definition": "coffee",
+              "category": "food",
+              "usage": "petit-déjeuner qu'est-ce que tu veux pour ton petit déjeuner du thé du café du thé s'il te plaît avec du ah oui avec un peu de lait et du sucre tu prends du pain ou tu préfères des céréales tu sais je suis typiquement"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_14_37_1750816386281",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "française j'aime bien prendre du pain avec du beurre et de la confiture qu'est-ce que tu as comme confiture de la confiture de fraise de la confiture d'orange j'ai aussi un pot de miel si tu veux non pas de miel de la confiture de fraise c'est très bien tu veux du jus d'orange oui bonne",
+              "intent": "question",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "confiture",
+              "definition": "jam",
+              "category": "food",
+              "usage": "française j'aime bien prendre du pain avec du beurre et de la confiture qu'est-ce que tu as comme confiture de la confiture de fraise de la confiture d'orange j'ai aussi un pot de miel si tu veux non pas de miel de la confiture de fraise c'est très bien tu veux du jus d'orange oui bonne"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_15_59_1750816386282",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "Isabelle",
+              "Paul"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "c'est difficile à digérer ma pauvre Isabelle la vie est triste avec toi pas de sucre pas de lait pas de confiture pas de miel pas de pain pas de beurre c'est tout chapitre 10 un recrutement difficile voici les deux CV les plus intéressant Paul Dumard et François",
+              "intent": "statement",
+              "emotionalTone": "sympathetic",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "confiture",
+              "definition": "jam",
+              "category": "food",
+              "usage": "c'est difficile à digérer ma pauvre Isabelle la vie est triste avec toi pas de sucre pas de lait pas de confiture pas de miel pas de pain pas de beurre c'est tout chapitre 10 un recrutement difficile voici les deux CV les plus intéressant Paul Dumard et François"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_17_24_1750816386324",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "interesante ¿Y alguna sugerencia más bueno si te apetece también puedes dar un paseo a un coche de caballos y ver los monumentos que hay en el centro y tomarte algo por allí tranquilo Y alguna zona con buenos restaurantes bares Sí claro tienes mucho para elegir pero",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "restaurante",
+              "definition": "restaurant",
+              "category": "food",
+              "usage": "interesante ¿Y alguna sugerencia más bueno si te apetece también puedes dar un paseo a un coche de caballos y ver los monumentos que hay en el centro y tomarte algo por allí tranquilo Y alguna zona con buenos restaurantes bares Sí claro tienes mucho para elegir pero"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_17_42_1750816386324",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "te voy a recomendar dos barrios Triana que tiene restaurantes y bares con terrazas al lado del río que están muy bien y también el bar de San Bartolomé que tienen bares muy muy bonitos y",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "restaurante",
+              "definition": "restaurant",
+              "category": "food",
+              "usage": "te voy a recomendar dos barrios Triana que tiene restaurantes y bares con terrazas al lado del río que están muy bien y también el bar de San Bartolomé que tienen bares muy muy bonitos y"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_40_51_1750816386327",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "interesante ¿Y alguna sugerencia más bueno si te apetece también puedes dar un paseo a un coche de caballos y ver los monumentos que hay en el centro y tomarte algo por allí tranquilo Y alguna zona con buenos restaurantes bares Sí claro tienes mucho para elegir pero",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "restaurante",
+              "definition": "restaurant",
+              "category": "food",
+              "usage": "interesante ¿Y alguna sugerencia más bueno si te apetece también puedes dar un paseo a un coche de caballos y ver los monumentos que hay en el centro y tomarte algo por allí tranquilo Y alguna zona con buenos restaurantes bares Sí claro tienes mucho para elegir pero"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_41_08_1750816386327",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "te voy a recomendar dos barrios Triana que tiene restaurantes y bares con terrazas al lado del río que está muy bien Y también el baro de San Bartolomé que tienen bares muy muy bonitos y",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "restaurante",
+              "definition": "restaurant",
+              "category": "food",
+              "usage": "te voy a recomendar dos barrios Triana que tiene restaurantes y bares con terrazas al lado del río que está muy bien Y también el baro de San Bartolomé que tienen bares muy muy bonitos y"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_64_18_1750816386332",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "parece interesante ¿Y alguna sugerencia más bueno si te apetece también puedes dar un paseo a un coche de caballos y ver los monumentos que hay en el centro y tomarte algo por allí tranquilo Y alguna zona con buenos restaurantes bares Sí claro tienes mucho para elegir pero",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "restaurante",
+              "definition": "restaurant",
+              "category": "food",
+              "usage": "parece interesante ¿Y alguna sugerencia más bueno si te apetece también puedes dar un paseo a un coche de caballos y ver los monumentos que hay en el centro y tomarte algo por allí tranquilo Y alguna zona con buenos restaurantes bares Sí claro tienes mucho para elegir pero"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_64_36_1750816386332",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "te voy a recomendar dos barrios Triana que tiene restaurantes y bares con terrazas al lado del río que están muy bien Y también el baro de San Bartolomé que tienen bares muy muy bonitos y",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "restaurante",
+              "definition": "restaurant",
+              "category": "food",
+              "usage": "te voy a recomendar dos barrios Triana que tiene restaurantes y bares con terrazas al lado del río que están muy bien Y también el baro de San Bartolomé que tienen bares muy muy bonitos y"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_87_54_1750816386335",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "interesante ¿Y alguna sugerencia más bueno si te apetece también puedes dar un pase a un coche de caballos y ver los monumentos que hay en el centro y tomarte algo por allí tranquilo Y alguna zona con buenos restaurantes bares Sí claro tienes mucho para elegir pero",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "restaurante",
+              "definition": "restaurant",
+              "category": "food",
+              "usage": "interesante ¿Y alguna sugerencia más bueno si te apetece también puedes dar un pase a un coche de caballos y ver los monumentos que hay en el centro y tomarte algo por allí tranquilo Y alguna zona con buenos restaurantes bares Sí claro tienes mucho para elegir pero"
+            }
+          ],
+          "grammarFocus": [
+            "negation_ne_pas",
+            "present_tense",
+            "spanish_questions",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        },
+        {
+          "id": "conv_88_12_1750816386335",
+          "scenario": "dining",
+          "context": {
+            "setting": "dining",
+            "participants": [
+              "speaker_a",
+              "speaker_b"
+            ],
+            "topic": "food_meals",
+            "communicativeFunction": "dining_discussion"
+          },
+          "sampleDialogue": [
+            {
+              "speaker": "speaker_1",
+              "content": "te voy a recomendar dos barrios Triana que tiene restaurantes y bares con terrazas al lado del río que están muy bien Y también el bar de San Bartolomé que tienen bares muy muy bonitos y",
+              "intent": "statement",
+              "emotionalTone": "neutral",
+              "responsePatterns": []
+            }
+          ],
+          "keyVocabulary": [
+            {
+              "word": "restaurante",
+              "definition": "restaurant",
+              "category": "food",
+              "usage": "te voy a recomendar dos barrios Triana que tiene restaurantes y bares con terrazas al lado del río que están muy bien Y también el bar de San Bartolomé que tienen bares muy muy bonitos y"
+            }
+          ],
+          "grammarFocus": [
+            "present_tense",
+            "spanish_present_tense",
+            "spanish_articles"
+          ],
+          "culturalNotes": [
+            "french_breakfast_culture"
+          ]
+        }
+      ],
+      "advanced": []
+    }
+  }
+}

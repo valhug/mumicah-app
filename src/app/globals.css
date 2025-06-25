@@ -1,26 +1,375 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* ShadCN/UI Variables */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 24 100% 50%; /* #FF7000 - Mumicah Brand */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 24 100% 50%;
+    --radius: 0.5rem;
+
+    /* Mumicah Brand Variables */
+    --brand-primary: 24 100% 50%; /* #FF7000 */
+    --brand-primary-foreground: 0 0% 100%;
+    --brand-accent: 195 100% 50%; /* #1DA1F2 */
+
+    /* Custom Design System */
+    --content-primary: 222.2 84% 4.9%;
+    --content-secondary: 215.4 16.3% 46.9%;
+    --content-tertiary: 215.4 16.3% 60%;
+    --content-inverse: 0 0% 100%;
+
+    --surface-primary: 0 0% 100%;
+    --surface-secondary: 210 40% 96%;
+    --surface-tertiary: 0 0% 97%;
+    --surface-elevated: 0 0% 100%;
+    --surface-overlay: 0 0% 100%;
+
+    --border-primary: 214.3 31.8% 91.4%;
+    --border-secondary: 215 20.2% 65.1%;
+    --border-focus: 24 100% 50%;
+
+    /* Status Colors */
+    --success: 142.1 76.2% 36.3%;
+    --success-foreground: 355.7 100% 97.3%;
+    --warning: 32.1 94.6% 43.7%;
+    --warning-foreground: 0 0% 100%;
+    --error: 0 84.2% 60.2%;
+    --error-foreground: 210 40% 98%;
+    --info: 204 94% 58%;
+    --info-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    /* ShadCN/UI Dark Mode */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 24 100% 50%; /* #FF7000 - Mumicah Brand */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 24 100% 50%;
+
+    /* Mumicah Brand (consistent in dark) */
+    --brand-primary: 24 100% 50%; /* #FF7000 */
+    --brand-primary-foreground: 0 0% 100%;
+    --brand-accent: 195 100% 50%; /* #1DA1F2 */
+
+    /* Custom Design System - Dark */
+    --content-primary: 210 40% 98%;
+    --content-secondary: 215 20.2% 65.1%;
+    --content-tertiary: 215.4 16.3% 46.9%;
+    --content-inverse: 222.2 84% 4.9%;
+
+    --surface-primary: 222.2 84% 4.9%;
+    --surface-secondary: 217.2 32.6% 17.5%;
+    --surface-tertiary: 215 25% 12%;
+    --surface-elevated: 217.2 32.6% 17.5%;
+    --surface-overlay: 222.2 84% 4.9%;
+
+    --border-primary: 217.2 32.6% 17.5%;
+    --border-secondary: 215 20.2% 35%;
+    --border-focus: 24 100% 50%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+  }
+}
+
+@layer components {
+  /* Custom component utilities */
+  .content-primary {
+    color: hsl(var(--content-primary));
+  }
+  
+  .content-secondary {
+    color: hsl(var(--content-secondary));
+  }
+  
+  .content-tertiary {
+    color: hsl(var(--content-tertiary));
+  }
+  
+  .surface-primary {
+    background-color: hsl(var(--surface-primary));
+  }
+  
+  .surface-secondary {
+    background-color: hsl(var(--surface-secondary));
+  }
+  
+  .surface-tertiary {
+    background-color: hsl(var(--surface-tertiary));
+  }
+  
+  .border-primary {
+    border-color: hsl(var(--border-primary));
+  }
+  
+  .border-secondary {
+    border-color: hsl(var(--border-secondary));
+  }
+  
+  /* Brand utilities */
+  .text-brand {
+    color: hsl(var(--brand-primary));
+  }
+  
+  .bg-brand {
+    background-color: hsl(var(--brand-primary));
+    color: hsl(var(--brand-primary-foreground));
+  }
+  
+  .text-brand-accent {
+    color: hsl(var(--brand-accent));
+  }
+}
+
+@layer utilities {
+  /* Background Utilities */
+  .background-light850_dark100 {
+    @apply bg-white dark:bg-black;
+  }
+
+  .background-light900_dark200 {
+    @apply bg-gray-50 dark:bg-gray-900;
+  }
+
+  .background-light900_dark300 {
+    @apply bg-gray-50 dark:bg-gray-800;
+  }
+
+  .background-light800_dark400 {
+    @apply bg-gray-100 dark:bg-gray-700;
+  }
+
+  /* Text Utilities */
+  .text-dark100_light900 {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  .text-dark200_light900 {
+    @apply text-gray-800 dark:text-white;
+  }
+
+  .text-dark300_light700 {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  /* Typography Utilities */
+  .h1-bold {
+    @apply text-[30px] font-bold leading-[42px] tracking-tighter;
+  }
+
+  .h2-bold {
+    @apply text-[24px] font-bold leading-[31.2px];
+  }
+
+  .h2-semibold {
+    @apply text-[24px] font-semibold leading-[31.2px];
+  }
+
+  .h3-bold {
+    @apply text-[20px] font-bold leading-[26px];
+  }
+
+  .h3-semibold {
+    @apply text-[20px] font-semibold leading-[24.8px];
+  }
+
+  .base-medium {
+    @apply text-[18px] font-medium leading-[25.2px];
+  }
+
+  .base-semibold {
+    @apply text-[18px] font-semibold leading-[25.2px];
+  }
+
+  .paragraph-regular {
+    @apply text-[16px] font-normal leading-[22.4px];
+  }
+
+  .paragraph-medium {
+    @apply text-[16px] font-medium leading-[22.4px];
+  }
+
+  .body-regular {
+    @apply text-[14px] font-normal leading-[19.6px];
+  }
+
+  .body-medium {
+    @apply text-[14px] font-medium leading-[18.2px];
+  }
+
+  .small-medium {
+    @apply text-[12px] font-medium leading-[15.6px];
+  }
+
+  /* Layout Utilities */
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .flex-start {
+    @apply flex justify-start items-center;
+  }
+
+  /* Persona-specific utilities */
+  .persona-maya {
+    @apply text-amber-500 border-amber-500;
+  }
+
+  .persona-alex {
+    @apply text-emerald-500 border-emerald-500;
+  }
+
+  .persona-luna {
+    @apply text-violet-500 border-violet-500;
+  }
+
+  /* Component Utilities */
+  .card-wrapper {
+    @apply bg-card shadow-sm border border-border rounded-lg;
+  }
+
+  .no-focus {
+    @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0;
+  }
+
+  /* Animation utilities */
+  .animate-in {
+    animation: animateIn 0.2s ease-out;
+  }
+  
+  .animate-out {
+    animation: animateOut 0.2s ease-in;
+  }
+  
+  @keyframes animateIn {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes animateOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-background/70 backdrop-blur-md border-border/50;
+  }
+  
+  /* Enhanced animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  /* Hero gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-orange-500 to-amber-500 bg-clip-text text-transparent;
+  }
+  
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  to {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.6), 0 0 40px hsl(var(--primary) / 0.4);
+  }
 }

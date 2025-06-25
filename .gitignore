@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +40,181 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# =============================================================================
+# STRATEGIC & BUSINESS DOCUMENTS - DO NOT COMMIT TO PUBLIC REPO
+# =============================================================================
+
+# Product Requirements Documents - Contains business strategy
+PRD_*.md
+*PRD*.md
+
+# Business planning and strategy documents
+*_planning.md
+*PLANNING*.md
+product_planning.md
+business_plan.md
+*business*.md
+
+# Implementation and progress tracking - Internal only
+*IMPLEMENTATION*.md
+*Implementation*.md
+*PROGRESS*.md
+*Progress*.md
+*STATUS*.md
+*Status*.md
+
+# Setup and development guides - Internal documentation
+*SETUP*.md
+*Setup*.md
+*GUIDE*.md
+*Guide*.md
+setup_*.md
+COMPLETE_SETUP_GUIDE.md
+DEVELOPMENT_GUIDELINES.md
+FINAL_SETUP_STATUS.md
+SETUP_SUCCESS_SUMMARY.md
+
+# Database and architecture documentation - Security sensitive
+DATABASE_ARCHITECTURE.md
+MONGODB_SETUP.md
+QUICK_MONGODB_SETUP.md
+
+# Conversation examples and persona data - Contains IP
+Conversations_*.md
+conversation_*.md
+*conversation*.md
+PERSONA_MATCHING_*.md
+
+# Project planning and ecosystem design - Strategic information
+project-planning/
+PROJECT_STATUS.md
+
+# Commit and deployment related files - Internal process
+COMMIT_*.md
+*COMMIT*.md
+
+# AI/LLM specific planning documents
+*Gemini*.md
+*OpenAi*.md
+*Claude*.md
+*AI_*.md
+
+# Business ecosystem and competitive analysis
+*Ecosystem*.md
+*ecosystem*.md
+*Mumicah*.md
+
+# =============================================================================
+# DEVELOPMENT & SYSTEM FILES
+# =============================================================================
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output/
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache/
+.parcel-cache/
+
+# Next.js build output
+.next/
+out/
+
+# Nuxt.js build / generate output
+.nuxt/
+dist/
+
+# Storybook build outputs
+.out/
+.storybook-out/
+
+# Temporary folders
+tmp/
+temp/
+
+# =============================================================================
+# DATABASE & SECURITY
+# =============================================================================
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Security and credentials
+secrets/
+credentials/
+*.key
+*.pem
+*.p12
+*.pfx
+
+# API keys and tokens
+.env.local
+.env.production
+.env.test
+api_keys.json
+tokens.json
+
+# =============================================================================
+# WHAT TO INCLUDE IN VERSION CONTROL
+# =============================================================================
+# The following files SHOULD be committed:
+# - package.json, package-lock.json, yarn.lock, pnpm-lock.yaml
+# - Source code (src/, components/, pages/, etc.)
+# - Configuration files (next.config.js, tailwind.config.js, etc.)
+# - README.md (public documentation)
+# - .env.example (template for environment variables)
+# - TypeScript configuration (tsconfig.json)
+# - ESLint configuration (eslint.config.mjs)
+# - Public assets (public/ folder contents)
+# - Component configurations (components.json)

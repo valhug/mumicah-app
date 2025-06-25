@@ -11,7 +11,14 @@ export async function connectMongoDB() {
   const MONGODB_URI = process.env.MONGODB_URI
 
   if (!MONGODB_URI) {
-    throw new Error('Please define the MONGODB_URI environment variable')
+    console.warn('MongoDB URI not defined - MongoDB features will be disabled')
+    throw new Error('MongoDB URI not defined')
+  }
+
+  // Check if this is a placeholder URI
+  if (MONGODB_URI.includes('demo:demo123@cluster0.example.mongodb.net')) {
+    console.warn('Using placeholder MongoDB URI - MongoDB features will be disabled')
+    throw new Error('Placeholder MongoDB URI - please configure a real MongoDB connection')
   }
 
   if (cached.conn) return cached.conn
@@ -24,6 +31,10 @@ export async function connectMongoDB() {
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
       console.log('MongoDB connected successfully')
       return mongoose
+    }).catch((error) => {
+      console.error('MongoDB connection failed:', error.message)
+      cached.promise = null
+      throw error
     })
   }
   

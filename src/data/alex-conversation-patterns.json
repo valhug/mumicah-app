@@ -1,0 +1,631 @@
+[
+  {
+    "id": "conv_13_37_1750816386281",
+    "scenario": "family_home",
+    "difficulty": "beginner",
+    "context": {
+      "setting": "family_home",
+      "participants": [
+        "parent",
+        "child"
+      ],
+      "topic": "family_life",
+      "communicativeFunction": "family_interaction"
+    },
+    "dialogueSegments": [
+      {
+        "speaker": "speaker_1",
+        "content": "comme tu veux ma chérie euh cette veste est un peu bizarre non comment ça bizarre ma veste est à la mode c'est tout papa elle est super sa veste ah bon est-ce que votre mère est prête presque ah il me fatigue avec leurs questions leurs problèmes leurs chaussures leurs",
+        "intent": "question",
+        "emotionalTone": "enthusiastic",
+        "responsePatterns": []
+      }
+    ],
+    "vocabularyPatterns": [],
+    "grammarStructures": [
+      {
+        "pattern": "present_tense",
+        "examples": [
+          "comme tu veux ma chérie euh cette veste est un peu bizarre non comment ça bizarre ma veste est à la mode c'est tout papa elle est super sa veste ah bon est-ce que votre mère est prête presque ah il me fatigue avec leurs questions leurs problèmes leurs chaussures leurs"
+        ],
+        "level": "beginner",
+        "usage": "Present tense conjugation"
+      },
+      {
+        "pattern": "spanish_present_tense",
+        "examples": [],
+        "level": "beginner",
+        "usage": "Spanish present tense conjugation (ser/estar/tener)"
+      },
+      {
+        "pattern": "spanish_articles",
+        "examples": [
+          "comme tu veux ma chérie euh cette veste est un peu bizarre non comment ça bizarre ma veste est à la mode c'est tout papa elle est super sa veste ah bon est-ce que votre mère est prête presque ah il me fatigue avec leurs questions leurs problèmes leurs chaussures leurs"
+        ],
+        "level": "beginner",
+        "usage": "Spanish definite articles (gender and number agreement)"
+      }
+    ],
+    "culturalElements": [],
+    "personaMapping": {
+      "maya": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "grammar_lessons",
+          "vocabulary_building",
+          "error_correction"
+        ],
+        "adaptationNotes": [
+          "Use patient and encouraging tone",
+          "Provide clear explanations for corrections"
+        ]
+      },
+      "alex": {
+        "score": 7,
+        "matchingTraits": [
+          "energetic",
+          "curious"
+        ],
+        "applicableScenarios": [
+          "casual_chat",
+          "daily_activities",
+          "social_interactions"
+        ],
+        "adaptationNotes": [
+          "Maintain casual and friendly tone",
+          "Use contemporary expressions"
+        ]
+      },
+      "luna": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "cultural_exploration",
+          "travel_planning",
+          "food_discussion"
+        ],
+        "adaptationNotes": [
+          "Emphasize cultural context",
+          "Provide background information"
+        ]
+      }
+    }
+  },
+  {
+    "id": "conv_47_02_1750816386285",
+    "scenario": "general",
+    "difficulty": "beginner",
+    "context": {
+      "setting": "general",
+      "participants": [
+        "speaker_a",
+        "speaker_b"
+      ],
+      "topic": "daily_conversation",
+      "communicativeFunction": "social_interaction"
+    },
+    "dialogueSegments": [
+      {
+        "speaker": "speaker_1",
+        "content": "installations c'est vrai maintenant il nous faut penser à un bon slogan et bien en fait j'ai fait un petit sondage et je pense que j'ai trouvé le slogan parfait excellent qu'est-ce que c'est laisse-moi d'abord te montrer les résultats du sondage j'espère qu'avec ça les gens voudront rester en",
+        "intent": "question",
+        "emotionalTone": "enthusiastic",
+        "responsePatterns": []
+      }
+    ],
+    "vocabularyPatterns": [],
+    "grammarStructures": [
+      {
+        "pattern": "present_tense",
+        "examples": [],
+        "level": "beginner",
+        "usage": "Present tense conjugation"
+      },
+      {
+        "pattern": "spanish_present_tense",
+        "examples": [],
+        "level": "beginner",
+        "usage": "Spanish present tense conjugation (ser/estar/tener)"
+      }
+    ],
+    "culturalElements": [],
+    "personaMapping": {
+      "maya": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "grammar_lessons",
+          "vocabulary_building",
+          "error_correction"
+        ],
+        "adaptationNotes": [
+          "Use patient and encouraging tone",
+          "Provide clear explanations for corrections"
+        ]
+      },
+      "alex": {
+        "score": 7,
+        "matchingTraits": [
+          "energetic",
+          "curious"
+        ],
+        "applicableScenarios": [
+          "casual_chat",
+          "daily_activities",
+          "social_interactions"
+        ],
+        "adaptationNotes": [
+          "Maintain casual and friendly tone",
+          "Use contemporary expressions"
+        ]
+      },
+      "luna": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "cultural_exploration",
+          "travel_planning",
+          "food_discussion"
+        ],
+        "adaptationNotes": [
+          "Emphasize cultural context",
+          "Provide background information"
+        ]
+      }
+    }
+  },
+  {
+    "id": "conv_73_59_1750816386289",
+    "scenario": "general",
+    "difficulty": "beginner",
+    "context": {
+      "setting": "general",
+      "participants": [
+        "speaker_a",
+        "speaker_b"
+      ],
+      "topic": "daily_conversation",
+      "communicativeFunction": "social_interaction"
+    },
+    "dialogueSegments": [
+      {
+        "speaker": "speaker_1",
+        "content": "en ville j'adore les villes avec beaucoup de galeries et musé une super idée peut-être pourrions-nous trouver un endroit où il y a de jolies promenad à faire oui ou peut-être un parc national de grands château à la campagne çaî vraiment bien mais où allons-nous trouver",
+        "intent": "question",
+        "emotionalTone": "enthusiastic",
+        "responsePatterns": []
+      }
+    ],
+    "vocabularyPatterns": [],
+    "grammarStructures": [
+      {
+        "pattern": "present_tense",
+        "examples": [
+          "en ville j'adore les villes avec beaucoup de galeries et musé une super idée peut-être pourrions-nous trouver un endroit où il y a de jolies promenad à faire oui ou peut-être un parc national de grands château à la campagne çaî vraiment bien mais où allons-nous trouver"
+        ],
+        "level": "beginner",
+        "usage": "Present tense conjugation"
+      },
+      {
+        "pattern": "spanish_present_tense",
+        "examples": [],
+        "level": "beginner",
+        "usage": "Spanish present tense conjugation (ser/estar/tener)"
+      },
+      {
+        "pattern": "spanish_articles",
+        "examples": [
+          "en ville j'adore les villes avec beaucoup de galeries et musé une super idée peut-être pourrions-nous trouver un endroit où il y a de jolies promenad à faire oui ou peut-être un parc national de grands château à la campagne çaî vraiment bien mais où allons-nous trouver"
+        ],
+        "level": "beginner",
+        "usage": "Spanish definite articles (gender and number agreement)"
+      }
+    ],
+    "culturalElements": [],
+    "personaMapping": {
+      "maya": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "grammar_lessons",
+          "vocabulary_building",
+          "error_correction"
+        ],
+        "adaptationNotes": [
+          "Use patient and encouraging tone",
+          "Provide clear explanations for corrections"
+        ]
+      },
+      "alex": {
+        "score": 7,
+        "matchingTraits": [
+          "energetic",
+          "curious"
+        ],
+        "applicableScenarios": [
+          "casual_chat",
+          "daily_activities",
+          "social_interactions"
+        ],
+        "adaptationNotes": [
+          "Maintain casual and friendly tone",
+          "Use contemporary expressions"
+        ]
+      },
+      "luna": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "cultural_exploration",
+          "travel_planning",
+          "food_discussion"
+        ],
+        "adaptationNotes": [
+          "Emphasize cultural context",
+          "Provide background information"
+        ]
+      }
+    }
+  },
+  {
+    "id": "conv_17_07_1750816386298",
+    "scenario": "general",
+    "difficulty": "beginner",
+    "context": {
+      "setting": "general",
+      "participants": [
+        "speaker_a",
+        "speaker_b"
+      ],
+      "topic": "daily_conversation",
+      "communicativeFunction": "social_interaction"
+    },
+    "dialogueSegments": [
+      {
+        "speaker": "speaker_1",
+        "content": "depuis toujours ah bah c'est génial alors j'ai l'impression que ça ne te fait pas vraiment plaisir tu es pas jaloux quand même moi jaloux pas du tout juste que c'est un peu rapide je trouve et puis je te connais arrête tu sais je n'ai plus 15 ans et",
+        "intent": "question",
+        "emotionalTone": "enthusiastic",
+        "responsePatterns": []
+      }
+    ],
+    "vocabularyPatterns": [],
+    "grammarStructures": [
+      {
+        "pattern": "negation_ne_pas",
+        "examples": [
+          "depuis toujours ah bah c'est génial alors j'ai l'impression que ça ne te fait pas vraiment plaisir tu es pas jaloux quand même moi jaloux pas du tout juste que c'est un peu rapide je trouve et puis je te connais arrête tu sais je n'ai plus 15 ans et"
+        ],
+        "level": "beginner",
+        "usage": "Standard negation in French"
+      },
+      {
+        "pattern": "present_tense",
+        "examples": [
+          "depuis toujours ah bah c'est génial alors j'ai l'impression que ça ne te fait pas vraiment plaisir tu es pas jaloux quand même moi jaloux pas du tout juste que c'est un peu rapide je trouve et puis je te connais arrête tu sais je n'ai plus 15 ans et"
+        ],
+        "level": "beginner",
+        "usage": "Present tense conjugation"
+      },
+      {
+        "pattern": "spanish_present_tense",
+        "examples": [
+          "depuis toujours ah bah c'est génial alors j'ai l'impression que ça ne te fait pas vraiment plaisir tu es pas jaloux quand même moi jaloux pas du tout juste que c'est un peu rapide je trouve et puis je te connais arrête tu sais je n'ai plus 15 ans et"
+        ],
+        "level": "beginner",
+        "usage": "Spanish present tense conjugation (ser/estar/tener)"
+      }
+    ],
+    "culturalElements": [],
+    "personaMapping": {
+      "maya": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "grammar_lessons",
+          "vocabulary_building",
+          "error_correction"
+        ],
+        "adaptationNotes": [
+          "Use patient and encouraging tone",
+          "Provide clear explanations for corrections"
+        ]
+      },
+      "alex": {
+        "score": 7,
+        "matchingTraits": [
+          "energetic",
+          "curious"
+        ],
+        "applicableScenarios": [
+          "casual_chat",
+          "daily_activities",
+          "social_interactions"
+        ],
+        "adaptationNotes": [
+          "Maintain casual and friendly tone",
+          "Use contemporary expressions"
+        ]
+      },
+      "luna": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "cultural_exploration",
+          "travel_planning",
+          "food_discussion"
+        ],
+        "adaptationNotes": [
+          "Emphasize cultural context",
+          "Provide background information"
+        ]
+      }
+    }
+  },
+  {
+    "id": "conv_34_36_1750816386302",
+    "scenario": "general",
+    "difficulty": "beginner",
+    "context": {
+      "setting": "general",
+      "participants": [
+        "speaker_a",
+        "speaker_b"
+      ],
+      "topic": "daily_conversation",
+      "communicativeFunction": "social_interaction"
+    },
+    "dialogueSegments": [
+      {
+        "speaker": "speaker_1",
+        "content": "j'étais crevé oui mais je pensais que tu passerais un petit coup quand même ouais moi aussi mais je suis tombé sur un super film à la télé du coup j'ai perdu la motivation ah ouais ouais film trop drôle le sens de la fête avec Jean-Pierre Bacri Jean-Pierre Bacri jamais entendu parler",
+        "intent": "question",
+        "emotionalTone": "enthusiastic",
+        "responsePatterns": []
+      }
+    ],
+    "vocabularyPatterns": [],
+    "grammarStructures": [
+      {
+        "pattern": "present_tense",
+        "examples": [
+          "j'étais crevé oui mais je pensais que tu passerais un petit coup quand même ouais moi aussi mais je suis tombé sur un super film à la télé du coup j'ai perdu la motivation ah ouais ouais film trop drôle le sens de la fête avec Jean-Pierre Bacri Jean-Pierre Bacri jamais entendu parler"
+        ],
+        "level": "beginner",
+        "usage": "Present tense conjugation"
+      },
+      {
+        "pattern": "spanish_articles",
+        "examples": [
+          "j'étais crevé oui mais je pensais que tu passerais un petit coup quand même ouais moi aussi mais je suis tombé sur un super film à la télé du coup j'ai perdu la motivation ah ouais ouais film trop drôle le sens de la fête avec Jean-Pierre Bacri Jean-Pierre Bacri jamais entendu parler"
+        ],
+        "level": "beginner",
+        "usage": "Spanish definite articles (gender and number agreement)"
+      }
+    ],
+    "culturalElements": [],
+    "personaMapping": {
+      "maya": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "grammar_lessons",
+          "vocabulary_building",
+          "error_correction"
+        ],
+        "adaptationNotes": [
+          "Use patient and encouraging tone",
+          "Provide clear explanations for corrections"
+        ]
+      },
+      "alex": {
+        "score": 7,
+        "matchingTraits": [
+          "energetic",
+          "curious"
+        ],
+        "applicableScenarios": [
+          "casual_chat",
+          "daily_activities",
+          "social_interactions"
+        ],
+        "adaptationNotes": [
+          "Maintain casual and friendly tone",
+          "Use contemporary expressions"
+        ]
+      },
+      "luna": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "cultural_exploration",
+          "travel_planning",
+          "food_discussion"
+        ],
+        "adaptationNotes": [
+          "Emphasize cultural context",
+          "Provide background information"
+        ]
+      }
+    }
+  },
+  {
+    "id": "conv_35_11_1750816386302",
+    "scenario": "general",
+    "difficulty": "beginner",
+    "context": {
+      "setting": "general",
+      "participants": [
+        "speaker_a",
+        "speaker_b"
+      ],
+      "topic": "daily_conversation",
+      "communicativeFunction": "social_interaction"
+    },
+    "dialogueSegments": [
+      {
+        "speaker": "speaker_1",
+        "content": "où il y a Alain Chabat qui se transforme en chien ah oui bien sûr je suis bête Jean-Pierre Bacri mais il est mort il y a pas longtemps non oui exactement c'est trop con moi je l'ai adoré cet acteur il était super drôle en tout cas hier soir je me suis vraiment bien marré devant le",
+        "intent": "question",
+        "emotionalTone": "enthusiastic",
+        "responsePatterns": []
+      }
+    ],
+    "vocabularyPatterns": [],
+    "grammarStructures": [
+      {
+        "pattern": "present_tense",
+        "examples": [
+          "où il y a Alain Chabat qui se transforme en chien ah oui bien sûr je suis bête Jean-Pierre Bacri mais il est mort il y a pas longtemps non oui exactement c'est trop con moi je l'ai adoré cet acteur il était super drôle en tout cas hier soir je me suis vraiment bien marré devant le"
+        ],
+        "level": "beginner",
+        "usage": "Present tense conjugation"
+      },
+      {
+        "pattern": "spanish_present_tense",
+        "examples": [],
+        "level": "beginner",
+        "usage": "Spanish present tense conjugation (ser/estar/tener)"
+      }
+    ],
+    "culturalElements": [],
+    "personaMapping": {
+      "maya": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "grammar_lessons",
+          "vocabulary_building",
+          "error_correction"
+        ],
+        "adaptationNotes": [
+          "Use patient and encouraging tone",
+          "Provide clear explanations for corrections"
+        ]
+      },
+      "alex": {
+        "score": 7,
+        "matchingTraits": [
+          "energetic",
+          "curious"
+        ],
+        "applicableScenarios": [
+          "casual_chat",
+          "daily_activities",
+          "social_interactions"
+        ],
+        "adaptationNotes": [
+          "Maintain casual and friendly tone",
+          "Use contemporary expressions"
+        ]
+      },
+      "luna": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "cultural_exploration",
+          "travel_planning",
+          "food_discussion"
+        ],
+        "adaptationNotes": [
+          "Emphasize cultural context",
+          "Provide background information"
+        ]
+      }
+    }
+  },
+  {
+    "id": "conv_60_46_1750816386307",
+    "scenario": "general",
+    "difficulty": "beginner",
+    "context": {
+      "setting": "general",
+      "participants": [
+        "speaker_a",
+        "speaker_b"
+      ],
+      "topic": "daily_conversation",
+      "communicativeFunction": "social_interaction"
+    },
+    "dialogueSegments": [
+      {
+        "speaker": "speaker_1",
+        "content": "infectieuses mais c'est génial ça qu'est-ce que je te disais ah ouais le seul problème c'est qu'on n'est pas les premiers sur le coup il y a déjà pas mal d'articles sur le sujet j'ai l'impression ouais mais c'est surtout dans la presse régionale au niveau",
+        "intent": "question",
+        "emotionalTone": "enthusiastic",
+        "responsePatterns": []
+      }
+    ],
+    "vocabularyPatterns": [],
+    "grammarStructures": [
+      {
+        "pattern": "present_tense",
+        "examples": [
+          "infectieuses mais c'est génial ça qu'est-ce que je te disais ah ouais le seul problème c'est qu'on n'est pas les premiers sur le coup il y a déjà pas mal d'articles sur le sujet j'ai l'impression ouais mais c'est surtout dans la presse régionale au niveau"
+        ],
+        "level": "beginner",
+        "usage": "Present tense conjugation"
+      },
+      {
+        "pattern": "spanish_present_tense",
+        "examples": [],
+        "level": "beginner",
+        "usage": "Spanish present tense conjugation (ser/estar/tener)"
+      },
+      {
+        "pattern": "spanish_articles",
+        "examples": [
+          "infectieuses mais c'est génial ça qu'est-ce que je te disais ah ouais le seul problème c'est qu'on n'est pas les premiers sur le coup il y a déjà pas mal d'articles sur le sujet j'ai l'impression ouais mais c'est surtout dans la presse régionale au niveau"
+        ],
+        "level": "beginner",
+        "usage": "Spanish definite articles (gender and number agreement)"
+      }
+    ],
+    "culturalElements": [],
+    "personaMapping": {
+      "maya": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "grammar_lessons",
+          "vocabulary_building",
+          "error_correction"
+        ],
+        "adaptationNotes": [
+          "Use patient and encouraging tone",
+          "Provide clear explanations for corrections"
+        ]
+      },
+      "alex": {
+        "score": 7,
+        "matchingTraits": [
+          "energetic",
+          "curious"
+        ],
+        "applicableScenarios": [
+          "casual_chat",
+          "daily_activities",
+          "social_interactions"
+        ],
+        "adaptationNotes": [
+          "Maintain casual and friendly tone",
+          "Use contemporary expressions"
+        ]
+      },
+      "luna": {
+        "score": 0,
+        "matchingTraits": [],
+        "applicableScenarios": [
+          "cultural_exploration",
+          "travel_planning",
+          "food_discussion"
+        ],
+        "adaptationNotes": [
+          "Emphasize cultural context",
+          "Provide background information"
+        ]
+      }
+    }
+  }
+]
