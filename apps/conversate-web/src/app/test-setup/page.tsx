@@ -38,12 +38,12 @@ export default function TestSetupPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen surface-primary content-primary">
       {/* Header with Theme Toggle */}
-      <header className="border-b border-border bg-card/50 backdrop-blur">
+      <header className="border-b border-primary surface-secondary/50 backdrop-blur">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <h1 className="text-2xl font-bold text-brand">Mumicah</h1>
+            <h1 className="h2-bold text-brand">Mumicah</h1>
             <Badge variant="secondary">Setup Test</Badge>
           </div>
           

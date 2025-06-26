@@ -1,6 +1,6 @@
 import { connectMongoDB } from '@/lib/mongodb'
 import { NotificationModel } from '@/models/Notification'
-import type { NotificationDocument } from '../../types/database'
+import type { NotificationDocument } from '../types/database'
 
 export class NotificationService {
   async createNotification(
@@ -57,7 +57,7 @@ export class NotificationService {
       { expires_at: { $gt: new Date() } }
     ]
     
-    return await NotificationModel
+    return await (NotificationModel as any)
       .find(query)
       .sort({ created_at: -1 })
       .skip(skip)
@@ -68,7 +68,7 @@ export class NotificationService {
   async markAsRead(notificationId: string, userId: string) {
     await connectMongoDB()
     
-    const notification = await NotificationModel.findOneAndUpdate(
+    const notification = await (NotificationModel as any).findOneAndUpdate(
       { 
         _id: notificationId, 
         recipient_id: userId 
@@ -93,7 +93,7 @@ export class NotificationService {
   async markAsArchived(notificationId: string, userId: string) {
     await connectMongoDB()
     
-    const notification = await NotificationModel.findOneAndUpdate(
+    const notification = await (NotificationModel as any).findOneAndUpdate(
       { 
         _id: notificationId, 
         recipient_id: userId 
@@ -118,7 +118,7 @@ export class NotificationService {
   async deleteNotification(notificationId: string, userId: string) {
     await connectMongoDB()
     
-    const result = await NotificationModel.deleteOne({
+    const result = await (NotificationModel as any).deleteOne({
       _id: notificationId,
       recipient_id: userId
     })

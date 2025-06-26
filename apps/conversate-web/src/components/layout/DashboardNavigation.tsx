@@ -15,10 +15,24 @@ import {
   ArrowRightOnRectangleIcon,
   Bars3Icon,
   XMarkIcon,
+  LightBulbIcon,
+  CpuChipIcon,
+  BookOpenIcon,
+  AcademicCapIcon,
+  TrophyIcon,
+  GlobeAltIcon,
 } from '@heroicons/react/24/outline'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: HomeIcon },
+  { name: 'Chat', href: '/chat', icon: ChatBubbleLeftRightIcon },
+  { name: 'Personas', href: '/personas', icon: UserGroupIcon },
+  { name: 'AI Insights', href: '/dashboard/ai-insights', icon: CpuChipIcon, priority: 3 },
+  { name: 'Smart Suggestions', href: '/dashboard/suggestions', icon: LightBulbIcon, priority: 3 },
+  { name: 'Language Feedback', href: '/dashboard/feedback', icon: BookOpenIcon, priority: 3 },
+  { name: 'Language Exchange', href: '/dashboard/exchange', icon: GlobeAltIcon, priority: 4 },
+  { name: 'Study Groups', href: '/dashboard/study-groups', icon: AcademicCapIcon, priority: 4 },
+  { name: 'Challenges', href: '/dashboard/challenges', icon: TrophyIcon, priority: 4 },
   { name: 'Communities', href: '/communities', icon: UserGroupIcon },
   { name: 'Conversations', href: '/dashboard/conversations', icon: ChatBubbleLeftRightIcon },
   { name: 'Progress', href: '/dashboard/progress', icon: ChartBarIcon },
@@ -30,7 +44,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function DashboardNavigation() {
+export default function DashboardNavigation({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
@@ -47,22 +61,23 @@ export default function DashboardNavigation() {
       <div className={classNames(
         sidebarOpen ? 'fixed inset-0 flex z-40 md:hidden' : 'hidden'
       )}>
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-75" onClick={() => setSidebarOpen(false)} />
+        <div className="fixed inset-0 bg-black/50" onClick={() => setSidebarOpen(false)} />
         
-        <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white dark:bg-gray-800">
+        <div className="relative flex-1 flex flex-col max-w-xs w-full bg-background border-r border-border">
           <div className="absolute top-0 right-0 -mr-12 pt-2">
             <button
               type="button"
-              className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary text-white"
               onClick={() => setSidebarOpen(false)}
+              aria-label="Close sidebar"
             >
-              <XMarkIcon className="h-6 w-6 text-white" />
+              <XMarkIcon className="h-6 w-6" />
             </button>
           </div>
           
           <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
             <div className="flex-shrink-0 flex items-center px-4">
-              <h1 className="text-2xl font-bold text-blue-600">Mumicah</h1>
+              <h1 className="text-2xl font-bold text-brand">Mumicah</h1>
             </div>
             <nav className="mt-5 px-2 space-y-1">
               {navigation.map((item) => (
@@ -71,17 +86,17 @@ export default function DashboardNavigation() {
                   href={item.href}
                   className={classNames(
                     pathname === item.href
-                      ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
-                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white',
-                    'group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                      ? 'bg-muted text-foreground'
+                      : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground',
+                    'group flex items-center px-2 py-2 text-base font-medium rounded-md transition-colors'
                   )}
                   onClick={() => setSidebarOpen(false)}
                 >
                   <item.icon
                     className={classNames(
                       pathname === item.href
-                        ? 'text-gray-500 dark:text-gray-300'
-                        : 'text-gray-400 dark:text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300',
+                        ? 'text-foreground'
+                        : 'text-muted-foreground group-hover:text-foreground',
                       'mr-4 flex-shrink-0 h-6 w-6'
                     )}
                   />
@@ -91,12 +106,12 @@ export default function DashboardNavigation() {
             </nav>
           </div>
           
-          <div className="flex-shrink-0 flex border-t border-gray-200 dark:border-gray-700 p-4">
+          <div className="flex-shrink-0 flex border-t border-border p-4">
             <button
               onClick={handleSignOut}
-              className="flex items-center px-2 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md w-full"
+              className="flex items-center px-2 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-md w-full transition-colors"
             >
-              <ArrowRightOnRectangleIcon className="mr-4 h-6 w-6 text-gray-400" />
+              <ArrowRightOnRectangleIcon className="mr-4 h-6 w-6" />
               Sign out
             </button>
           </div>
@@ -105,10 +120,10 @@ export default function DashboardNavigation() {
 
       {/* Static sidebar for desktop */}
       <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-        <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+        <div className="flex-1 flex flex-col min-h-0 border-r border-border bg-background">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
-              <h1 className="text-2xl font-bold text-blue-600">Mumicah</h1>
+              <h1 className="text-2xl font-bold text-brand">Mumicah</h1>
             </div>
             <nav className="mt-5 flex-1 px-2 space-y-1">
               {navigation.map((item) => (
@@ -117,16 +132,16 @@ export default function DashboardNavigation() {
                   href={item.href}
                   className={classNames(
                     pathname === item.href
-                      ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
-                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white',
-                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
+                      ? 'bg-muted text-foreground'
+                      : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground',
+                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md transition-colors'
                   )}
                 >
                   <item.icon
                     className={classNames(
                       pathname === item.href
-                        ? 'text-gray-500 dark:text-gray-300'
-                        : 'text-gray-400 dark:text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300',
+                        ? 'text-foreground'
+                        : 'text-muted-foreground group-hover:text-foreground',
                       'mr-3 flex-shrink-0 h-6 w-6'
                     )}
                   />
@@ -136,12 +151,12 @@ export default function DashboardNavigation() {
             </nav>
           </div>
           
-          <div className="flex-shrink-0 flex border-t border-gray-200 dark:border-gray-700 p-4">
+          <div className="flex-shrink-0 flex border-t border-border p-4">
             <button
               onClick={handleSignOut}
-              className="group flex items-center px-2 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md w-full"
+              className="group flex items-center px-2 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-md w-full transition-colors"
             >
-              <ArrowRightOnRectangleIcon className="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300" />
+              <ArrowRightOnRectangleIcon className="mr-3 h-6 w-6" />
               Sign out
             </button>
           </div>
@@ -150,15 +165,17 @@ export default function DashboardNavigation() {
 
       {/* Main content area */}
       <div className="md:pl-64 flex flex-col flex-1">
-        <div className="sticky top-0 z-10 md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3 bg-gray-50 dark:bg-gray-900">
+        <div className="sticky top-0 z-10 md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3 bg-background">
           <button
             type="button"
-            className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
             onClick={() => setSidebarOpen(true)}
+            aria-label="Open sidebar"
           >
             <Bars3Icon className="h-6 w-6" />
           </button>
         </div>
+        {children}
       </div>
     </>
   )

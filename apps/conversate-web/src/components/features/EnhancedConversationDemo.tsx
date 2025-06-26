@@ -4,14 +4,8 @@
 import React, { useState, useEffect } from 'react';
 import { EnhancedPersonaConversationService } from '@/services/enhanced-persona-conversation-service';
 import { ConversationDataProcessor } from '@/services/conversation-data-processor';
-import { PersonaId, ConversationContext, ConversationMessage } from '@/types/conversation';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
+import { PersonaId, ConversationContext, ConversationMessage, EnhancedConversationContext } from '@/types/conversation';
+import { Button, Card, Badge, CardHeader, CardContent, CardTitle } from '@mumicah/ui';
 import { 
   MessageCircle, 
   User, 
@@ -177,10 +171,25 @@ export function EnhancedConversationDemo() {
       setCurrentMessage('');
       
       // Generate persona response
+      const enhancedContext: EnhancedConversationContext = {
+        userLevel: conversationContext.userLevel,
+        conversationContext: {
+          scenario: selectedScenario,
+          previousMessages: messages.map(msg => ({
+            role: msg.sender === 'user' ? 'user' : 'assistant',
+            content: msg.content
+          })),
+          userPreferences: {
+            focusAreas: ['conversation'],
+            learningStyle: 'interactive'
+          }
+        }
+      };
+      
       const response = await conversationService.generatePersonaResponse(
         selectedPersona,
         currentMessage,
-        conversationContext
+        enhancedContext
       );
       
       // Add persona response
@@ -279,32 +288,32 @@ export function EnhancedConversationDemo() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium mb-2">Your Level</label>
-                <Select value={userLevel} onValueChange={(value: any) => setUserLevel(value)}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="beginner">Beginner</SelectItem>
-                    <SelectItem value="intermediate">Intermediate</SelectItem>
-                    <SelectItem value="advanced">Advanced</SelectItem>
-                  </SelectContent>
-                </Select>
+                <select 
+                  value={userLevel} 
+                  onChange={(e) => setUserLevel(e.target.value as typeof userLevel)}
+                  className="px-3 py-2 border border-gray-300 rounded-md text-sm bg-white"
+                  title="Select your language level"
+                >
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="advanced">Advanced</option>
+                </select>
               </div>
 
               <div>
                 <label className="block text-sm font-medium mb-2">Scenario</label>
-                <Select value={selectedScenario} onValueChange={setSelectedScenario}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {scenarios.map((scenario) => (
-                      <SelectItem key={scenario.value} value={scenario.value}>
-                        {scenario.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <select 
+                  value={selectedScenario} 
+                  onChange={(e) => setSelectedScenario(e.target.value)}
+                  className="px-3 py-2 border border-gray-300 rounded-md text-sm bg-white w-full"
+                  title="Select a conversation scenario"
+                >
+                  {scenarios.map((scenario) => (
+                    <option key={scenario.value} value={scenario.value}>
+                      {scenario.label}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 
@@ -436,12 +445,12 @@ export function EnhancedConversationDemo() {
             {/* Message Input */}
             <div className="p-4 border-t">
               <div className="flex gap-2">
-                <Textarea
+                <textarea
                   value={currentMessage}
                   onChange={(e) => setCurrentMessage(e.target.value)}
                   onKeyDown={handleKeyPress}
                   placeholder="Type your message in French..."
-                  className="flex-1 min-h-[60px] resize-none"
+                  className="flex-1 min-h-[60px] resize-none px-3 py-2 border border-gray-300 rounded-md text-sm"
                   disabled={isLoading}
                 />
                 <Button 

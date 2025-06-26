@@ -1,5 +1,5 @@
 import { Schema, model, models, Document } from 'mongoose'
-import type { PostDocument as PostDocumentType, MediaAttachment, Reaction, Comment, LanguageNote } from '../../types/database'
+import type { PostDocument as PostDocumentType, MediaAttachment, Reaction, Comment, LanguageNote } from '../types/database'
 
 export interface PostDocument extends Omit<PostDocumentType, '_id'>, Document {
   _id: string

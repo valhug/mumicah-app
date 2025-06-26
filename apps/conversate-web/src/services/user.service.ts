@@ -52,7 +52,7 @@ export class UserService {
   async updateProfile(userId: string, profileData: ProfileUpdate): Promise<Profile> {
     const supabase = await this.getSupabase()
     
-    const { data, error } = await supabase
+    const { data, error } = await (supabase as any)
       .from('profiles')
       .update({
         ...profileData,
@@ -173,7 +173,7 @@ export class UserService {
   async followUser(followerId: string, followeeId: string) {
     const supabase = await this.getSupabase()
     
-    const { data, error } = await supabase
+    const { data, error } = await (supabase as any)
       .from('follows')
       .insert({
         follower_id: followerId,

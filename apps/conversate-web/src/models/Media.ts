@@ -1,5 +1,5 @@
 import { Schema, model, models, Document } from 'mongoose'
-import type { MediaDocument as MediaDocumentType } from '../../types/database'
+import type { MediaDocument as MediaDocumentType } from '../types/database'
 
 export interface MediaDocument extends Omit<MediaDocumentType, '_id'>, Document {
   _id: string

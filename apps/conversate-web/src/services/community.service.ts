@@ -3,7 +3,8 @@ import { CommunityModel } from '@/models/Community'
 import { PostModel } from '@/models/Post'
 import { ActivityModel } from '@/models/Activity'
 import { NotificationModel } from '@/models/Notification'
-import type { CommunityDocument, PostDocument } from '../../types/database'
+import type { CommunityDocument, PostDocument } from '../types/database'
+import type { Model } from 'mongoose'
 
 export class CommunityService {
   async createCommunity(communityData: {
@@ -18,7 +19,7 @@ export class CommunityService {
   }): Promise<CommunityDocument> {
     await connectMongoDB()
     
-    const community = await CommunityModel.create({
+    const community = await (CommunityModel as any).create({
       ...communityData,
       settings: {
         allow_media: true,
@@ -41,7 +42,7 @@ export class CommunityService {
   async getCommunity(communityId: string): Promise<any | null> {
     await connectMongoDB()
     
-    return await CommunityModel.findById(communityId).lean()
+    return await (CommunityModel as any).findById(communityId).lean()
   }
 
   async updateCommunity(
@@ -51,7 +52,7 @@ export class CommunityService {
   ): Promise<any | null> {
     await connectMongoDB()
     
-    const community = await CommunityModel.findById(communityId)
+    const community = await (CommunityModel as any).findById(communityId)
     if (!community) return null
     
     // Check if user is creator or moderator
@@ -103,7 +104,7 @@ export class CommunityService {
       query.is_private = filters.isPrivate
     }
     
-    const communities = await CommunityModel
+    const communities = await (CommunityModel as any)
       .find(query)
       .sort(filters.query ? { score: { $meta: 'textScore' } } : { member_count: -1, created_at: -1 })
       .skip(skip)
@@ -119,7 +120,7 @@ export class CommunityService {
     const query: any = { is_private: false }
     if (language) query.language = language
     
-    return await CommunityModel
+    return await (CommunityModel as any)
       .find(query)
       .sort({ member_count: -1, created_at: -1 })
       .limit(limit)
@@ -129,7 +130,7 @@ export class CommunityService {
   async joinCommunity(communityId: string, userId: string) {
     await connectMongoDB()
     
-    const community = await CommunityModel.findById(communityId)
+    const community = await (CommunityModel as any).findById(communityId)
     if (!community) throw new Error('Community not found')
     
     if (community.is_private && community.settings.require_approval) {
@@ -166,7 +167,7 @@ export class CommunityService {
   async leaveCommunity(communityId: string, userId: string) {
     await connectMongoDB()
     
-    const community = await CommunityModel.findById(communityId)
+    const community = await (CommunityModel as any).findById(communityId)
     if (!community) throw new Error('Community not found')
     
     if (community.creator_id === userId) {
@@ -200,10 +201,10 @@ export class CommunityService {
   }): Promise<any> {
     await connectMongoDB()
     
-    const community = await CommunityModel.findById(postData.community_id)
+    const community = await (CommunityModel as any).findById(postData.community_id)
     if (!community) throw new Error('Community not found')
     
-    const post = await PostModel.create({
+    const post = await (PostModel as any).create({
       ...postData,
       reactions: [],
       comments: [],
@@ -236,7 +237,7 @@ export class CommunityService {
       ? { view_count: -1, created_at: -1 }
       : { created_at: -1 }
     
-    return await PostModel
+    return await (PostModel as any)
       .find({ 
         community_id: communityId,
         is_archived: false 
@@ -250,7 +251,7 @@ export class CommunityService {
   async getPost(postId: string): Promise<PostDocument | null> {
     await connectMongoDB()
     
-    const post = await PostModel.findById(postId)
+    const post = await (PostModel as any).findById(postId)
     if (post) {
       // Increment view count
       post.view_count += 1
@@ -263,7 +264,7 @@ export class CommunityService {
   async addReaction(postId: string, userId: string, reactionType: string) {
     await connectMongoDB()
     
-    const post = await PostModel.findById(postId)
+    const post = await (PostModel as any).findById(postId)
     if (!post) throw new Error('Post not found')
       // Remove existing reaction if any
     post.reactions = post.reactions.filter((r: any) => r.user_id !== userId)
@@ -307,7 +308,7 @@ export class CommunityService {
   async addComment(postId: string, userId: string, content: string) {
     await connectMongoDB()
     
-    const post = await PostModel.findById(postId)
+    const post = await (PostModel as any).findById(postId)
     if (!post) throw new Error('Post not found')
     
     post.comments.push({
@@ -349,7 +350,7 @@ export class CommunityService {
     await connectMongoDB()
     
     // Get communities where user is creator or moderator
-    return await CommunityModel
+    return await (CommunityModel as any)
       .find({
         $or: [
           { creator_id: userId },
@@ -363,7 +364,7 @@ export class CommunityService {
   async addModerator(communityId: string, userId: string, moderatorId: string) {
     await connectMongoDB()
     
-    const community = await CommunityModel.findById(communityId)
+    const community = await (CommunityModel as any).findById(communityId)
     if (!community) throw new Error('Community not found')
     
     if (community.creator_id !== userId) {

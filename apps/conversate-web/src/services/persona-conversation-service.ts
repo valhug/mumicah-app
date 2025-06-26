@@ -1,6 +1,7 @@
 // services/conversation-models/persona-conversation-service.ts
 import { ConversationSegment, PersonaId, ConversationContext } from '@/types';
-import { conversationData } from './processed-conversation-data';
+// TODO: Fix processed conversation data import
+// import { mockProcessedData } from './processed-conversation-data';
 
 export class PersonaConversationService {
   private conversationModels: Map<PersonaId, ConversationModel>;
@@ -345,6 +346,82 @@ export class PersonaConversationService {
     });
     
     return highlights;
+  }
+
+  // ===== MISSING METHODS - Stub implementations =====
+  
+  private async generateAudio(text: string, personaId: PersonaId): Promise<string> {
+    // TODO: Implement audio generation
+    return `/audio/${personaId}/${Date.now()}.mp3`;
+  }
+
+  private extractGrammarPoints(text: string): any[] {
+    // TODO: Implement grammar point extraction
+    return [];
+  }
+
+  private async classifyTopic(message: string): Promise<string> {
+    // TODO: Implement topic classification
+    return 'general';
+  }
+
+  private async assessDifficulty(message: string): Promise<string> {
+    // TODO: Implement difficulty assessment
+    return 'intermediate';
+  }
+
+  private async identifyIntent(message: string): Promise<string> {
+    // TODO: Implement intent identification
+    return 'conversation';
+  }
+
+  private async analyzeEmotionalTone(message: string): Promise<string> {
+    // TODO: Implement emotional tone analysis
+    return 'neutral';
+  }
+
+  private contextMatches(ctx: any, culturalContext: any): boolean {
+    // TODO: Implement context matching
+    return true;
+  }
+
+  private selectResponseTemplate(pattern: any, analysis: any): any {
+    // TODO: Implement response template selection
+    return {
+      text: "I understand your message.",
+      culturalContext: [],
+      vocabularySet: []
+    };
+  }
+
+  private async personalizeResponse(template: any, userProfile: any, pattern: any): Promise<string> {
+    // TODO: Implement response personalization
+    return template.text || "Thank you for your message.";
+  }
+
+  private async addCulturalContext(response: string, template: any, pattern: any): Promise<string> {
+    // TODO: Implement cultural context addition
+    return response;
+  }
+
+  private extractVocabulary(text: string, vocabularySet: any[]): any[] {
+    // TODO: Implement vocabulary extraction
+    return [];
+  }
+
+  private identifyGrammarStructures(text: string): any[] {
+    // TODO: Implement grammar structure identification
+    return [];
+  }
+
+  private getDefinition(word: string): string {
+    // TODO: Implement definition lookup
+    return `Definition of ${word}`;
+  }
+
+  private getUsageExample(word: string): string {
+    // TODO: Implement usage example generation
+    return `Example usage of ${word}`;
   }
 }
 

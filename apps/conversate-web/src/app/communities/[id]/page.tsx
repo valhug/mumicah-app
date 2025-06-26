@@ -4,7 +4,17 @@ import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Community } from '@/models/Community'
-import { LoadingSpinner } from '@/components/ui/LoadingSpinner'
+import { 
+  AppContainer,
+  ContentContainer,
+  PageHeader,
+  ContentCard,
+  CardContent,
+  Badge,
+  Button,
+  LoadingSpinner,
+  EmptyState
+} from '@mumicah/ui'
 import AppHeader from '@/components/layout/AppHeader'
 
 export default function CommunityDetailPage() {

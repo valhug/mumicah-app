@@ -1,5 +1,5 @@
 import { Schema, model, models, Document } from 'mongoose'
-import type { ConversationDocument as ConversationDocumentType, Message } from '../../types/database'
+import type { ConversationDocument as ConversationDocumentType, Message } from '../types/database'
 
 export interface ConversationDocument extends Omit<ConversationDocumentType, '_id'>, Document {
   _id: string

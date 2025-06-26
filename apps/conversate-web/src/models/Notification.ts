@@ -1,5 +1,5 @@
 import { Schema, model, models, Document } from 'mongoose'
-import type { NotificationDocument as NotificationDocumentType } from '../../types/database'
+import type { NotificationDocument as NotificationDocumentType } from '../types/database'
 
 export interface NotificationDocument extends Omit<NotificationDocumentType, '_id'>, Document {
   _id: string

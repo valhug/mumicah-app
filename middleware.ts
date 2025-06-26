@@ -1,4 +1,4 @@
-import { updateSession } from '@/lib/supabase/middleware'
+import { updateSession } from './apps/conversate-web/src/lib/supabase/middleware'
 import { type NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {

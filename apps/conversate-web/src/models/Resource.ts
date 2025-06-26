@@ -1,5 +1,5 @@
 import { Schema, model, models, Document } from 'mongoose'
-import type { ResourceDocument as ResourceDocumentType, ResourceReview } from '../../types/database'
+import type { ResourceDocument as ResourceDocumentType, ResourceReview } from '../types/database'
 
 export interface ResourceDocument extends Omit<ResourceDocumentType, '_id'>, Document {
   _id: string

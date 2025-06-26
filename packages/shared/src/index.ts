@@ -63,3 +63,9 @@ export interface ApiResponse<T = any> {
   error?: string;
   message?: string;
 }
+
+// Re-export all shared modules
+export * from './utils'
+export * from './validations'
+export * from './constants'
+export * from './database'

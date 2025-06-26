@@ -1,7 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules/
+*/node_modules/
+**/node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -9,6 +11,15 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+
+# Package manager files and cache
+pnpm-lock.yaml
+.pnpm-store/
+.npm/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
 
 # testing
 /coverage

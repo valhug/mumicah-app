@@ -1,5 +1,4 @@
 import { Schema, model, models, Document } from 'mongoose'
-import type { CommunityDocument as CommunityDocumentType } from '../../types/database'
 
 // Simple Community type for UI components
 export interface Community {
@@ -16,8 +15,26 @@ export interface Community {
   updatedAt: Date
 }
 
-export interface CommunityDocument extends Omit<CommunityDocumentType, '_id'>, Document {
-  _id: string
+// Mongoose Document interface
+export interface CommunityDocument extends Document {
+  name: string
+  description: string
+  language: string
+  level: string
+  category: string
+  creator_id: string
+  moderators: string[]
+  member_count: number
+  is_private: boolean
+  rules: string[]
+  tags: string[]
+  settings: {
+    allow_media: boolean
+    require_approval: boolean
+    auto_approve_members: boolean
+  }
+  created_at: Date
+  updated_at: Date
 }
 
 const CommunitySettingsSchema = new Schema({

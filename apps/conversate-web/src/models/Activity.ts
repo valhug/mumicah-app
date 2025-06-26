@@ -1,5 +1,5 @@
 import { Schema, model, models, Document } from 'mongoose'
-import type { ActivityDocument as ActivityDocumentType } from '../../types/database'
+import type { ActivityDocument as ActivityDocumentType } from '../types/database'
 
 export interface ActivityDocument extends Omit<ActivityDocumentType, '_id'>, Document {
   _id: string
