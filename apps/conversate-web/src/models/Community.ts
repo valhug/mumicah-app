@@ -145,3 +145,6 @@ CommunitySchema.pre('save', function(next) {
 })
 
 export const CommunityModel = models.Community || model<CommunityDocument>('Community', CommunitySchema)
+
+// Default export for compatibility
+export default CommunityModel

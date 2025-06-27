@@ -1,9 +1,9 @@
 import { connectMongoDB } from '@/lib/mongodb'
-import { CommunityModel } from '@/models/Community'
+import { CommunityModel, CommunityDocument } from '@/models/Community'
 import { PostModel } from '@/models/Post'
 import { ActivityModel } from '@/models/Activity'
 import { NotificationModel } from '@/models/Notification'
-import type { CommunityDocument, PostDocument } from '../types/database'
+import type { PostDocument } from '../types/database'
 import type { Model } from 'mongoose'
 
 export class CommunityService {

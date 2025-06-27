@@ -50,3 +50,11 @@ export const COLLECTIONS = {
 // Export types
 export type SupportedLanguage = typeof SUPPORTED_LANGUAGES[number]
 export type LearningLevel = typeof LEARNING_LEVELS[number]
+
+export const PERSONAS = [
+  { id: 'mia', name: 'Mia', description: 'A friendly and patient language tutor.', color: '#3B82F6' },
+  { id: 'alex', name: 'Alex', description: 'A native speaker to practice conversation with.', color: '#10B981' },
+  { id: 'sara', name: 'Sara', description: 'A cultural guide to learn about traditions.', color: '#F59E0B' },
+] as const;
+
+export type Persona = typeof PERSONAS[number];

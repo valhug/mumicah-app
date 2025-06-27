@@ -1,12 +1,20 @@
-// Re-export all types from conversation module
-export * from './conversation'
+// Re-export specific types from conversation module
+export type { 
+  PersonaId, 
+  ConversationContext, 
+  ConversationMessage, 
+  ConversationSegment,
+  EnhancedConversationContext,
+  PersonaResponse,
+  VocabularyHighlight 
+} from './conversation'
 export * from './database'
 
 // Additional shared types for the app
 export interface ApiError {
   message: string
   code?: string
-  details?: any
+  details?: unknown
 }
 
 export interface PaginationParams {
@@ -26,7 +34,7 @@ export interface PaginatedResponse<T> {
 
 export interface SearchParams {
   query: string
-  filters?: Record<string, any>
+  filters?: Record<string, unknown>
   sort?: {
     field: string
     direction: 'asc' | 'desc'
