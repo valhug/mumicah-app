@@ -1,25 +1,43 @@
 'use client'
 
-import { useState, useRef, KeyboardEvent } from 'react'
+import { useState, useRef, KeyboardEvent, useEffect } from 'react'
 import { Button } from '@mumicah/ui'
 import { cn } from '@mumicah/shared'
-import { Send, Mic, Paperclip, Smile } from 'lucide-react'
+import { Send, Mic, MicOff, Paperclip, Smile, Volume2 } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { voiceService, type SpeechRecognitionResult } from '@/services/voice-service'
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void
   disabled?: boolean
   placeholder?: string
+  language?: string
+  showVoiceFeatures?: boolean
 }
 
-export function ChatInput({ onSendMessage, disabled = false, placeholder = "Type a message..." }: ChatInputProps) {
+export function ChatInput({ 
+  onSendMessage, 
+  disabled = false, 
+  placeholder = "Type a message...",
+  language = 'fr-FR',
+  showVoiceFeatures = true
+}: ChatInputProps) {
   const [message, setMessage] = useState('')
   const [isRecording, setIsRecording] = useState(false)
+  const [isListening, setIsListening] = useState(false)
+  const [voiceTranscript, setVoiceTranscript] = useState('')
+  const [voiceSupported, setVoiceSupported] = useState(false)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+
+  useEffect(() => {
+    setVoiceSupported(voiceService.isVoiceSupported())
+  }, [])
 
   const handleSubmit = () => {
     if (message.trim() && !disabled) {
       onSendMessage(message.trim())
       setMessage('')
+      setVoiceTranscript('')
       
       // Reset textarea height
       if (textareaRef.current) {
@@ -47,21 +65,85 @@ export function ChatInput({ onSendMessage, disabled = false, placeholder = "Type
     textarea.style.height = `${Math.min(textarea.scrollHeight, maxHeight)}px`
   }
 
-  const handleVoiceRecord = () => {
+  const handleVoiceRecord = async () => {
+    if (!voiceSupported) {
+      alert('Voice recording is not supported in your browser')
+      return
+    }
+
     if (isRecording) {
       // Stop recording
       setIsRecording(false)
-      // TODO: Process voice recording
+      setIsListening(false)
+      voiceService.stopListening()
     } else {
       // Start recording
       setIsRecording(true)
-      // TODO: Start voice recording
+      setIsListening(true)
+      setVoiceTranscript('')
+
+      try {
+        await voiceService.startListening(
+          language,
+          (result: SpeechRecognitionResult) => {
+            setVoiceTranscript(result.transcript)
+            if (result.isFinal && result.transcript.trim()) {
+              setMessage(result.transcript)
+              setIsRecording(false)
+              setIsListening(false)
+            }
+          },
+          () => {
+            setIsRecording(false)
+            setIsListening(false)
+          }
+        )
+      } catch (error) {
+        console.error('Voice recording error:', error)
+        setIsRecording(false)
+        setIsListening(false)
+      }
+    }
+  }
+
+  const handleTextToSpeech = async () => {
+    if (!voiceSupported || !message.trim()) return
+
+    try {
+      await voiceService.speakText(message, { language })
+    } catch (error) {
+      console.error('Text-to-speech error:', error)
     }
   }
 
   return (
     <div className="p-4">
       <div className="max-w-4xl mx-auto">
+        <AnimatePresence>
+          {isListening && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="mb-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800"
+            >
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                  <span className="text-sm font-medium text-blue-700 dark:text-blue-300">
+                    Listening...
+                  </span>
+                </div>
+                {voiceTranscript && (
+                  <span className="text-sm text-blue-600 dark:text-blue-400 flex-1 italic">
+                    &quot;{voiceTranscript}&quot;
+                  </span>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <div className="relative flex items-end gap-3 bg-background border border-border rounded-2xl p-3 shadow-sm focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all duration-200">
           
           {/* Attachment Button */}
@@ -85,14 +167,46 @@ export function ChatInput({ onSendMessage, disabled = false, placeholder = "Type
               placeholder={placeholder}
               disabled={disabled}
               className={cn(
-                "w-full resize-none border-0 bg-transparent px-0 py-1",
+                "w-full resize-none bg-transparent border-0 outline-none",
                 "text-sm placeholder:text-muted-foreground",
-                "focus:outline-none focus:ring-0",
-                "max-h-32 min-h-[24px] leading-6"
+                "min-h-[24px] max-h-[120px] py-0",
+                "scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent"
               )}
               rows={1}
             />
           </div>
+
+          {/* Voice Controls */}
+          {showVoiceFeatures && voiceSupported && (
+            <div className="flex items-center gap-2">
+              {/* Text-to-Speech */}
+              <Button
+                variant="ghost"
+                size="sm"
+                className="shrink-0 h-8 w-8 p-0 hover:bg-accent"
+                onClick={handleTextToSpeech}
+                disabled={disabled || !message.trim()}
+                title="Listen to message"
+              >
+                <Volume2 className="h-4 w-4" />
+              </Button>
+
+              {/* Voice Input */}
+              <Button
+                variant={isRecording ? "destructive" : "ghost"}
+                size="sm"
+                className={cn(
+                  "shrink-0 h-8 w-8 p-0 rounded-full transition-all duration-200",
+                  isRecording && "animate-pulse"
+                )}
+                onClick={handleVoiceRecord}
+                disabled={disabled}
+                title={isRecording ? "Stop recording" : "Voice message"}
+              >
+                {isRecording ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+              </Button>
+            </div>
+          )}
 
           {/* Emoji Button */}
           <Button
@@ -105,45 +219,29 @@ export function ChatInput({ onSendMessage, disabled = false, placeholder = "Type
             <Smile className="h-4 w-4" />
           </Button>
 
-          {/* Voice/Send Button */}
-          {message.trim() ? (
-            <Button
-              size="sm"
-              className={cn(
-                "shrink-0 h-8 w-8 p-0 rounded-full",
-                "bg-gradient-to-r from-primary to-primary/80",
-                "hover:from-primary/90 hover:to-primary/70",
-                "transition-all duration-200 hover:scale-105"
-              )}
-              onClick={handleSubmit}
-              disabled={disabled}
-              title="Send message"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
-          ) : (
-            <Button
-              variant={isRecording ? "destructive" : "ghost"}
-              size="sm"
-              className={cn(
-                "shrink-0 h-8 w-8 p-0 rounded-full transition-all duration-200",
-                isRecording && "animate-pulse"
-              )}
-              onClick={handleVoiceRecord}
-              disabled={disabled}
-              title={isRecording ? "Stop recording" : "Voice message"}
-            >
-              <Mic className="h-4 w-4" />
-            </Button>
-          )}
+          {/* Send Button */}
+          <Button
+            size="sm"
+            className="shrink-0 h-8 w-8 p-0 rounded-full"
+            onClick={handleSubmit}
+            disabled={disabled || !message.trim()}
+            title="Send message"
+          >
+            <Send className="h-3 w-3" />
+          </Button>
         </div>
 
-        {/* Recording Indicator */}
+        {/* Recording Hint */}
         {isRecording && (
-          <div className="mt-2 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-            Recording... Tap to stop
-          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-2 text-center"
+          >
+            <span className="text-xs text-muted-foreground">
+              Speak clearly in {language === 'fr-FR' ? 'French' : 'your target language'}. Tap mic to stop.
+            </span>
+          </motion.div>
         )}
       </div>
     </div>
