@@ -5,6 +5,7 @@ import { signIn, getProviders, getSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Github } from 'lucide-react'
+import { motion } from 'framer-motion'
 import {
   AuthPageContainer,
   AuthCard,
@@ -48,6 +49,29 @@ export default function SignupPage() {
   const [displayName, setDisplayName] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.4 }
+    }
+  }
   const [signupSent, setSignupSent] = useState(false)
   const [providers, setProviders] = useState<Record<string, Provider> | null>(null)
   const router = useRouter()

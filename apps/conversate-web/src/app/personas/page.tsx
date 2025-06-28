@@ -1,5 +1,8 @@
+'use client'
+
 import { PageContainer, Button, Badge, Section } from '@mumicah/ui'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 const AI_PERSONAS = [
   {
@@ -83,40 +86,91 @@ const AI_PERSONAS = [
 ]
 
 export default function PersonasPage() {
+  // Animation variants - simplified for TypeScript compatibility
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 }
+  }
+
+  const cardVariants = {
+    hidden: { y: 30, opacity: 0, scale: 0.95 },
+    visible: { y: 0, opacity: 1, scale: 1 },
+    hover: { y: -5, scale: 1.02 }
+  }
+
   return (
     <PageContainer>
       {/* Header Section */}
       <Section className="py-16 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+        <motion.div 
+          className="max-w-4xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h1 
+            className="text-4xl md:text-6xl font-bold text-foreground mb-6"
+            variants={itemVariants}
+          >
             Meet Your AI{' '}
             <span className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">
               Language Companions
             </span>
-          </h1>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          </motion.h1>
+          <motion.p 
+            className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto"
+            variants={itemVariants}
+          >
             Each AI persona has a unique personality, teaching style, and expertise. 
             Choose the perfect conversation partner for your learning goals.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          </motion.p>
+          
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            variants={itemVariants}
+          >
             <Button size="lg" asChild>
               <Link href="/chat">Start Chatting Now</Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
               <Link href="/dashboard">Back to Dashboard</Link>
             </Button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </Section>
 
       {/* Personas Grid */}
       <Section className="py-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {AI_PERSONAS.map((persona) => (
-              <div
+        <motion.div 
+          className="max-w-7xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+          >
+            {AI_PERSONAS.map((persona, index) => (
+              <motion.div
                 key={persona.id}
                 className="group relative bg-card rounded-3xl p-6 border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                whileHover="hover"
+                transition={{ delay: index * 0.1 }}
               >
                 {/* Persona Header */}
                 <div className="flex items-center gap-4 mb-4">
@@ -186,28 +240,41 @@ export default function PersonasPage() {
                     Chat with {persona.name}
                   </Link>
                 </Button>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </Section>
 
       {/* Bottom CTA */}
       <Section className="py-16 text-center">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold text-foreground mb-4">
+        <motion.div 
+          className="max-w-2xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h2 
+            className="text-3xl font-bold text-foreground mb-4"
+            variants={itemVariants}
+          >
             Ready to Start Learning?
-          </h2>
-          <p className="text-muted-foreground mb-8">
+          </motion.h2>
+          <motion.p 
+            className="text-muted-foreground mb-8"
+            variants={itemVariants}
+          >
             Choose any persona to begin your personalized language learning journey. 
             You can switch between personas anytime during your conversation.
-          </p>
-          <Button size="lg" asChild>
-            <Link href="/chat">
-              🚀 Start Your First Conversation
-            </Link>
-          </Button>
-        </div>
+          </motion.p>
+          <motion.div variants={itemVariants}>
+            <Button size="lg" asChild>
+              <Link href="/chat">
+                🚀 Start Your First Conversation
+              </Link>
+            </Button>
+          </motion.div>
+        </motion.div>
       </Section>
     </PageContainer>
   )

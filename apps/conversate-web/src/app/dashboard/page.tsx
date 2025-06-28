@@ -1,13 +1,6 @@
 import { getCurrentUser } from '@/lib/dal'
 import { UserService } from '@/services/user.service'
-import DashboardStats from '@/components/features/DashboardStats'
-import RecentActivity from '@/components/features/RecentActivity'
-import QuickActions from '@/components/features/QuickActions'
-import DashboardWidgets from '@/components/features/DashboardWidgets'
-import EnhancedAnalytics from '@/components/features/EnhancedAnalytics'
-import ConversationHistory from '@/components/features/ConversationHistory'
-import SharedPackageTest from '@/components/features/SharedPackageTest'
-import { WelcomeSection } from '@mumicah/ui'
+import DashboardClient from '@/components/features/DashboardClient'
 
 export default async function DashboardPage() {
   const currentUser = await getCurrentUser()
@@ -36,39 +29,11 @@ export default async function DashboardPage() {
   const displayName = currentUser?.email || 'User'
 
   return (
-    <div className="space-y-6">
-      {/* Welcome Section */}
-      <WelcomeSection
-        title={`Welcome back, ${displayName}!`}
-        subtitle="Continue your language learning journey"
-        status="active"
-      />
-
-      {/* Enhanced Analytics Dashboard */}
-      <EnhancedAnalytics userId={currentUser.id} />
-
-      {/* Conversation History */}
-      <ConversationHistory userId={currentUser.id} />
-
-      {/* Quick Actions */}
-      <QuickActions />
-
-      {/* Enhanced Dashboard with Widgets */}
-      <DashboardWidgets userId={currentUser.id} />
-
-      {/* Legacy Components (can be removed once widgets are fully tested) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Stats Overview */}
-        <DashboardStats stats={userStats} />
-        
-        {/* Recent Activity */}
-        <RecentActivity activities={recentActivity} />
-      </div>
-
-      {/* Shared Package Test (Development Only) */}
-      {process.env.NODE_ENV === 'development' && (
-        <SharedPackageTest />
-      )}
-    </div>
+    <DashboardClient 
+      currentUser={currentUser}
+      userStats={userStats}
+      recentActivity={recentActivity}
+      displayName={displayName}
+    />
   )
 }

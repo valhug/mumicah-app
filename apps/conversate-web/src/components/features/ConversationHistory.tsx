@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { Card, Badge, Button } from '@mumicah/ui'
 import { Search, Filter, Clock, MessageSquare, Bot, Calendar, TrendingUp } from 'lucide-react'
 
@@ -98,6 +99,38 @@ export default function ConversationHistory({ userId }: ConversationHistoryProps
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'this-week' | 'this-month' | 'helpful'>('all')
   const [isLoading, setIsLoading] = useState(true)
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 }
+  }
+
+  const cardVariants = {
+    hidden: { y: 20, opacity: 0, scale: 0.98 },
+    visible: { 
+      y: 0, 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.4 }
+    },
+    hover: {
+      y: -2,
+      scale: 1.01,
+      transition: { duration: 0.2 }
+    }
+  }
 
   useEffect(() => {
     // Simulate API call
@@ -215,50 +248,70 @@ export default function ConversationHistory({ userId }: ConversationHistoryProps
         </div>
 
         {/* Stats Summary */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <div className="text-center p-3 bg-muted/30 rounded-lg">
+        <motion.div 
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div className="text-center p-3 bg-muted/30 rounded-lg" variants={itemVariants}>
             <div className="text-2xl font-bold text-primary">{conversations.length}</div>
             <div className="text-sm text-muted-foreground">Total Conversations</div>
-          </div>
-          <div className="text-center p-3 bg-muted/30 rounded-lg">
+          </motion.div>
+          <motion.div className="text-center p-3 bg-muted/30 rounded-lg" variants={itemVariants}>
             <div className="text-2xl font-bold text-primary">
               {Math.round(conversations.reduce((sum, conv) => sum + conv.duration, 0) / 60)}h
             </div>
             <div className="text-sm text-muted-foreground">Total Practice Time</div>
-          </div>
-          <div className="text-center p-3 bg-muted/30 rounded-lg">
+          </motion.div>
+          <motion.div className="text-center p-3 bg-muted/30 rounded-lg" variants={itemVariants}>
             <div className="text-2xl font-bold text-primary">
               {Math.round(conversations.reduce((sum, conv) => sum + (conv.overallRating || 0), 0) / conversations.length * 10) / 10}
             </div>
             <div className="text-sm text-muted-foreground">Avg Rating</div>
-          </div>
-          <div className="text-center p-3 bg-muted/30 rounded-lg">
+          </motion.div>
+          <motion.div className="text-center p-3 bg-muted/30 rounded-lg" variants={itemVariants}>
             <div className="text-2xl font-bold text-primary">
               {conversations.filter(conv => conv.wasHelpful).length}
             </div>
             <div className="text-sm text-muted-foreground">Helpful Sessions</div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </Card>
 
       {/* Conversation List */}
-      <div className="space-y-4">
+      <motion.div 
+        className="space-y-4"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {filteredConversations.length === 0 ? (
-          <Card className="p-8 text-center">
-            <MessageSquare className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <h4 className="text-lg font-medium text-foreground mb-2">No conversations found</h4>
-            <p className="text-muted-foreground mb-4">
-              {searchTerm || selectedFilter !== 'all' 
-                ? "Try adjusting your search or filter criteria"
-                : "Start your first conversation with an AI persona!"}
-            </p>
-            <Button asChild>
-              <a href="/chat">Start Chatting</a>
-            </Button>
-          </Card>
+          <motion.div variants={itemVariants}>
+            <Card className="p-8 text-center">
+              <MessageSquare className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+              <h4 className="text-lg font-medium text-foreground mb-2">No conversations found</h4>
+              <p className="text-muted-foreground mb-4">
+                {searchTerm || selectedFilter !== 'all' 
+                  ? "Try adjusting your search or filter criteria"
+                  : "Start your first conversation with an AI persona!"}
+              </p>
+              <Button asChild>
+                <a href="/chat">Start Chatting</a>
+              </Button>
+            </Card>
+          </motion.div>
         ) : (
-          filteredConversations.map((conversation) => (
-            <Card key={conversation.id} className="p-6 hover:shadow-md transition-shadow cursor-pointer">
+          filteredConversations.map((conversation, index) => (
+            <motion.div
+              key={conversation.id}
+              variants={cardVariants}
+              initial="hidden"
+              animate="visible"
+              whileHover="hover"
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="p-6 hover:shadow-md transition-shadow cursor-pointer">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className="text-2xl">{conversation.personaAvatar}</div>
@@ -341,9 +394,10 @@ export default function ConversationHistory({ userId }: ConversationHistoryProps
                 </div>
               </div>
             </Card>
+            </motion.div>
           ))
         )}
-      </div>
+      </motion.div>
     </div>
   )
 }

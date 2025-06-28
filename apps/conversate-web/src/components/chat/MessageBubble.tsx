@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import { Badge, Button } from '@mumicah/ui'
 import { cn } from '@mumicah/shared'
 
@@ -35,25 +36,52 @@ export function MessageBubble({ message, isUser, persona }: MessageBubbleProps) 
     : 'from-blue-500 to-cyan-500'
 
   return (
-    <div className={cn(
-      "flex gap-3 max-w-4xl mx-auto",
-      isUser ? "justify-end" : "justify-start"
-    )}>
+    <motion.div 
+      className={cn(
+        "flex gap-3 max-w-4xl mx-auto",
+        isUser ? "justify-end" : "justify-start"
+      )}
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ 
+        duration: 0.3,
+        ease: "easeOut",
+        type: "spring",
+        stiffness: 260,
+        damping: 20
+      }}
+    >
       {/* AI Avatar */}
       {!isUser && persona && (
-        <div className={cn(
-          "w-10 h-10 rounded-full flex items-center justify-center text-white text-lg font-medium shadow-lg",
-          `bg-gradient-to-br ${personaGradient}`
-        )}>
+        <motion.div 
+          className={cn(
+            "w-10 h-10 rounded-full flex items-center justify-center text-white text-lg font-medium shadow-lg",
+            `bg-gradient-to-br ${personaGradient}`
+          )}
+          initial={{ scale: 0, rotate: -180 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ 
+            delay: 0.1,
+            duration: 0.5,
+            type: "spring",
+            stiffness: 260,
+            damping: 20
+          }}
+        >
           {persona.emoji}
-        </div>
+        </motion.div>
       )}
 
       {/* Message Content */}
-      <div className={cn(
-        "group relative max-w-xs sm:max-w-md lg:max-w-lg",
-        isUser ? "order-first" : ""
-      )}>
+      <motion.div 
+        className={cn(
+          "group relative max-w-xs sm:max-w-md lg:max-w-lg",
+          isUser ? "order-first" : ""
+        )}
+        initial={{ opacity: 0, x: isUser ? 20 : -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2, duration: 0.3 }}
+      >
         {/* Message Bubble */}
         <div className={cn(
           "px-4 py-3 rounded-2xl shadow-sm transition-all duration-200 hover:shadow-md",
@@ -116,14 +144,19 @@ export function MessageBubble({ message, isUser, persona }: MessageBubbleProps) 
             )}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* User Avatar */}
       {isUser && (
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center text-white text-sm font-medium shadow-lg">
+        <motion.div 
+          className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center text-white text-sm font-medium shadow-lg"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.1, type: "spring", stiffness: 260, damping: 20 }}
+        >
           You
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   )
 }

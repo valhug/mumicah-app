@@ -20,6 +20,12 @@ const config: Config = {
       colors: {
         // ShadCN/UI Color System (using CSS variables)
         primary: {
+          DEFAULT: "hsl(var(--theme-primary))", // Dynamic persona theming
+          foreground: "hsl(var(--theme-primary-foreground))", // Dynamic persona theming
+        },
+        
+        // Original primary colors (fallback)
+        brand: {
           DEFAULT: "hsl(var(--primary))", // ShadCN compatibility
           foreground: "hsl(var(--primary-foreground))", // ShadCN compatibility
         },

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 const quickActions = [
   {
@@ -48,34 +49,78 @@ const quickActions = [
 ]
 
 export default function QuickActions() {
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0, scale: 0.95 },
+    visible: { 
+      y: 0, 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.4 }
+    },
+    hover: {
+      y: -2,
+      scale: 1.02,
+      transition: { duration: 0.2 }
+    }
+  }
+
   return (
-    <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
-      <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+    <motion.div 
+      className="bg-white dark:bg-gray-800 shadow rounded-lg p-6"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      <motion.h3 
+        className="text-lg font-medium text-gray-900 dark:text-white mb-4"
+        variants={itemVariants}
+      >
         Quick Actions
-      </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {quickActions.map((action) => (
-          <Link
+      </motion.h3>
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+        variants={containerVariants}
+      >
+        {quickActions.map((action, index) => (
+          <motion.div
             key={action.name}
-            href={action.href}
-            className={`${action.background} p-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-colors duration-200`}
+            variants={itemVariants}
+            whileHover="hover"
+            transition={{ delay: index * 0.1 }}
           >
-            <div className="flex items-center space-x-3">
-              <div className="flex-shrink-0">
-                {action.icon}
+            <Link
+              href={action.href}
+              className={`${action.background} p-4 rounded-lg border border-gray-200 dark:border-gray-700 transition-colors duration-200 block h-full`}
+            >
+              <div className="flex items-center space-x-3">
+                <div className="flex-shrink-0">
+                  {action.icon}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">
+                    {action.name}
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    {action.description}
+                  </p>
+                </div>
               </div>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-medium text-gray-900 dark:text-white">
-                  {action.name}
-                </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                  {action.description}
-                </p>
-              </div>
-            </div>
-          </Link>
+            </Link>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }

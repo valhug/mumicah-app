@@ -56,9 +56,10 @@ export class UserConversationService {
       }
       if (personaId) query.personaId = personaId
 
-      return await ConversationSession.findOne(query)
+      const session = await (ConversationSession as any).findOne(query)
         .sort({ updatedAt: -1 })
-        .lean() as IConversationSession | null
+      
+      return session ? session.toObject() as IConversationSession : null
     } catch (error) {
       console.error('Error fetching active session:', error)
       return null
@@ -71,6 +72,7 @@ export class UserConversationService {
     wordCount: number
   }): Promise<void> {
     try {
+      // @ts-expect-error - Mongoose lean() type compatibility issue
       const session = await ConversationSession.findOne({ sessionId }).lean() as IConversationSession | null
       if (!session) return
 
@@ -90,6 +92,7 @@ export class UserConversationService {
       )
 
       // Update session with new data
+      // @ts-expect-error - Mongoose findOneAndUpdate type compatibility issue
       await ConversationSession.findOneAndUpdate(
         { sessionId },
         {
@@ -109,6 +112,7 @@ export class UserConversationService {
 
   async endSession(sessionId: string): Promise<IConversationHistory | null> {
     try {
+      // @ts-expect-error - Mongoose lean() type compatibility issue
       const session = await ConversationSession.findOne({ sessionId }).lean() as IConversationSession | null
       if (!session) return null
 
@@ -155,6 +159,7 @@ export class UserConversationService {
       })
 
       // Mark session as ended
+      // @ts-expect-error - Mongoose findOneAndUpdate type compatibility issue
       await ConversationSession.findOneAndUpdate(
         { sessionId },
         { status: 'ended' }

@@ -5,6 +5,7 @@ import { signIn, getProviders, getSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Github } from 'lucide-react'
+import { motion } from 'framer-motion'
 import {
   AuthPageContainer,
   AuthCard,
@@ -47,6 +48,29 @@ export default function LoginPage() {
   const [error, setError] = useState('')
   const [providers, setProviders] = useState<Record<string, Provider> | null>(null)
   const router = useRouter()
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.4 }
+    }
+  }
 
   useEffect(() => {
     const initializeProviders = async () => {
@@ -137,35 +161,51 @@ export default function LoginPage() {
   }
   return (
     <AuthPageContainer>
-      <AuthCard>
-        <AuthHeader
-          title="Welcome back"
-          subtitle="Sign in to your account to continue your language learning journey"
-        />
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <AuthCard>
+          <motion.div variants={itemVariants}>
+            <AuthHeader
+              title="Welcome back"
+              subtitle="Sign in to your account to continue your language learning journey"
+            />
+          </motion.div>
 
-        <AuthError message={error} />
+          <motion.div variants={itemVariants}>
+            <AuthError message={error} />
+          </motion.div>
 
-        <div className="space-y-4">
-          {/* OAuth Providers */}
-          {providers && Object.values(providers).length > 0 && (
-            <div className="space-y-3">
-              {Object.values(providers).map((provider) => (
-                <SocialAuthButton
-                  key={provider.name}
-                  icon={getProviderIcon(provider.id)}
-                  provider={provider.name}
-                  onClick={() => handleOAuthLogin(provider.id)}
-                  isLoading={isLoading}
-                  className={getProviderButtonClass(provider.id)}
-                />
-              ))}
-            </div>
-          )}
+          <motion.div className="space-y-4" variants={itemVariants}>            {/* OAuth Providers */}
+            {providers && Object.values(providers).length > 0 && (
+              <motion.div className="space-y-3" variants={itemVariants}>
+                {Object.values(providers).map((provider, index) => (
+                  <motion.div 
+                    key={provider.name}
+                    variants={itemVariants}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <SocialAuthButton
+                      icon={getProviderIcon(provider.id)}
+                      provider={provider.name}
+                      onClick={() => handleOAuthLogin(provider.id)}
+                      isLoading={isLoading}
+                      className={getProviderButtonClass(provider.id)}
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
 
-          <AuthDivider />
+            <motion.div variants={itemVariants}>
+              <AuthDivider />
+            </motion.div>
 
-          {/* Email/Password Form */}
-          <AuthForm onSubmit={handleEmailLogin}>
+            {/* Email/Password Form */}
+            <motion.div variants={itemVariants}>
+              <AuthForm onSubmit={handleEmailLogin}>
             <AuthInputGroup label="Email address">
               <AuthInput
                 id="email"
@@ -217,20 +257,22 @@ export default function LoginPage() {
                 Continue as Guest
               </AuthButton>
             </div>
-          </AuthForm>
+              </AuthForm>
+            </motion.div>
 
-          <div className="text-center">
-            <span className="body-regular content-secondary">
-              Don&apos;t have an account?{' '}
-              <Link href="/signup">
-                <AuthLink href="/signup">
-                  Sign up
-                </AuthLink>
-              </Link>
-            </span>
-          </div>
-        </div>
-      </AuthCard>
+            <motion.div className="text-center" variants={itemVariants}>
+              <span className="body-regular content-secondary">
+                Don&apos;t have an account?{' '}
+                <Link href="/signup">
+                  <AuthLink href="/signup">
+                    Sign up
+                  </AuthLink>
+                </Link>
+              </span>
+            </motion.div>
+          </motion.div>
+        </AuthCard>
+      </motion.div>
     </AuthPageContainer>
   )
 }

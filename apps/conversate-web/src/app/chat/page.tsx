@@ -142,6 +142,12 @@ export default function ChatPage() {
     setMessages([welcomeMessage])
   }, [selectedPersona])
 
+  // Apply persona-based theme
+  useEffect(() => {
+    document.body.setAttribute('data-persona-theme', selectedPersona.id);
+    return () => document.body.removeAttribute('data-persona-theme');
+  }, [selectedPersona]);
+
   const handleSendMessage = async (content: string) => {
     if (!content.trim() || isLoading) return
 

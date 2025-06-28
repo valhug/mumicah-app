@@ -1,0 +1,302 @@
+import { getCurrentUser } from '@/lib/dal'
+import { redirect } from 'next/navigation'
+import Link from 'next/link'
+import { ThemeToggle } from '@/components/theme-toggle'
+import { AnimatedBackground } from '@/components/animated-background'
+import { motion } from 'framer-motion'
+import { 
+  PageContainer,
+  NavBar,
+  Logo,
+  HeroSection,
+  HeroTitle,
+  HeroSubtitle,
+  PersonaCard,
+  FeatureCard,
+  CTASection,
+  Footer,
+  Section,
+  Badge,
+  Button
+} from '@mumicah/ui'
+
+export default async function HomePage() {
+  const user = await getCurrentUser()
+  
+  // If user is authenticated, redirect to dashboard
+  if (user) {
+    redirect('/dashboard')
+  }
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: { y: 0, opacity: 1 }
+  }
+
+  const cardVariants = {
+    hidden: { y: 50, opacity: 0, scale: 0.95 },
+    visible: { 
+      y: 0, 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.6 }
+    },
+    hover: { 
+      y: -10,
+      scale: 1.05,
+      transition: { duration: 0.3 }
+    }
+  }
+
+  return (
+    <PageContainer>
+      {/* Animated Background */}
+      <AnimatedBackground />
+
+      {/* Navigation */}
+      <NavBar variant="glass">
+        <div className="flex items-center space-x-2">
+          <Logo size="md" showText={true} />
+          <Badge variant="secondary" className="ml-2 text-xs">
+            Beta
+          </Badge>
+        </div>
+        <div className="flex items-center space-x-4">
+          <ThemeToggle />
+          {process.env.NODE_ENV === 'development' && (
+            <Button variant="ghost" asChild>
+              <Link href="/dashboard">Dev Dashboard</Link>
+            </Button>
+          )}
+          <Button variant="ghost" asChild>
+            <Link href="/login">Sign in</Link>
+          </Button>
+          <Button asChild>
+            <Link href="/signup">Get started</Link>
+          </Button>
+        </div>
+      </NavBar>
+
+      {/* Hero Section */}
+      <HeroSection>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Hero Badge */}
+          <motion.div className="flex justify-center" variants={itemVariants}>
+            <Badge variant="outline" className="px-4 py-2 text-sm font-medium border-primary/20 bg-primary/5">
+              🌍 Connect with native speakers worldwide
+            </Badge>
+          </motion.div>
+
+          {/* Hero Title & Subtitle */}
+          <motion.div className="space-y-6" variants={itemVariants}>
+            <HeroTitle>
+              Learn Languages<br />
+              <span className="gradient-text">Naturally</span>
+            </HeroTitle>
+            
+            <HeroSubtitle>
+              Join millions of learners practicing with AI personas and real native speakers. 
+              Experience immersive conversations that make language learning{' '}
+              <span className="text-primary font-semibold">fun and effective</span>.
+            </HeroSubtitle>
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center pt-4"
+            variants={itemVariants}
+          >
+            <Button size="lg" className="bg-gradient-to-r from-primary to-orange-600 hover:from-primary/90 hover:to-orange-600/90 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" asChild>
+              <Link href="/signup">✨ Start Learning Free</Link>
+            </Button>
+            <Button variant="outline" size="lg" className="border-2 border-primary/30 hover:border-primary hover:bg-primary/5 px-8 py-6 text-lg rounded-full transition-all duration-300" asChild>
+              <Link href="/demo">🎥 Watch Demo</Link>
+            </Button>
+          </motion.div>
+
+          {/* Social Proof */}
+          <motion.div className="pt-8 space-y-4" variants={itemVariants}>
+            <p className="text-sm text-muted-foreground">Trusted by learners from 150+ countries</p>
+            <div className="flex justify-center items-center space-x-8 opacity-60">
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">50K+</span>
+                </div>
+                <span className="text-sm">Active Learners</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-violet-500 rounded-full flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">30+</span>
+                </div>
+                <span className="text-sm">Languages</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">4.9</span>
+                </div>
+                <span className="text-sm">User Rating</span>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </HeroSection>
+
+      {/* AI Personas Preview */}
+      <Section className="py-16">
+        <motion.div 
+          className="text-center mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h2 
+            className="text-3xl md:text-5xl font-bold text-foreground mb-6"
+            variants={itemVariants}
+          >
+            Meet Your AI Language{' '}
+            <span className="text-primary">Companions</span>
+          </motion.h2>
+          <motion.p 
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            variants={itemVariants}
+          >
+            Practice with AI personas designed with unique personalities and teaching styles
+          </motion.p>
+        </motion.div>
+
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={cardVariants} whileHover="hover">
+            <PersonaCard
+              name="Maya"
+              role="Patient Teacher"
+              description="Gentle and encouraging, Maya breaks down complex concepts into digestible lessons. Perfect for beginners who need extra support."
+              emoji="👩‍🏫"
+              color="amber"
+              badges={["Beginner Friendly", "Grammar Focus"]}
+            />
+          </motion.div>
+          
+          <motion.div variants={cardVariants} whileHover="hover">
+            <PersonaCard
+              name="Alex"
+              role="Casual Friend"
+              description="Laid-back and conversational, Alex helps you practice everyday conversations and slang. Great for building confidence."
+              emoji="🧑‍💼"
+              color="emerald"
+              badges={["Conversational", "Slang & Idioms"]}
+            />
+          </motion.div>
+          
+          <motion.div variants={cardVariants} whileHover="hover">
+            <PersonaCard
+              name="Luna"
+              role="Cultural Guide"
+              description="Knowledgeable about traditions and customs, Luna teaches language through cultural context and stories."
+              emoji="🌸"
+              color="violet"
+              badges={["Cultural Context", "Advanced"]}
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Try Personas CTA */}
+        <div className="text-center">
+          <Button size="lg" variant="outline" className="border-primary/30 hover:border-primary hover:bg-primary/5 px-8 py-6 rounded-full" asChild>
+            <Link href="/personas">🤖 Try AI Personas Free</Link>
+          </Button>
+        </div>
+      </Section>
+
+      {/* Features Grid */}
+      <Section className="py-16">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+            Everything You Need to
+            <span className="text-primary"> Master Languages</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <FeatureCard
+            title="Real-time Conversations"
+            description="Practice with native speakers and AI in natural, flowing conversations that adapt to your level."
+            icon="💬"
+            gradient="from-blue-500 to-cyan-500"
+          />
+          
+          <FeatureCard
+            title="Smart Progress Tracking"
+            description="Detailed analytics show your improvement over time with personalized insights and recommendations."
+            icon="📊"
+            gradient="from-green-500 to-emerald-500"
+          />
+          
+          <FeatureCard
+            title="Global Communities"
+            description="Join language-specific communities where learners and natives connect, share, and learn together."
+            icon="🌐"
+            gradient="from-purple-500 to-pink-500"
+          />
+          
+          <FeatureCard
+            title="Adaptive Learning"
+            description="AI-powered system adapts to your learning style, pace, and goals for maximum effectiveness."
+            icon="🧠"
+            gradient="from-orange-500 to-red-500"
+          />
+          
+          <FeatureCard
+            title="Cultural Immersion"
+            description="Learn not just language, but culture, customs, and context for deeper understanding."
+            icon="🏛️"
+            gradient="from-indigo-500 to-purple-500"
+          />
+          
+          <FeatureCard
+            title="Learn Anywhere"
+            description="Seamless experience across all devices. Practice during commutes, breaks, or whenever inspiration strikes."
+            icon="📱"
+            gradient="from-teal-500 to-cyan-500"
+          />
+        </div>
+      </Section>
+
+      {/* Final CTA */}
+      <CTASection
+        title="Ready to Start Your Language Journey?"
+        subtitle="Join thousands of successful language learners who've transformed their communication skills with Mumicah."
+        primaryAction={{
+          text: "🚀 Start Learning Now",
+          href: "/signup"
+        }}
+        secondaryAction={{
+          text: "💬 Talk to Us",
+          href: "/contact"
+        }}
+      />
+
+      <Footer />
+    </PageContainer>
+  )
+}
