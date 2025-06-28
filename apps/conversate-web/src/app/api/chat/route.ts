@@ -2,8 +2,25 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import LangChainService from '@/services/langchain-simple.service'
-import { SimpleUserService } from '@/services/simple-user.service'
 import { PersonaId } from '@/config/langchain'
+
+// Simple in-memory store for user preferences (will be replaced with database later)
+const userPreferences: Record<string, {
+  targetLanguage: string
+  nativeLanguage: string
+  proficiencyLevel: string
+  totalConversations: number
+  totalWords: number
+  streakDays: number
+  favoritePersona?: PersonaId
+  conversationHistory: Array<{
+    id: string
+    timestamp: Date
+    persona: PersonaId
+    messageCount: number
+    duration: number
+  }>
+}> = {}
 
 export async function POST(request: NextRequest) {
   try {
@@ -24,40 +41,40 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Get user session (supports both authenticated and guest users)
+    // Get user session (supports both authenticated users and guests)
     const session = await getServerSession(authOptions)
     const userId = session?.user?.id || 'guest'
     const userEmail = session?.user?.email || 'guest@example.com'
     const userName = session?.user?.name || 'Guest User'
 
-    // Initialize services
-    const langChainService = new LangChainService()
-    const userService = new SimpleUserService()
-
-    // Get or create user profile
-    const userData = await userService.getOrCreateUser(userId, userEmail, userName)
-
-    // Get or start conversation
-    let activeConversation = await userService.getActiveConversation(userId)
-    if (!activeConversation) {
-      activeConversation = await userService.startConversation(userId, personaId as PersonaId)
+    // Get or create user preferences
+    if (!userPreferences[userId]) {
+      userPreferences[userId] = {
+        targetLanguage: targetLanguage || 'Spanish',
+        nativeLanguage: 'English',
+        proficiencyLevel: proficiencyLevel || 'intermediate',
+        totalConversations: 0,
+        totalWords: 0,
+        streakDays: 0,
+        favoritePersona: personaId as PersonaId,
+        conversationHistory: []
+      }
     }
 
-    // Create conversation context using user preferences and conversation history
+    const userProfile = userPreferences[userId]
+
+    // Initialize LangChain service
+    const langChainService = new LangChainService()
+
+    // Create conversation context using user preferences
     const context = {
       userId,
       personaId: personaId as PersonaId,
-      targetLanguage: targetLanguage || userData.preferences.targetLanguage,
-      userNativeLanguage: userData.preferences.nativeLanguage,
-      proficiencyLevel: proficiencyLevel || userData.preferences.proficiencyLevel,
-      conversationHistory: activeConversation.messages.map(msg => ({
-        id: msg.id,
-        role: msg.role,
-        content: msg.content,
-        timestamp: new Date(msg.timestamp),
-        metadata: msg.metadata
-      })),
-      learningGoals: userData.preferences.learningGoals,
+      targetLanguage: targetLanguage || userProfile.targetLanguage,
+      userNativeLanguage: userProfile.nativeLanguage,
+      proficiencyLevel: proficiencyLevel || userProfile.proficiencyLevel,
+      conversationHistory: [], // Will be enhanced with actual history later
+      learningGoals: ['General conversation practice'],
       currentTopic: 'General conversation'
     }
 
@@ -72,14 +89,13 @@ export async function POST(request: NextRequest) {
     // Generate AI response
     const aiResponse = await langChainService.generateResponse(message, context)
 
-    // Save user message to conversation history
-    await userService.addMessage(userId, 'user', message)
+    // Update user progress
+    const wordCount = message.split(' ').length
+    userProfile.totalWords += wordCount
+    userProfile.totalConversations += 1
 
-    // Save AI response to conversation history
-    await userService.addMessage(userId, 'assistant', aiResponse.response, aiResponse.metadata)
-
-    // Get updated user analytics
-    const analytics = await userService.getUserAnalytics(userId)
+    // Update favorite persona if this is their most used one
+    userProfile.favoritePersona = personaId as PersonaId
 
     return NextResponse.json({
       success: true,
@@ -87,23 +103,16 @@ export async function POST(request: NextRequest) {
         message: aiResponse.response,
         metadata: aiResponse.metadata,
         persona: personaId,
-        conversation: {
-          id: activeConversation.id,
-          messageCount: activeConversation.messages.length + 2 // +2 for the new messages
+        userProgress: {
+          totalConversations: userProfile.totalConversations,
+          totalWords: userProfile.totalWords,
+          streakDays: userProfile.streakDays
         },
-        user: {
-          id: userId,
+        userInfo: {
+          userId,
           name: userName,
           email: userEmail,
-          isAuthenticated: !!session,
-          preferences: userData.preferences
-        },
-        userProgress: {
-          totalConversations: analytics.analytics.totalConversations,
-          totalWords: userData.progress.totalWords,
-          streakDays: userData.progress.streakDays,
-          totalMessages: analytics.analytics.totalMessages,
-          favoritePersona: analytics.analytics.favoritePersona
+          isAuthenticated: !!session
         }
       }
     })
@@ -117,26 +126,48 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET endpoint for conversation history and user analytics
+// GET endpoint for user analytics and conversation history
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
     const requestedUserId = searchParams.get('userId')
-    
+
     // Get user session
     const session = await getServerSession(authOptions)
-    const userId = session?.user?.id || requestedUserId || 'guest'
-    
-    const userService = new SimpleUserService()
-    const analytics = await userService.getUserAnalytics(userId)
-    
+    const userId = requestedUserId || session?.user?.id || 'guest'
+
+    // Get user analytics
+    const userProfile = userPreferences[userId] || {
+      targetLanguage: 'Spanish',
+      nativeLanguage: 'English',
+      proficiencyLevel: 'intermediate',
+      totalConversations: 0,
+      totalWords: 0,
+      streakDays: 0,
+      favoritePersona: 'maya' as PersonaId,
+      conversationHistory: []
+    }
+
     return NextResponse.json({
       success: true,
       data: {
-        user: analytics.user,
-        analytics: analytics.analytics,
-        conversations: analytics.user?.conversationHistory.slice(0, 10) || [], // Last 10 conversations
-        isAuthenticated: !!session
+        userProgress: {
+          totalConversations: userProfile.totalConversations,
+          totalWords: userProfile.totalWords,
+          streakDays: userProfile.streakDays,
+          favoritePersona: userProfile.favoritePersona
+        },
+        preferences: {
+          targetLanguage: userProfile.targetLanguage,
+          nativeLanguage: userProfile.nativeLanguage,
+          proficiencyLevel: userProfile.proficiencyLevel
+        },
+        conversationHistory: userProfile.conversationHistory,
+        weeklyStats: {
+          conversationsThisWeek: userProfile.conversationHistory.length,
+          minutesThisWeek: userProfile.conversationHistory.reduce((sum, conv) => sum + conv.duration, 0),
+          wordsThisWeek: userProfile.totalWords
+        }
       }
     })
   } catch (error) {

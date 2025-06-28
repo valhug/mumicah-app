@@ -4,6 +4,8 @@ import DashboardStats from '@/components/features/DashboardStats'
 import RecentActivity from '@/components/features/RecentActivity'
 import QuickActions from '@/components/features/QuickActions'
 import DashboardWidgets from '@/components/features/DashboardWidgets'
+import EnhancedAnalytics from '@/components/features/EnhancedAnalytics'
+import ConversationHistory from '@/components/features/ConversationHistory'
 import SharedPackageTest from '@/components/features/SharedPackageTest'
 import { WelcomeSection } from '@mumicah/ui'
 
@@ -41,6 +43,12 @@ export default async function DashboardPage() {
         subtitle="Continue your language learning journey"
         status="active"
       />
+
+      {/* Enhanced Analytics Dashboard */}
+      <EnhancedAnalytics userId={currentUser.id} />
+
+      {/* Conversation History */}
+      <ConversationHistory userId={currentUser.id} />
 
       {/* Quick Actions */}
       <QuickActions />
