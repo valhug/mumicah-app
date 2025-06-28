@@ -1,5 +1,5 @@
 // types/conversation.ts
-export type PersonaId = 'maya' | 'alex' | 'luna';
+export type PersonaId = 'maya' | 'alex' | 'luna' | 'diego' | 'marie' | 'raj';
 
 export interface ConversationContext {
   conversationId?: string;

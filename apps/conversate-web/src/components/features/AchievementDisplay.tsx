@@ -14,9 +14,11 @@ import {
   CheckCircle,
   Award,
   Zap,
-  Crown
+  Crown,
+  ExternalLink
 } from 'lucide-react'
 import { achievementService, type Achievement, type UserStats } from '@/services/achievement-service'
+import Link from 'next/link'
 
 interface AchievementDisplayProps {
   userStats: UserStats
@@ -234,9 +236,19 @@ export function AchievementDisplay({
               <Trophy className="w-5 h-5 text-primary" />
               Achievements
             </CardTitle>
-            <div className="flex items-center gap-1 text-sm text-muted-foreground">
-              <Zap className="w-4 h-4" />
-              {achievementService.getTotalPoints()} pts
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                <Zap className="w-4 h-4" />
+                {achievementService.getTotalPoints()} pts
+              </div>
+              {showOnlyRecent && (
+                <Link href="/achievements">
+                  <Button variant="outline" size="sm" className="gap-1">
+                    <ExternalLink className="w-3 h-3" />
+                    View All
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         </CardHeader>

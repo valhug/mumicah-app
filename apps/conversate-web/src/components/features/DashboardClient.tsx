@@ -8,12 +8,34 @@ import DashboardWidgets from '@/components/features/DashboardWidgets'
 import EnhancedAnalytics from '@/components/features/EnhancedAnalytics'
 import ConversationHistory from '@/components/features/ConversationHistory'
 import SharedPackageTest from '@/components/features/SharedPackageTest'
+import { AchievementDisplay } from '@/components/features/AchievementDisplay'
 import { WelcomeSection } from '@mumicah/ui'
 
 interface DashboardClientProps {
-  currentUser: any
-  userStats: any
-  recentActivity: any[]
+  currentUser: {
+    id: string
+    email: string
+    [key: string]: unknown
+  }
+  userStats: {
+    conversations?: number
+    vocabulary?: number
+    streak?: number
+    longestStreak?: number
+    pronunciation?: number
+    grammar?: number
+    cultural?: number
+    points?: number
+    level?: number
+    [key: string]: unknown
+  } | null
+  recentActivity: Array<{
+    id: string
+    type: string
+    description: string
+    timestamp: Date
+    [key: string]: unknown
+  }>
   displayName: string
 }
 
@@ -23,6 +45,19 @@ export default function DashboardClient({
   recentActivity, 
   displayName 
 }: DashboardClientProps) {
+  // Sample user stats for achievement system (in real app, this would come from userStats)
+  const sampleUserStats = {
+    totalConversations: userStats?.conversations || 5,
+    vocabularyLearned: userStats?.vocabulary || 25,
+    currentStreak: userStats?.streak || 3,
+    longestStreak: userStats?.longestStreak || 7,
+    perfectPronunciations: userStats?.pronunciation || 8,
+    grammarAccuracy: userStats?.grammar || 85,
+    culturalTopicsExplored: userStats?.cultural || 4,
+    totalPoints: userStats?.points || 350,
+    level: userStats?.level || 2
+  }
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -78,7 +113,7 @@ export default function DashboardClient({
 
       {/* Legacy Components (can be removed once widgets are fully tested) */}
       <motion.div 
-        className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-6"
         variants={itemVariants}
       >
         {/* Stats Overview */}
@@ -86,6 +121,14 @@ export default function DashboardClient({
         
         {/* Recent Activity */}
         <RecentActivity activities={recentActivity} />
+
+        {/* Achievement Display */}
+        <AchievementDisplay 
+          userStats={sampleUserStats}
+          showOnlyRecent={true}
+          maxDisplayed={4}
+          className="lg:col-span-1"
+        />
       </motion.div>
 
       {/* Shared Package Test (Development Only) */}

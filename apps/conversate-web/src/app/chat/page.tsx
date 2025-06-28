@@ -9,8 +9,10 @@ import { ChatHeader } from '@/components/chat/ChatHeader'
 import { PersonaSelector } from '@/components/chat/PersonaSelector'
 import { TypingIndicator } from '@/components/chat/TypingIndicator'
 import { LearningDashboard } from '@/components/chat/LearningDashboard'
+import { ConversationStarters } from '@/components/features/ConversationStarters'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { useClaudeConversation } from '@/hooks/use-claude-conversation'
+import { PersonaId } from '@/types/conversation'
 
 interface Message {
   id: string
@@ -402,9 +404,23 @@ export default function ChatPage() {
                 <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 px-4">
                   Welcome to your conversation with {selectedPersona.name}!
                 </h3>
-                <p className="text-muted-foreground max-w-md mx-auto text-base sm:text-lg leading-relaxed px-4">
+                <p className="text-muted-foreground max-w-md mx-auto text-base sm:text-lg leading-relaxed px-4 mb-6">
                   {getWelcomeMessage(selectedPersona)}
                 </p>
+                
+                {/* Conversation Starters */}
+                <div className="max-w-2xl mx-auto px-4">
+                  <ConversationStarters
+                    persona={selectedPersona.id as PersonaId}
+                    userLevel="intermediate"
+                    onStarterSelect={(starter) => {
+                      handleSendMessage(starter.text)
+                    }}
+                    recentTopics={[]}
+                    userInterests={['culture', 'travel', 'food']}
+                  />
+                </div>
+                
                 <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4 text-sm text-muted-foreground px-4">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
