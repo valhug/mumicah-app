@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { EnhancedPersonaConversationService as LangChainEnhancedService } from '@/services/langchain-enhanced-service'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
+import LangChainService from '@/services/langchain-simple.service'
+import { SimpleUserService } from '@/services/simple-user.service'
 import { PersonaId } from '@/config/langchain'
 
 export async function POST(request: NextRequest) {
@@ -12,80 +15,132 @@ export async function POST(request: NextRequest) {
       nodeEnv: process.env.NODE_ENV
     })
 
-    const { message, userId, personaId, targetLanguage, proficiencyLevel } = await request.json()
+    const { message, personaId, targetLanguage, proficiencyLevel } = await request.json()
 
-    if (!message || !userId || !personaId) {
+    if (!message || !personaId) {
       return NextResponse.json(
-        { error: 'Missing required fields: message, userId, or personaId' },
+        { error: 'Missing required fields: message or personaId' },
         { status: 400 }
       )
     }
 
-    const service = new LangChainEnhancedService()
-    
-    // Create or resume session
-    const context = await service.createOrResumeSession(
-      userId,
-      personaId as PersonaId,
-      targetLanguage || 'Spanish',
-      proficiencyLevel || 'intermediate'
-    )
+    // Get user session (supports both authenticated and guest users)
+    const session = await getServerSession(authOptions)
+    const userId = session?.user?.id || 'guest'
+    const userEmail = session?.user?.email || 'guest@example.com'
+    const userName = session?.user?.name || 'Guest User'
 
-    // Send message and get response
-    const response = await service.sendMessage(context.sessionId, message)
+    // Initialize services
+    const langChainService = new LangChainService()
+    const userService = new SimpleUserService()
+
+    // Get or create user profile
+    const userData = await userService.getOrCreateUser(userId, userEmail, userName)
+
+    // Get or start conversation
+    let activeConversation = await userService.getActiveConversation(userId)
+    if (!activeConversation) {
+      activeConversation = await userService.startConversation(userId, personaId as PersonaId)
+    }
+
+    // Create conversation context using user preferences and conversation history
+    const context = {
+      userId,
+      personaId: personaId as PersonaId,
+      targetLanguage: targetLanguage || userData.preferences.targetLanguage,
+      userNativeLanguage: userData.preferences.nativeLanguage,
+      proficiencyLevel: proficiencyLevel || userData.preferences.proficiencyLevel,
+      conversationHistory: activeConversation.messages.map(msg => ({
+        id: msg.id,
+        role: msg.role,
+        content: msg.content,
+        timestamp: new Date(msg.timestamp),
+        metadata: msg.metadata
+      })),
+      learningGoals: userData.preferences.learningGoals,
+      currentTopic: 'General conversation'
+    }
+
+    console.log('LangChain Service initialization:', {
+      hasLangChainKey: !!process.env.LANGCHAIN_API_KEY,
+      keyPrefix: process.env.LANGCHAIN_API_KEY ? `${process.env.LANGCHAIN_API_KEY.substring(0, 10)}...` : 'NOT_SET'
+    })
+
+    console.log('Generating response for persona:', context.personaId)
+    console.log('Using persona config for:', context.personaId)
+
+    // Generate AI response
+    const aiResponse = await langChainService.generateResponse(message, context)
+
+    // Save user message to conversation history
+    await userService.addMessage(userId, 'user', message)
+
+    // Save AI response to conversation history
+    await userService.addMessage(userId, 'assistant', aiResponse.response, aiResponse.metadata)
+
+    // Get updated user analytics
+    const analytics = await userService.getUserAnalytics(userId)
 
     return NextResponse.json({
       success: true,
       data: {
-        message: response.message,
-        metadata: response.metadata,
-        sessionId: context.sessionId,
-        learningProgress: context.learningProgress
+        message: aiResponse.response,
+        metadata: aiResponse.metadata,
+        persona: personaId,
+        conversation: {
+          id: activeConversation.id,
+          messageCount: activeConversation.messages.length + 2 // +2 for the new messages
+        },
+        user: {
+          id: userId,
+          name: userName,
+          email: userEmail,
+          isAuthenticated: !!session,
+          preferences: userData.preferences
+        },
+        userProgress: {
+          totalConversations: analytics.analytics.totalConversations,
+          totalWords: userData.progress.totalWords,
+          streakDays: userData.progress.streakDays,
+          totalMessages: analytics.analytics.totalMessages,
+          favoritePersona: analytics.analytics.favoritePersona
+        }
       }
     })
 
   } catch (error) {
     console.error('Chat API error:', error)
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     )
   }
 }
 
+// GET endpoint for conversation history and user analytics
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
-    const userId = searchParams.get('userId')
-    const sessionId = searchParams.get('sessionId')
-
-    if (!userId) {
-      return NextResponse.json(
-        { error: 'Missing userId parameter' },
-        { status: 400 }
-      )
-    }
-
-    const service = new LangChainEnhancedService()
+    const requestedUserId = searchParams.get('userId')
     
-    if (sessionId) {
-      // Get specific session
-      const context = await service.getSession(sessionId)
-      return NextResponse.json({
-        success: true,
-        data: { session: context }
-      })
-    } else {
-      // Get user's sessions summary
-      const sessions = await service.getUserSessions(userId)
-      return NextResponse.json({
-        success: true,
-        data: { sessions }
-      })
-    }
-
+    // Get user session
+    const session = await getServerSession(authOptions)
+    const userId = session?.user?.id || requestedUserId || 'guest'
+    
+    const userService = new SimpleUserService()
+    const analytics = await userService.getUserAnalytics(userId)
+    
+    return NextResponse.json({
+      success: true,
+      data: {
+        user: analytics.user,
+        analytics: analytics.analytics,
+        conversations: analytics.user?.conversationHistory.slice(0, 10) || [], // Last 10 conversations
+        isAuthenticated: !!session
+      }
+    })
   } catch (error) {
-    console.error('Chat API GET error:', error)
+    console.error('Chat GET API error:', error)
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

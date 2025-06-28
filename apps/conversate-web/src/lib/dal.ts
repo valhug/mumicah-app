@@ -1,42 +1,37 @@
 // lib/dal.ts (Data Access Layer)
 import 'server-only'
-import { createClient } from '@/lib/supabase/server'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
 import { cache } from 'react'
 import { redirect } from 'next/navigation'
 
 export const verifySession = cache(async () => {
-  const supabase = await createClient()
+  const session = await getServerSession(authOptions)
   
-  const { data: { user }, error } = await supabase.auth.getUser()
-  
-  if (error || !user) {
+  if (!session?.user) {
     redirect('/login')
   }
   
-  return { isAuth: true, userId: user.id, user }
+  return { isAuth: true, userId: session.user.id, user: session.user }
 })
 
 export const getCurrentUser = cache(async () => {
-  const supabase = await createClient()
+  const session = await getServerSession(authOptions)
   
-  const { data: { user } } = await supabase.auth.getUser()
+  if (!session?.user) return null
   
-  if (!user) return null
-  
-  // Get additional profile data
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single()
-  
-  return { ...user, profile }
+  // Return the NextAuth user object
+  return {
+    id: session.user.id,
+    email: session.user.email,
+    name: session.user.name,
+    image: session.user.image,
+    // Add any additional profile data if needed
+    created_at: new Date().toISOString(), // Placeholder
+    updated_at: new Date().toISOString()  // Placeholder
+  }
 })
 
 export const getSession = cache(async () => {
-  const supabase = await createClient()
-  
-  const { data: { session } } = await supabase.auth.getSession()
-  
-  return session
+  return await getServerSession(authOptions)
 })

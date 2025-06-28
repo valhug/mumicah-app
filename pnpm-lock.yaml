@@ -73,6 +73,9 @@ importers:
       '@anthropic-ai/sdk':
         specifier: ^0.55.0
         version: 0.55.0
+      '@auth/mongodb-adapter':
+        specifier: ^3.10.0
+        version: 3.10.0(mongodb@6.17.0)
       '@auth/supabase-adapter':
         specifier: ^1.10.0
         version: 1.10.0(@supabase/supabase-js@2.50.1(ws@8.18.2))
@@ -124,6 +127,9 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.16(tailwindcss@3.4.17)
+      '@types/uuid':
+        specifier: ^10.0.0
+        version: 10.0.0
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -184,6 +190,9 @@ importers:
       type-fest:
         specifier: ^4.41.0
         version: 4.41.0
+      uuid:
+        specifier: ^11.1.0
+        version: 11.1.0
       zod:
         specifier: ^3.25.67
         version: 3.25.67
@@ -424,6 +433,11 @@ packages:
         optional: true
       nodemailer:
         optional: true
+
+  '@auth/mongodb-adapter@3.10.0':
+    resolution: {integrity: sha512-xDBeDDaCwY8yABrF0Nsb31I3MkuZJ57DCby2ikcOu9ydvCG7gKs2aNZf90J8rUj1sXXiIxIAY1WP0+KM8jJB7Q==}
+    peerDependencies:
+      mongodb: ^6
 
   '@auth/supabase-adapter@1.10.0':
     resolution: {integrity: sha512-Gix/dTRBjuj3/zqbMKVhu8z8j93QI3baZS0Fs5VIqpBoeSIxIAyXKJnZBy24B7Uazecp1VUIolbyt5yrR18gFw==}
@@ -7101,6 +7115,10 @@ packages:
     resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
     hasBin: true
 
+  uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
+    hasBin: true
+
   uuid@7.0.3:
     resolution: {integrity: sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==}
     hasBin: true
@@ -7396,6 +7414,15 @@ snapshots:
       oauth4webapi: 3.5.3
       preact: 10.24.3
       preact-render-to-string: 6.5.11(preact@10.24.3)
+
+  '@auth/mongodb-adapter@3.10.0(mongodb@6.17.0)':
+    dependencies:
+      '@auth/core': 0.40.0
+      mongodb: 6.17.0
+    transitivePeerDependencies:
+      - '@simplewebauthn/browser'
+      - '@simplewebauthn/server'
+      - nodemailer
 
   '@auth/supabase-adapter@1.10.0(@supabase/supabase-js@2.50.1(ws@8.18.2))':
     dependencies:
@@ -14972,6 +14999,8 @@ snapshots:
   utils-merge@1.0.1: {}
 
   uuid@10.0.0: {}
+
+  uuid@11.1.0: {}
 
   uuid@7.0.3: {}
 

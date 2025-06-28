@@ -3,8 +3,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { createClient } from '@/lib/supabase/client'
-import { useRouter } from 'next/navigation'
 import {
   HomeIcon,
   UserGroupIcon,
@@ -47,12 +45,10 @@ function classNames(...classes: string[]) {
 export default function DashboardNavigation({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const pathname = usePathname()
-  const router = useRouter()
 
   const handleSignOut = async () => {
-    const supabase = createClient()
-    await supabase.auth.signOut()
-    router.push('/login')
+    const { signOut } = await import('next-auth/react')
+    await signOut({ callbackUrl: '/login', redirect: true })
   }
 
   return (

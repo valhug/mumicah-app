@@ -1,9 +1,26 @@
-import { updateSession } from '@/lib/supabase/middleware'
-import { type NextRequest } from 'next/server'
+import { withAuth } from "next-auth/middleware"
 
-export async function middleware(request: NextRequest) {
-  return await updateSession(request)
-}
+export default withAuth(
+  {
+    callbacks: {
+      authorized: ({ token, req }) => {
+        // Allow access to public routes
+        if (req.nextUrl.pathname.startsWith('/login') || 
+            req.nextUrl.pathname.startsWith('/signup') || 
+            req.nextUrl.pathname.startsWith('/auth') ||
+            req.nextUrl.pathname === '/') {
+          return true
+        }
+        
+        // For protected routes, require authentication
+        return !!token
+      },
+    },
+    pages: {
+      signIn: '/login',
+    }
+  }
+)
 
 export const config = {
   matcher: [

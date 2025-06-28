@@ -29,7 +29,8 @@ export default function AppHeader() {
   }, [supabase.auth])
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut()
+    const { signOut } = await import('next-auth/react')
+    await signOut({ callbackUrl: '/login', redirect: true })
   }
 
   return (
