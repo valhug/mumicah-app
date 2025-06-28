@@ -10,7 +10,9 @@ import { Badge } from '@/components/ui/badge'
 interface UserProgress {
   totalConversations: number
   totalWords: number
-  streakDays: number
+  totalMinutes: number
+  currentStreak: number
+  longestStreak: number
   favoritePersona?: string
 }
 
@@ -18,24 +20,50 @@ interface WeeklyStats {
   conversationsThisWeek: number
   minutesThisWeek: number
   wordsThisWeek: number
+  progress: Array<{
+    day: string
+    conversations: number
+    date: string
+  }>
 }
 
-interface LearningGoal {
-  id: string
-  title: string
-  target: number
-  current: number
-  type: 'conversations' | 'words' | 'minutes' | 'streak'
-  deadline: string
+interface Goals {
+  weeklyGoal: number
+  monthlyGoal: number
+  weeklyProgress: number
+  monthlyProgress: number
 }
 
-interface Achievement {
+interface Achievements {
+  unlocked: string[]
+  total: number
+  next: {
+    type: string
+    name: string
+    description: string
+    target: number
+    current: number
+    progress: number
+  } | null
+}
+
+interface RecentConversation {
   id: string
+  personaId: string
   title: string
-  description: string
-  icon: string
-  earnedAt: string
-  rarity: 'common' | 'rare' | 'legendary'
+  duration: number
+  wordsSpoken: number
+  quality?: string
+  date: string
+  topics?: string[]
+}
+
+interface AnalyticsData {
+  overview: UserProgress
+  weekly: WeeklyStats
+  goals: Goals
+  achievements: Achievements
+  recentConversations: RecentConversation[]
 }
 
 interface EnhancedAnalyticsProps {
@@ -43,24 +71,18 @@ interface EnhancedAnalyticsProps {
 }
 
 export default function EnhancedAnalytics({ userId }: EnhancedAnalyticsProps) {
-  const [userProgress, setUserProgress] = useState<UserProgress | null>(null)
-  const [weeklyStats, setWeeklyStats] = useState<WeeklyStats | null>(null)
-  const [goals, setGoals] = useState<LearningGoal[]>([])
-  const [achievements, setAchievements] = useState<Achievement[]>([])
+  const [analyticsData, setAnalyticsData] = useState<AnalyticsData | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {
-        // Fetch user analytics from our dedicated analytics API
-        const response = await fetch(`/api/analytics?userId=${userId}`)
+        // Fetch user analytics from our database-backed analytics API
+        const response = await fetch('/api/dashboard/analytics')
         const data = await response.json()
         
         if (data.success) {
-          setUserProgress(data.data.userProgress)
-          setWeeklyStats(data.data.weeklyStats)
-          setGoals(data.data.goals)
-          setAchievements(data.data.achievements)
+          setAnalyticsData(data.data)
         }
       } catch (error) {
         console.error('Error fetching analytics:', error)
@@ -90,13 +112,12 @@ export default function EnhancedAnalytics({ userId }: EnhancedAnalyticsProps) {
     )
   }
 
-  const getRarityColor = (rarity: Achievement['rarity']) => {
-    switch (rarity) {
-      case 'common': return 'bg-gray-100 text-gray-800'
-      case 'rare': return 'bg-blue-100 text-blue-800'
-      case 'legendary': return 'bg-purple-100 text-purple-800'
-      default: return 'bg-gray-100 text-gray-800'
-    }
+  if (!analyticsData) {
+    return (
+      <div className="text-center py-8">
+        <p className="text-muted-foreground">Unable to load analytics data</p>
+      </div>
+    )
   }
 
   return (
@@ -109,9 +130,9 @@ export default function EnhancedAnalytics({ userId }: EnhancedAnalyticsProps) {
             <MessageCircle className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{userProgress?.totalConversations || 0}</div>
+            <div className="text-2xl font-bold">{analyticsData.overview.totalConversations}</div>
             <p className="text-xs text-muted-foreground">
-              +{weeklyStats?.conversationsThisWeek || 0} this week
+              +{analyticsData.weekly.conversationsThisWeek} this week
             </p>
           </CardContent>
         </Card>
@@ -122,9 +143,9 @@ export default function EnhancedAnalytics({ userId }: EnhancedAnalyticsProps) {
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{userProgress?.totalWords || 0}</div>
+            <div className="text-2xl font-bold">{analyticsData.overview.totalWords}</div>
             <p className="text-xs text-muted-foreground">
-              +{weeklyStats?.wordsThisWeek || 0} this week
+              +{analyticsData.weekly.wordsThisWeek} this week
             </p>
           </CardContent>
         </Card>
@@ -135,9 +156,9 @@ export default function EnhancedAnalytics({ userId }: EnhancedAnalyticsProps) {
             <Clock className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{userProgress?.streakDays || 0}</div>
+            <div className="text-2xl font-bold">{analyticsData.overview.currentStreak}</div>
             <p className="text-xs text-muted-foreground">
-              {userProgress?.streakDays === 0 ? 'Start your streak today!' : 'Keep it up!'}
+              {analyticsData.overview.currentStreak === 0 ? 'Start your streak today!' : 'Keep it up!'}
             </p>
           </CardContent>
         </Card>
@@ -148,7 +169,7 @@ export default function EnhancedAnalytics({ userId }: EnhancedAnalyticsProps) {
             <Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{weeklyStats?.minutesThisWeek || 0}m</div>
+            <div className="text-2xl font-bold">{analyticsData.weekly.minutesThisWeek}m</div>
             <p className="text-xs text-muted-foreground">This week</p>
           </CardContent>
         </Card>
@@ -164,27 +185,53 @@ export default function EnhancedAnalytics({ userId }: EnhancedAnalyticsProps) {
           <CardDescription>Track your progress towards your learning objectives</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          {goals.map((goal) => (
-            <div key={goal.id} className="space-y-2">
+          <div className="space-y-2">
+            <div className="flex justify-between items-center">
+              <div>
+                <h4 className="font-medium">Weekly Conversations</h4>
+                <p className="text-sm text-muted-foreground">This week</p>
+              </div>
+              <Badge variant="outline">
+                {analyticsData.goals.weeklyProgress}/{analyticsData.goals.weeklyGoal}
+              </Badge>
+            </div>
+            <Progress 
+              value={(analyticsData.goals.weeklyProgress / analyticsData.goals.weeklyGoal) * 100} 
+              className="h-2"
+            />
+          </div>
+          <div className="space-y-2">
+            <div className="flex justify-between items-center">
+              <div>
+                <h4 className="font-medium">Monthly Conversations</h4>
+                <p className="text-sm text-muted-foreground">This month</p>
+              </div>
+              <Badge variant="outline">
+                {analyticsData.goals.monthlyProgress}/{analyticsData.goals.monthlyGoal}
+              </Badge>
+            </div>
+            <Progress 
+              value={(analyticsData.goals.monthlyProgress / analyticsData.goals.monthlyGoal) * 100} 
+              className="h-2"
+            />
+          </div>
+          {analyticsData.achievements.next && (
+            <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <div>
-                  <h4 className="font-medium">{goal.title}</h4>
-                  <p className="text-sm text-muted-foreground">{goal.deadline}</p>
+                  <h4 className="font-medium">Next Achievement</h4>
+                  <p className="text-sm text-muted-foreground">{analyticsData.achievements.next.description}</p>
                 </div>
                 <Badge variant="outline">
-                  {goal.current}/{goal.target}
+                  {analyticsData.achievements.next.current}/{analyticsData.achievements.next.target}
                 </Badge>
               </div>
               <Progress 
-                value={(goal.current / goal.target) * 100} 
+                value={analyticsData.achievements.next.progress} 
                 className="h-2"
               />
             </div>
-          ))}
-          <Button variant="outline" className="w-full mt-4">
-            <Target className="h-4 w-4 mr-2" />
-            Set New Goal
-          </Button>
+          )}
         </CardContent>
       </Card>
 
@@ -193,24 +240,24 @@ export default function EnhancedAnalytics({ userId }: EnhancedAnalyticsProps) {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Award className="h-5 w-5" />
-            Achievements
+            Achievements ({analyticsData.achievements.total} earned)
           </CardTitle>
           <CardDescription>Celebrate your learning milestones</CardDescription>
         </CardHeader>
         <CardContent>
-          {achievements.length > 0 ? (
+          {analyticsData.achievements.unlocked.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {achievements.map((achievement) => (
-                <div key={achievement.id} className="flex items-center gap-3 p-3 rounded-lg border">
-                  <div className="text-2xl">{achievement.icon}</div>
+              {analyticsData.achievements.unlocked.map((achievement) => (
+                <div key={achievement} className="flex items-center gap-3 p-3 rounded-lg border">
+                  <div className="text-2xl">🏆</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <h4 className="font-medium">{achievement.title}</h4>
-                      <Badge className={getRarityColor(achievement.rarity)}>
-                        {achievement.rarity}
-                      </Badge>
+                      <h4 className="font-medium capitalize">{achievement.replace('_', ' ')}</h4>
+                      <Badge variant="secondary">Earned</Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground">{achievement.description}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {getAchievementDescription(achievement)}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -228,6 +275,58 @@ export default function EnhancedAnalytics({ userId }: EnhancedAnalyticsProps) {
           )}
         </CardContent>
       </Card>
+
+      {/* Recent Conversations */}
+      {analyticsData.recentConversations.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <MessageCircle className="h-5 w-5" />
+              Recent Conversations
+            </CardTitle>
+            <CardDescription>Your latest practice sessions</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {analyticsData.recentConversations.map((conversation) => (
+                <div key={conversation.id} className="flex items-center justify-between p-3 rounded-lg border">
+                  <div className="flex-1">
+                    <h4 className="font-medium">{conversation.title}</h4>
+                    <p className="text-sm text-muted-foreground">
+                      {conversation.personaId} • {conversation.duration}min • {conversation.wordsSpoken} words
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-xs text-muted-foreground">
+                      {new Date(conversation.date).toLocaleDateString()}
+                    </p>
+                    {conversation.quality && (
+                      <Badge variant="outline" className="mt-1">
+                        {conversation.quality}
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
     </div>
   )
+}
+
+// Helper function to get achievement descriptions
+function getAchievementDescription(achievement: string): string {
+  const descriptions: Record<string, string> = {
+    first_conversation: 'Started your first conversation',
+    conversationalist: 'Completed 10 conversations',
+    chatterbox: 'Completed 50 conversations',
+    wordsmith: 'Spoke 500 words',
+    eloquent: 'Spoke 2000 words',
+    consistent: 'Maintained a 3-day streak',
+    dedicated: 'Maintained a 7-day streak',
+    champion: 'Maintained a 30-day streak'
+  }
+  return descriptions[achievement] || 'Achievement unlocked!'
 }

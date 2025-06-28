@@ -17,7 +17,7 @@ export class DatabaseUserService {
 
   async getUserProfile(userId: string): Promise<IUserProfile | null> {
     try {
-      return await UserProfile.findOne({ userId })
+      return await UserProfile.findOne({ userId }).lean() as IUserProfile | null
     } catch (error) {
       console.error('Error fetching user profile:', error)
       return null
@@ -30,7 +30,7 @@ export class DatabaseUserService {
         { userId },
         { ...updates, updatedAt: new Date() },
         { new: true, upsert: true }
-      )
+      ).lean() as IUserProfile | null
     } catch (error) {
       console.error('Error updating user profile:', error)
       throw new Error('Failed to update user profile')
@@ -40,7 +40,7 @@ export class DatabaseUserService {
   // User Progress Operations
   async getUserProgress(userId: string): Promise<IUserProgress | null> {
     try {
-      return await UserProgress.findOne({ userId })
+      return await UserProgress.findOne({ userId }).lean() as IUserProgress | null
     } catch (error) {
       console.error('Error fetching user progress:', error)
       return null
@@ -57,7 +57,7 @@ export class DatabaseUserService {
           updatedAt: new Date() 
         },
         { new: true, upsert: true }
-      )
+      ).lean() as IUserProgress
 
       if (!updated) {
         throw new Error('Failed to update user progress')
@@ -92,7 +92,7 @@ export class DatabaseUserService {
         { userId },
         updateData,
         { upsert: true }
-      )
+      ).lean()
     } catch (error) {
       console.error('Error incrementing user stats:', error)
       throw new Error('Failed to update user statistics')
@@ -131,6 +131,7 @@ export class DatabaseUserService {
         .sort({ createdAt: -1 })
         .skip(offset)
         .limit(limit)
+        .lean() as IConversationHistory[]
     } catch (error) {
       console.error('Error fetching user conversations:', error)
       return []
@@ -142,7 +143,7 @@ export class DatabaseUserService {
       return await ConversationHistory.findOne({ 
         id: conversationId, 
         userId 
-      })
+      }).lean() as IConversationHistory | null
     } catch (error) {
       console.error('Error fetching conversation:', error)
       return null

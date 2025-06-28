@@ -58,6 +58,7 @@ export class UserConversationService {
 
       return await ConversationSession.findOne(query)
         .sort({ updatedAt: -1 })
+        .lean() as IConversationSession | null
     } catch (error) {
       console.error('Error fetching active session:', error)
       return null
@@ -70,29 +71,37 @@ export class UserConversationService {
     wordCount: number
   }): Promise<void> {
     try {
-      const session = await ConversationSession.findOne({ sessionId })
+      const session = await ConversationSession.findOne({ sessionId }).lean() as IConversationSession | null
       if (!session) return
 
-      // Add message to recent messages (keep last 10)
-      session.recentMessages.push({
+      // Calculate new message for recent messages
+      const newMessage = {
         role: message.role,
         content: message.content,
         timestamp: new Date()
-      })
-
-      if (session.recentMessages.length > 10) {
-        session.recentMessages = session.recentMessages.slice(-10)
       }
 
-      // Update metrics
-      session.sessionMetrics.messagesCount += 1
-      session.sessionMetrics.wordsSpoken += message.wordCount
-      session.sessionMetrics.lastActivity = new Date()
-      session.sessionMetrics.duration = Math.floor(
+      // Keep only last 10 messages
+      const updatedMessages = [...session.recentMessages, newMessage].slice(-10)
+
+      // Calculate duration
+      const duration = Math.floor(
         (Date.now() - session.sessionMetrics.startTime.getTime()) / 1000
       )
 
-      await session.save()
+      // Update session with new data
+      await ConversationSession.findOneAndUpdate(
+        { sessionId },
+        {
+          $set: {
+            recentMessages: updatedMessages,
+            'sessionMetrics.messagesCount': session.sessionMetrics.messagesCount + 1,
+            'sessionMetrics.wordsSpoken': session.sessionMetrics.wordsSpoken + message.wordCount,
+            'sessionMetrics.lastActivity': new Date(),
+            'sessionMetrics.duration': duration
+          }
+        }
+      ).lean()
     } catch (error) {
       console.error('Error updating session activity:', error)
     }
@@ -100,7 +109,7 @@ export class UserConversationService {
 
   async endSession(sessionId: string): Promise<IConversationHistory | null> {
     try {
-      const session = await ConversationSession.findOne({ sessionId })
+      const session = await ConversationSession.findOne({ sessionId }).lean() as IConversationSession | null
       if (!session) return null
 
       // Create conversation history from session
@@ -146,8 +155,10 @@ export class UserConversationService {
       })
 
       // Mark session as ended
-      session.status = 'ended'
-      await session.save()
+      await ConversationSession.findOneAndUpdate(
+        { sessionId },
+        { status: 'ended' }
+      )
 
       return savedConversation
     } catch (error) {

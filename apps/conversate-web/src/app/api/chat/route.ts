@@ -2,25 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import LangChainService from '@/services/langchain-simple.service'
+import { DatabaseUserService } from '@/services/database-user.service'
+import { UserConversationService } from '@/services/user-conversation.service'
 import { PersonaId } from '@/config/langchain'
-
-// Simple in-memory store for user preferences (will be replaced with database later)
-const userPreferences: Record<string, {
-  targetLanguage: string
-  nativeLanguage: string
-  proficiencyLevel: string
-  totalConversations: number
-  totalWords: number
-  streakDays: number
-  favoritePersona?: PersonaId
-  conversationHistory: Array<{
-    id: string
-    timestamp: Date
-    persona: PersonaId
-    messageCount: number
-    duration: number
-  }>
-}> = {}
 
 export async function POST(request: NextRequest) {
   try {
@@ -42,26 +26,68 @@ export async function POST(request: NextRequest) {
     }
 
     // Get user session (supports both authenticated users and guests)
-    const session = await getServerSession(authOptions)
-    const userId = session?.user?.id || 'guest'
-    const userEmail = session?.user?.email || 'guest@example.com'
-    const userName = session?.user?.name || 'Guest User'
+    const userSession = await getServerSession(authOptions)
+    const userId = userSession?.user?.id || 'guest'
+    const userEmail = userSession?.user?.email || 'guest@example.com'
+    const userName = userSession?.user?.name || 'Guest User'
 
-    // Get or create user preferences
-    if (!userPreferences[userId]) {
-      userPreferences[userId] = {
+    // Initialize services
+    const dbService = new DatabaseUserService()
+    const conversationService = new UserConversationService()
+
+    // Get or create user profile and progress
+    let userProfile = await dbService.getUserProfile(userId)
+    let userProgress = await dbService.getUserProgress(userId)
+
+    if (!userProfile) {
+      userProfile = await dbService.updateUserProfile(userId, {
+        userId,
+        name: userName,
+        email: userEmail,
+        provider: 'credentials',
+        preferences: {
+          theme: 'light',
+          language: 'en',
+          notifications: {
+            email: true,
+            push: true,
+            streakReminders: true,
+            achievementAlerts: true
+          },
+          privacy: {
+            profileVisibility: 'public',
+            showProgress: true,
+            showLocation: false
+          }
+        },
+        subscription: {
+          type: 'free',
+          status: 'active'
+        },
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        lastLoginAt: new Date()
+      })
+    }
+
+    if (!userProgress) {
+      userProgress = await dbService.updateUserProgress(userId, {
+        userId,
         targetLanguage: targetLanguage || 'Spanish',
         nativeLanguage: 'English',
         proficiencyLevel: proficiencyLevel || 'intermediate',
         totalConversations: 0,
         totalWords: 0,
+        totalMinutes: 0,
         streakDays: 0,
-        favoritePersona: personaId as PersonaId,
-        conversationHistory: []
-      }
+        lastActiveDate: new Date(),
+        weeklyGoal: 5,
+        monthlyGoal: 20,
+        achievements: [],
+        createdAt: new Date(),
+        updatedAt: new Date()
+      })
     }
-
-    const userProfile = userPreferences[userId]
 
     // Initialize LangChain service
     const langChainService = new LangChainService()
@@ -70,9 +96,9 @@ export async function POST(request: NextRequest) {
     const context = {
       userId,
       personaId: personaId as PersonaId,
-      targetLanguage: targetLanguage || userProfile.targetLanguage,
-      userNativeLanguage: userProfile.nativeLanguage,
-      proficiencyLevel: proficiencyLevel || userProfile.proficiencyLevel,
+      targetLanguage: targetLanguage || userProgress.targetLanguage,
+      userNativeLanguage: userProgress.nativeLanguage,
+      proficiencyLevel: proficiencyLevel || userProgress.proficiencyLevel,
       conversationHistory: [], // Will be enhanced with actual history later
       learningGoals: ['General conversation practice'],
       currentTopic: 'General conversation'
@@ -91,11 +117,46 @@ export async function POST(request: NextRequest) {
 
     // Update user progress
     const wordCount = message.split(' ').length
-    userProfile.totalWords += wordCount
-    userProfile.totalConversations += 1
+    
+    // Start or get existing conversation session
+    let conversationSession = await conversationService.getActiveSession(userId, personaId as PersonaId)
+    if (!conversationSession) {
+      conversationSession = await conversationService.createConversationSession(userId, personaId as PersonaId, {
+        targetLanguage: userProgress.targetLanguage,
+        userNativeLanguage: userProgress.nativeLanguage,
+        proficiencyLevel: userProgress.proficiencyLevel,
+        learningGoals: ['General conversation practice'],
+        currentTopic: 'General conversation'
+      })
+    }
 
-    // Update favorite persona if this is their most used one
-    userProfile.favoritePersona = personaId as PersonaId
+    // Update session with the new message exchange
+    if (conversationSession) {
+      await conversationService.updateSessionActivity(conversationSession.sessionId, {
+        role: 'user',
+        content: message,
+        wordCount: wordCount
+      })
+      
+      await conversationService.updateSessionActivity(conversationSession.sessionId, {
+        role: 'assistant', 
+        content: aiResponse.response,
+        wordCount: aiResponse.response.split(' ').length
+      })
+    }
+    await dbService.incrementUserStats(userId, {
+      conversations: 1,
+      words: wordCount,
+      minutes: 1 // Approximate 1 minute per message
+    })
+
+    // Update favorite persona
+    await dbService.updateUserProgress(userId, {
+      favoritePersona: personaId as PersonaId
+    })
+
+    // Get updated progress for response
+    const updatedProgress = await dbService.getUserProgress(userId)
 
     return NextResponse.json({
       success: true,
@@ -104,15 +165,15 @@ export async function POST(request: NextRequest) {
         metadata: aiResponse.metadata,
         persona: personaId,
         userProgress: {
-          totalConversations: userProfile.totalConversations,
-          totalWords: userProfile.totalWords,
-          streakDays: userProfile.streakDays
+          totalConversations: updatedProgress?.totalConversations || 0,
+          totalWords: updatedProgress?.totalWords || 0,
+          streakDays: updatedProgress?.streakDays || 0
         },
         userInfo: {
           userId,
           name: userName,
           email: userEmail,
-          isAuthenticated: !!session
+          isAuthenticated: !!userSession
         }
       }
     })
@@ -133,41 +194,54 @@ export async function GET(request: NextRequest) {
     const requestedUserId = searchParams.get('userId')
 
     // Get user session
-    const session = await getServerSession(authOptions)
-    const userId = requestedUserId || session?.user?.id || 'guest'
+    const userSession = await getServerSession(authOptions)
+    const userId = requestedUserId || userSession?.user?.id || 'guest'
 
-    // Get user analytics
-    const userProfile = userPreferences[userId] || {
-      targetLanguage: 'Spanish',
-      nativeLanguage: 'English',
-      proficiencyLevel: 'intermediate',
-      totalConversations: 0,
-      totalWords: 0,
-      streakDays: 0,
-      favoritePersona: 'maya' as PersonaId,
-      conversationHistory: []
+    // Initialize services
+    const dbService = new DatabaseUserService()
+    const conversationService = new UserConversationService()
+
+    // Get user data from database
+    const userProgress = await dbService.getUserProgress(userId)
+    const conversationHistory = await conversationService.getUserConversationHistory(userId, { limit: 10 })
+
+    // Calculate weekly stats from conversation history
+    const weekStart = new Date()
+    weekStart.setDate(weekStart.getDate() - weekStart.getDay())
+    weekStart.setHours(0, 0, 0, 0)
+
+    const weeklyConversations = conversationHistory.filter(conv => 
+      new Date(conv.createdAt) >= weekStart
+    )
+
+    const weeklyStats = {
+      conversationsThisWeek: weeklyConversations.length,
+      minutesThisWeek: weeklyConversations.reduce((sum, conv) => sum + (conv.metadata?.duration || 0), 0),
+      wordsThisWeek: weeklyConversations.reduce((sum, conv) => sum + (conv.metadata?.totalWords || 0), 0)
     }
 
     return NextResponse.json({
       success: true,
       data: {
         userProgress: {
-          totalConversations: userProfile.totalConversations,
-          totalWords: userProfile.totalWords,
-          streakDays: userProfile.streakDays,
-          favoritePersona: userProfile.favoritePersona
+          totalConversations: userProgress?.totalConversations || 0,
+          totalWords: userProgress?.totalWords || 0,
+          streakDays: userProgress?.streakDays || 0,
+          favoritePersona: userProgress?.favoritePersona || 'maya'
         },
         preferences: {
-          targetLanguage: userProfile.targetLanguage,
-          nativeLanguage: userProfile.nativeLanguage,
-          proficiencyLevel: userProfile.proficiencyLevel
+          targetLanguage: userProgress?.targetLanguage || 'Spanish',
+          nativeLanguage: userProgress?.nativeLanguage || 'English',
+          proficiencyLevel: userProgress?.proficiencyLevel || 'intermediate'
         },
-        conversationHistory: userProfile.conversationHistory,
-        weeklyStats: {
-          conversationsThisWeek: userProfile.conversationHistory.length,
-          minutesThisWeek: userProfile.conversationHistory.reduce((sum, conv) => sum + conv.duration, 0),
-          wordsThisWeek: userProfile.totalWords
-        }
+        conversationHistory: conversationHistory.map(conv => ({
+          id: conv.id,
+          timestamp: conv.createdAt,
+          persona: conv.personaId,
+          messageCount: conv.messages?.length || 0,
+          duration: conv.metadata?.duration || 0
+        })),
+        weeklyStats
       }
     })
   } catch (error) {
