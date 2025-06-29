@@ -4,8 +4,11 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { Community } from '@/models/Community'
 import AppHeader from '@/components/layout/AppHeader'
-
-interface CommunityPageProps {}
+import CommunityFeatures from '@/components/features/CommunityFeatures'
+import SocialFeatures from '@/components/features/SocialFeatures'
+import GamificationSystem from '@/components/features/GamificationSystem'
+import { CommunityFeatureCard } from '@/components/features/CommunityFeatureCard'
+import { motion } from 'framer-motion'
 
 export default function CommunitiesPage() {
   const [communities, setCommunities] = useState<Community[]>([])
@@ -21,10 +24,12 @@ export default function CommunitiesPage() {
   useEffect(() => {
     fetchCommunities()
     fetchUserCommunities()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     filterCommunities()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [communities, searchQuery, selectedLanguage, selectedCategory])
 
   const fetchCommunities = async () => {
@@ -333,6 +338,83 @@ export default function CommunitiesPage() {
             </p>
           </div>
         )}
+
+        {/* Community Features - New Section */}
+        <div className="mt-12">
+          <h2 className="h2-semibold content-primary mb-6">
+            Why Join a Community?
+          </h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            <CommunityFeatureCard 
+              title="Collaborative Learning"
+              description="Engage in group activities, share resources, and learn from each other."
+              icon="🤝"
+            />
+            <CommunityFeatureCard 
+              title="Expert Guidance"
+              description="Get tips and feedback from experienced learners and native speakers."
+              icon="🧑‍🏫"
+            />
+            <CommunityFeatureCard 
+              title="Cultural Exchange"
+              description="Discover new cultures and perspectives through community interactions."
+              icon="🌍"
+            />
+            <CommunityFeatureCard 
+              title="Networking Opportunities"
+              description="Connect with professionals and expand your career opportunities."
+              icon="💼"
+            />
+            <CommunityFeatureCard 
+              title="Fun and Engaging"
+              description="Participate in challenges, games, and events to make learning enjoyable."
+              icon="🎉"
+            />
+            <CommunityFeatureCard 
+              title="Flexible Learning"
+              description="Access resources and discussions anytime, anywhere, at your own pace."
+              icon="🕒"
+            />
+          </motion.div>
+        </div>
+
+        {/* Community Challenges and Leaderboard */}
+        <div className="mt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <CommunityFeatures userId="demo-user" />
+          </motion.div>
+        </div>
+
+        {/* Enhanced Social Learning Hub */}
+        <div className="mt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <SocialFeatures userId="demo-user" />
+          </motion.div>
+        </div>
+
+        {/* Advanced Gamification System */}
+        <div className="mt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <GamificationSystem userId="demo-user" />
+          </motion.div>
+        </div>
       </div>
     </div>
   )

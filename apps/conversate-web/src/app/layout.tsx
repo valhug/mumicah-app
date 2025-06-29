@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import AuthProvider from "@/components/providers/AuthProvider";
+import { ToastProvider } from "@/components/common/Toast";
+import { ErrorBoundary } from "@/components/common/ErrorBoundary";
+import { BrowserCompatibilityProvider } from "@/components/providers/BrowserCompatibilityProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,9 +46,15 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="min-h-screen flex flex-col">
-              {children}
-            </div>
+            <ErrorBoundary fallback={<div className="min-h-screen flex items-center justify-center p-8"><div className="text-center"><h1 className="text-2xl font-bold text-red-600 mb-4">Something went wrong</h1><p className="text-muted-foreground">Please refresh the page or try again later.</p></div></div>}>
+              <ToastProvider position="top-right">
+                <BrowserCompatibilityProvider>
+                  <div className="min-h-screen flex flex-col">
+                    {children}
+                  </div>
+                </BrowserCompatibilityProvider>
+              </ToastProvider>
+            </ErrorBoundary>
           </ThemeProvider>
         </AuthProvider>
       </body>

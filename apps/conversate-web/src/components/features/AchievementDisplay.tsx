@@ -18,6 +18,9 @@ import {
   ExternalLink
 } from 'lucide-react'
 import { achievementService, type Achievement, type UserStats } from '@/services/achievement-service'
+import { ScreenReaderOnly, LiveRegion } from '@/components/common/Accessibility'
+import { MessageSkeleton } from '@/components/common/Loading'
+import { useToast } from '@/components/common/Toast'
 import Link from 'next/link'
 
 interface AchievementDisplayProps {
@@ -39,27 +42,77 @@ export function AchievementDisplay({
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'unlocked' | 'progress' | 'next'>('all')
   const [newlyUnlocked, setNewlyUnlocked] = useState<Achievement[]>([])
   const [showCelebration, setShowCelebration] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [announcementMessage, setAnnouncementMessage] = useState('')
+  const { success, info } = useToast()
 
   useEffect(() => {
-    // Get previous achievements for comparison
-    const previousAchievements = achievements
-
     // Update achievements based on user stats
+    setIsLoading(true)
     const updatedAchievements = achievementService.updateProgress(userStats)
+    
+    // Check for progress milestones (75%, 90% completion)
+    updatedAchievements.forEach(achievement => {
+      if (!achievement.unlocked && achievement.progress) {
+        const progressPercent = (achievement.progress.current / achievement.progress.target) * 100
+        
+        if (progressPercent >= 75 && progressPercent < 90) {
+          // Show encouraging message for 75%+ progress
+          setTimeout(() => {
+            info(
+              '🎯 Almost There!',
+              `You're ${Math.round(progressPercent)}% complete with "${achievement.title}"`,
+              { duration: 4000 }
+            )
+          }, 500)
+        } else if (progressPercent >= 90) {
+          // Show final push message for 90%+ progress
+          setTimeout(() => {
+            info(
+              '🔥 So Close!',
+              `Just a little more to unlock "${achievement.title}"!`,
+              { duration: 4000 }
+            )
+          }, 500)
+        }
+      }
+    })
+    
     setAchievements(updatedAchievements)
+    setIsLoading(false)
+    setAnnouncementMessage(`Loaded ${updatedAchievements.length} achievements`)
+  }, [userStats, info]) // Only depend on userStats
 
-    // Check for newly unlocked achievements
-    if (previousAchievements.length > 0) {
-      const newUnlocked = achievementService.checkNewlyUnlocked(previousAchievements)
+  useEffect(() => {
+    // Check for newly unlocked achievements when achievements change
+    if (achievements.length > 0) {
+      const newUnlocked = achievementService.checkNewlyUnlocked(achievements)
       if (newUnlocked.length > 0) {
         setNewlyUnlocked(newUnlocked)
         setShowCelebration(true)
+        
+        // Show toast notifications for new achievements
+        newUnlocked.forEach((achievement, index) => {
+          setTimeout(() => {
+            success(
+              '🎉 Achievement Unlocked!',
+              `${achievement.title}: ${achievement.description}`,
+              {
+                duration: 6000,
+                action: {
+                  label: 'View All',
+                  onClick: () => window.location.href = '/achievements'
+                }
+              }
+            )
+          }, index * 1000) // Stagger multiple achievements
+        })
         
         // Auto-hide celebration after 5 seconds
         setTimeout(() => setShowCelebration(false), 5000)
       }
     }
-  }, [userStats, achievements])
+  }, [achievements, success]) // Separate effect for checking newly unlocked
 
   const getDisplayedAchievements = (): Achievement[] => {
     let filtered: Achievement[] = []
@@ -192,6 +245,9 @@ export function AchievementDisplay({
       animate="visible"
       variants={containerVariants}
     >
+      {/* Live region for accessibility announcements */}
+      <LiveRegion message={announcementMessage} />
+      
       {/* Achievement Celebration Modal */}
       <AnimatePresence>
         {showCelebration && newlyUnlocked.length > 0 && (
@@ -273,7 +329,13 @@ export function AchievementDisplay({
 
           {/* Achievement Cards */}
           <div className="space-y-3">
-            {getDisplayedAchievements().map((achievement) => (
+            {isLoading ? (
+              // Show loading skeletons
+              Array.from({ length: maxDisplayed }).map((_, index) => (
+                <MessageSkeleton key={index} showAvatar={false} lines={2} />
+              ))
+            ) : (
+              getDisplayedAchievements().map((achievement) => (
               <motion.div
                 key={achievement.id}
                 variants={itemVariants}
@@ -286,7 +348,19 @@ export function AchievementDisplay({
                       : `border-l-gray-300 hover:border-l-primary hover:shadow-md`
                   }`}
                   onClick={() => onAchievementClick?.(achievement)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`${achievement.title}. ${achievement.description}. ${achievement.isUnlocked ? 'Unlocked' : `Progress: ${achievement.progress} of ${achievement.maxProgress}`}`}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      onAchievementClick?.(achievement)
+                    }
+                  }}
                 >
+                  <ScreenReaderOnly>
+                    {achievement.isUnlocked ? 'Unlocked achievement' : 'Locked achievement'}
+                  </ScreenReaderOnly>
                   <CardContent className="p-4">
                     <div className="flex items-start gap-3">
                       {/* Achievement Icon */}
@@ -363,7 +437,8 @@ export function AchievementDisplay({
                   </CardContent>
                 </Card>
               </motion.div>
-            ))}
+            ))
+            )}
           </div>
 
           {/* Summary Stats */}

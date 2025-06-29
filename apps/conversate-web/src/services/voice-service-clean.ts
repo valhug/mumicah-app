@@ -92,26 +92,9 @@ export class VoiceService {
   private setupRecognition() {
     if (!this.recognition) return
 
-    // Enable continuous listening for better user experience
-    this.recognition.continuous = true
+    this.recognition.continuous = false
     this.recognition.interimResults = true
-    this.recognition.maxAlternatives = 3
-    
-    // Add browser-specific settings for enhanced listening
-    if ('webkitSpeechRecognition' in window) {
-      // Chrome/Safari specific settings - safely access webkit properties
-      const webkitRecognition = this.recognition as unknown as {
-        webkitContinuous?: boolean
-        webkitInterimResults?: boolean
-      }
-      
-      if (webkitRecognition.webkitContinuous !== undefined) {
-        webkitRecognition.webkitContinuous = true
-      }
-      if (webkitRecognition.webkitInterimResults !== undefined) {
-        webkitRecognition.webkitInterimResults = true
-      }
-    }
+    this.recognition.maxAlternatives = 1
   }
 
   // Text-to-Speech

@@ -47,12 +47,12 @@ interface CommunityFeaturesProps {
   className?: string
 }
 
-export default function CommunityFeatures({ userId, className = '' }: CommunityFeaturesProps) {
+export default function CommunityFeatures({ userId = 'demo', className = '' }: CommunityFeaturesProps) {
   const [challenges, setChallenges] = useState<Challenge[]>([])
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([])
   const [loading, setLoading] = useState(true)
   const [selectedType, setSelectedType] = useState<string>('all')
-  const [userStats, setUserStats] = useState({
+  const [userStats] = useState({
     totalPoints: 1250,
     currentStreak: 7,
     completedChallenges: 23,
@@ -61,7 +61,7 @@ export default function CommunityFeatures({ userId, className = '' }: CommunityF
 
   useEffect(() => {
     loadCommunityData()
-  }, [])
+  }, [userId])
 
   const loadCommunityData = async () => {
     setLoading(true)
@@ -230,25 +230,26 @@ export default function CommunityFeatures({ userId, className = '' }: CommunityF
           </Badge>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="text-center p-3 bg-blue-50 rounded-lg">
-            <div className="text-2xl font-bold text-blue-600">{userStats.totalPoints}</div>
-            <div className="text-sm text-gray-600">Total Points</div>
+        {/* Enhanced Stats Grid - Mobile Responsive */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="text-center p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+            <div className="text-xl sm:text-2xl font-bold text-blue-600">{userStats.totalPoints}</div>
+            <div className="text-xs sm:text-sm text-gray-600">Total Points</div>
           </div>
-          <div className="text-center p-3 bg-orange-50 rounded-lg">
-            <div className="text-2xl font-bold text-orange-600 flex items-center justify-center gap-1">
-              <Flame className="h-5 w-5" />
+          <div className="text-center p-3 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors">
+            <div className="text-xl sm:text-2xl font-bold text-orange-600 flex items-center justify-center gap-1">
+              <Flame className="h-4 w-4 sm:h-5 sm:w-5" />
               {userStats.currentStreak}
             </div>
-            <div className="text-sm text-gray-600">Day Streak</div>
+            <div className="text-xs sm:text-sm text-gray-600">Day Streak</div>
           </div>
-          <div className="text-center p-3 bg-green-50 rounded-lg">
-            <div className="text-2xl font-bold text-green-600">{userStats.completedChallenges}</div>
-            <div className="text-sm text-gray-600">Completed</div>
+          <div className="text-center p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+            <div className="text-xl sm:text-2xl font-bold text-green-600">{userStats.completedChallenges}</div>
+            <div className="text-xs sm:text-sm text-gray-600">Completed</div>
           </div>
-          <div className="text-center p-3 bg-purple-50 rounded-lg">
-            <div className="text-2xl font-bold text-purple-600">#{userStats.rank}</div>
-            <div className="text-sm text-gray-600">Global Rank</div>
+          <div className="text-center p-3 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+            <div className="text-xl sm:text-2xl font-bold text-purple-600">#{userStats.rank}</div>
+            <div className="text-xs sm:text-sm text-gray-600">Global Rank</div>
           </div>
         </div>
       </Card>
@@ -265,25 +266,27 @@ export default function CommunityFeatures({ userId, className = '' }: CommunityF
           </Badge>
         </div>
 
-        {/* Challenge Type Filter */}
-        <div className="flex gap-1 mb-6 bg-gray-100 p-1 rounded-lg overflow-x-auto">
-          {['all', 'daily', 'weekly', 'monthly', 'special'].map(type => (
-            <button
-              key={type}
-              onClick={() => setSelectedType(type)}
-              className={`px-3 py-2 rounded-md text-sm font-medium whitespace-nowrap transition-colors ${
-                selectedType === type
-                  ? 'bg-white text-blue-600 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              {type.charAt(0).toUpperCase() + type.slice(1)}
-            </button>
-          ))}
+        {/* Challenge Type Filter - Enhanced for Mobile */}
+        <div className="mb-6">
+          <div className="flex gap-1 bg-gray-100 p-1 rounded-lg overflow-x-auto scrollbar-hide">
+            {['all', 'daily', 'weekly', 'monthly', 'special'].map(type => (
+              <button
+                key={type}
+                onClick={() => setSelectedType(type)}
+                className={`px-3 py-2 rounded-md text-sm font-medium whitespace-nowrap transition-colors min-w-[4rem] ${
+                  selectedType === type
+                    ? 'bg-white text-blue-600 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Challenges Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Challenges Grid - Enhanced Mobile Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {filteredChallenges.map(challenge => (
             <div
               key={challenge.id}

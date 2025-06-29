@@ -130,7 +130,7 @@ export default function DashboardNavigation({ children }: { children: React.Reac
                     pathname === item.href
                       ? 'bg-muted text-foreground'
                       : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground',
-                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md transition-colors'
+                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md transition-colors cursor-pointer'
                   )}
                 >
                   <item.icon

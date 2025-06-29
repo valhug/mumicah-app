@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { Button } from '@mumicah/ui'
 import { ChevronLeftIcon, ChevronRightIcon, BarChart3Icon } from 'lucide-react'
 import { MessageBubble } from '@/components/chat/MessageBubble'
 import { ChatInput } from '@/components/chat/ChatInput'
@@ -10,8 +11,13 @@ import { PersonaSelector } from '@/components/chat/PersonaSelector'
 import { TypingIndicator } from '@/components/chat/TypingIndicator'
 import { LearningDashboard } from '@/components/chat/LearningDashboard'
 import { ConversationStarters } from '@/components/features/ConversationStarters'
+import { PronunciationCoach } from '@/components/features/PronunciationCoach'
+import { ErrorBoundary } from '@/components/common/ErrorBoundary'
+import { SkipLink, LiveRegion } from '@/components/common/Accessibility'
+import { useToast } from '@/components/common/Toast'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { useClaudeConversation } from '@/hooks/use-claude-conversation'
+import { errorHandler } from '@/services/error-handling.service'
 import { PersonaId } from '@/types/conversation'
 
 interface Message {
@@ -81,6 +87,7 @@ const DEMO_PERSONAS = [
 export default function ChatPage() {
   const searchParams = useSearchParams()
   const personaParam = searchParams.get('persona')
+  const { error: showError } = useToast()
   
   // Find initial persona from URL or default to Maya
   const initialPersona = DEMO_PERSONAS.find(p => p.id === personaParam) || DEMO_PERSONAS[0]
@@ -88,6 +95,10 @@ export default function ChatPage() {
   const [selectedPersona, setSelectedPersona] = useState(initialPersona)
   const [isTyping, setIsTyping] = useState(false)
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+  const [showPronunciationCoach, setShowPronunciationCoach] = useState(false)
+  const [pronunciationTarget, setPronunciationTarget] = useState('')
+  const [language] = useState('fr-FR') // TODO: Get from user preference
+  const [statusMessage, setStatusMessage] = useState('')
   const messagesEndRef = useRef<HTMLDivElement>(null)
   
   const { isLoading } = useClaudeConversation(selectedPersona.id)
@@ -153,6 +164,8 @@ export default function ChatPage() {
   const handleSendMessage = async (content: string) => {
     if (!content.trim() || isLoading) return
 
+    setStatusMessage('Sending message...')
+
     // Add user message
     const userMessage: Message = {
       id: `user-${Date.now()}`,
@@ -163,6 +176,7 @@ export default function ChatPage() {
 
     setMessages(prev => [...prev, userMessage])
     setIsTyping(true)
+    setStatusMessage('AI is thinking...')
 
     try {
       // Use our LangChain service for persona-powered responses
@@ -193,12 +207,44 @@ export default function ChatPage() {
       }
 
     } catch (error) {
-      console.error('Failed to send message:', error)
+      // Use error handling service for better error processing
+      const handledError = errorHandler.handleError(error as Error, {
+        logToConsole: true,
+        showToast: false // We'll handle toast manually
+      })
+
+      console.error('Failed to send message:', handledError)
+
+      // Show user-friendly error toast based on error type
+      if (handledError.retryable) {
+        showError(
+          'Message Failed',
+          'Unable to send your message. Please try again.',
+          {
+            action: {
+              label: 'Retry',
+              onClick: () => handleSendMessage(content)
+            }
+          }
+        )
+      } else {
+        showError(
+          'Connection Error',
+          'Please check your internet connection and try again.',
+          {
+            persistent: true,
+            action: {
+              label: 'Refresh Page',
+              onClick: () => window.location.reload()
+            }
+          }
+        )
+      }
       
-      // Add error message
+      // Add contextual error message to chat
       const errorMessage: Message = {
         id: `error-${Date.now()}`,
-        content: "I'm sorry, I'm having trouble responding right now. Please try again in a moment.",
+        content: handledError.details || "I'm sorry, I'm having trouble responding right now. Please try again in a moment.",
         sender: 'ai',
         timestamp: new Date(),
         persona: selectedPersona
@@ -207,11 +253,34 @@ export default function ChatPage() {
       setMessages(prev => [...prev, errorMessage])
     } finally {
       setIsTyping(false)
+      setStatusMessage('')
     }
+  }
+
+  const handlePronunciationRequest = (text: string) => {
+    setPronunciationTarget(text)
+    setShowPronunciationCoach(true)
+  }
+
+  const handlePronunciationComplete = () => {
+    setShowPronunciationCoach(false)
+    setPronunciationTarget('')
   }
 
   return (
     <div className="h-screen bg-background flex relative">
+      {/* Skip Link for accessibility */}
+      <SkipLink href="#main-content">Skip to main content</SkipLink>
+      
+      {/* Live Region for status announcements */}
+      <LiveRegion message={statusMessage} />
+
+      <ErrorBoundary
+        onError={(error, errorInfo) => {
+          console.error('Chat page error:', error, errorInfo)
+          setStatusMessage('An error occurred in the chat interface')
+        }}
+      >
       {/* Enhanced Left Sidebar - Learning Analytics - Mobile Responsive */}
       <div className={`
         ${isSidebarOpen ? 'w-80 md:w-80 sm:w-72' : 'w-16 md:w-16 sm:w-12'} 
@@ -348,7 +417,7 @@ export default function ChatPage() {
       </div>
 
       {/* Main Chat Area with Enhanced Design - Mobile Responsive */}
-      <div className={`flex-1 flex flex-col relative overflow-hidden ${isSidebarOpen ? 'sm:ml-0' : ''}`}>
+      <div id="main-content" className={`flex-1 flex flex-col relative overflow-hidden ${isSidebarOpen ? 'sm:ml-0' : ''}`}>
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/10" />
@@ -458,12 +527,40 @@ export default function ChatPage() {
           <div className="relative max-w-4xl mx-auto">
             <ChatInput
               onSendMessage={handleSendMessage}
+              onPronunciationRequest={handlePronunciationRequest}
               disabled={isLoading}
               placeholder={`Chat with ${selectedPersona.name}...`}
             />
           </div>
         </div>
       </div>
+
+      {/* Pronunciation Coach Modal */}
+      {showPronunciationCoach && pronunciationTarget && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-background border rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold">Pronunciation Practice</h2>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handlePronunciationComplete}
+                >
+                  ✕
+                </Button>
+              </div>
+              <PronunciationCoach
+                targetPhrase={pronunciationTarget}
+                language={language}
+                onComplete={handlePronunciationComplete}
+                difficulty="intermediate"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+      </ErrorBoundary>
     </div>
   )
 }

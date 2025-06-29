@@ -6,9 +6,11 @@ import { cn } from '@mumicah/shared'
 import { Send, Mic, MicOff, Paperclip, Smile, Volume2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { voiceService, type SpeechRecognitionResult } from '@/services/voice-service'
+import { LoadingSpinner, VoiceProcessingIndicator } from '@/components/common/Loading'
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void
+  onPronunciationRequest?: (text: string) => void
   disabled?: boolean
   placeholder?: string
   language?: string
@@ -17,6 +19,7 @@ interface ChatInputProps {
 
 export function ChatInput({ 
   onSendMessage, 
+  onPronunciationRequest,
   disabled = false, 
   placeholder = "Type a message...",
   language = 'fr-FR',
@@ -191,6 +194,20 @@ export function ChatInput({
                 <Volume2 className="h-4 w-4" />
               </Button>
 
+              {/* Pronunciation Practice */}
+              {onPronunciationRequest && message.trim() && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="shrink-0 h-8 w-8 p-0 hover:bg-accent text-primary"
+                  onClick={() => onPronunciationRequest(message.trim())}
+                  disabled={disabled}
+                  title="Practice pronunciation"
+                >
+                  🎯
+                </Button>
+              )}
+
               {/* Voice Input */}
               <Button
                 variant={isRecording ? "destructive" : "ghost"}
@@ -222,14 +239,27 @@ export function ChatInput({
           {/* Send Button */}
           <Button
             size="sm"
-            className="shrink-0 h-8 w-8 p-0 rounded-full"
+            className="shrink-0 h-8 w-8 p-0 rounded-full relative"
             onClick={handleSubmit}
             disabled={disabled || !message.trim()}
             title="Send message"
           >
-            <Send className="h-3 w-3" />
+            {disabled ? (
+              <LoadingSpinner size="sm" />
+            ) : (
+              <Send className="h-3 w-3" />
+            )}
           </Button>
         </div>
+
+        {/* Voice Processing Indicator */}
+        {showVoiceFeatures && voiceSupported && (
+          <VoiceProcessingIndicator 
+            isRecording={isRecording}
+            isProcessing={isListening}
+            className="mt-2"
+          />
+        )}
 
         {/* Recording Hint */}
         {isRecording && (

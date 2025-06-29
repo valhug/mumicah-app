@@ -9,7 +9,13 @@ import EnhancedAnalytics from '@/components/features/EnhancedAnalytics'
 import ConversationHistory from '@/components/features/ConversationHistory'
 import SharedPackageTest from '@/components/features/SharedPackageTest'
 import { AchievementDisplay } from '@/components/features/AchievementDisplay'
+import { SystemStatusDisplay } from '@/components/features/SystemStatusDisplay'
+import { ProductionPolishDemo } from '@/components/features/ProductionPolishDemo'
+import SocialFeatures from '@/components/features/SocialFeatures'
+import GamificationSystem from '@/components/features/GamificationSystem'
+import CommunityFeatures from '@/components/features/CommunityFeatures'
 import { WelcomeSection } from '@mumicah/ui'
+import { ErrorBoundary } from '@/components/common/ErrorBoundary'
 
 interface DashboardClientProps {
   currentUser: {
@@ -58,6 +64,23 @@ export default function DashboardClient({
     level: userStats?.level || 2
   }
 
+  // Convert userStats to format expected by DashboardStats
+  const dashboardStatsData = {
+    lessons: {
+      completed: userStats?.conversations || 5,
+      total: 10,
+      averageScore: userStats?.grammar || 85
+    }
+  }
+
+  // Convert recentActivity to proper format
+  const formattedActivities = recentActivity?.map((activity: { id: string; type: string; description: string; timestamp: Date }) => ({
+    _id: activity.id,
+    action: activity.type,
+    description: activity.description,
+    timestamp: activity.timestamp
+  })) || []
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -93,12 +116,20 @@ export default function DashboardClient({
 
       {/* Enhanced Analytics Dashboard */}
       <motion.div variants={itemVariants}>
-        <EnhancedAnalytics userId={currentUser.id} />
+        <ErrorBoundary 
+          fallback={<div className="p-4 text-center text-muted-foreground">Analytics temporarily unavailable</div>}
+        >
+          <EnhancedAnalytics userId={currentUser.id} />
+        </ErrorBoundary>
       </motion.div>
 
       {/* Conversation History */}
       <motion.div variants={itemVariants}>
-        <ConversationHistory userId={currentUser.id} />
+        <ErrorBoundary 
+          fallback={<div className="p-4 text-center text-muted-foreground">Conversation history temporarily unavailable</div>}
+        >
+          <ConversationHistory userId={currentUser.id} />
+        </ErrorBoundary>
       </motion.div>
 
       {/* Quick Actions */}
@@ -111,16 +142,21 @@ export default function DashboardClient({
         <DashboardWidgets userId={currentUser.id} />
       </motion.div>
 
+      {/* Community Features */}
+      <motion.div variants={itemVariants}>
+        <CommunityFeatures userId={currentUser.id} className="max-w-none" />
+      </motion.div>
+
       {/* Legacy Components (can be removed once widgets are fully tested) */}
       <motion.div 
         className="grid grid-cols-1 lg:grid-cols-3 gap-6"
         variants={itemVariants}
       >
         {/* Stats Overview */}
-        <DashboardStats stats={userStats} />
+        <DashboardStats stats={dashboardStatsData} />
         
         {/* Recent Activity */}
-        <RecentActivity activities={recentActivity} />
+        <RecentActivity activities={formattedActivities} />
 
         {/* Achievement Display */}
         <AchievementDisplay 
@@ -129,6 +165,82 @@ export default function DashboardClient({
           maxDisplayed={4}
           className="lg:col-span-1"
         />
+      </motion.div>
+
+      {/* Production Polish Features Section */}
+      <motion.div variants={itemVariants}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Production Polish Demo */}
+          <ErrorBoundary 
+            fallback={<div className="p-4 text-center text-muted-foreground">Demo temporarily unavailable</div>}
+            showDetails={process.env.NODE_ENV === 'development'}
+          >
+            <ProductionPolishDemo className="md:col-span-2 lg:col-span-3" />
+          </ErrorBoundary>
+        </div>
+      </motion.div>
+
+      {/* System Status & Feature Showcases */}
+      <motion.div variants={itemVariants}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* System Status & Compatibility */}
+          <ErrorBoundary 
+            fallback={<div className="p-4 text-center text-muted-foreground">System status temporarily unavailable</div>}
+            showDetails={process.env.NODE_ENV === 'development'}
+          >
+            <SystemStatusDisplay />
+          </ErrorBoundary>
+
+          {/* Achievement Display with Toasts */}
+          <ErrorBoundary 
+            fallback={<div className="p-4 text-center text-muted-foreground">Achievements temporarily unavailable</div>}
+          >
+            <AchievementDisplay 
+              userStats={sampleUserStats}
+              showOnlyRecent={false}
+              maxDisplayed={3}
+              className="lg:col-span-1"
+              onAchievementClick={(achievement) => {
+                console.log('Achievement clicked:', achievement)
+              }}
+            />
+          </ErrorBoundary>
+
+          {/* Community Features with Error Handling */}
+          <ErrorBoundary 
+            fallback={<div className="p-4 text-center text-muted-foreground">Community features temporarily unavailable</div>}
+          >
+            <CommunityFeatures 
+              userId={currentUser.id} 
+              className="lg:col-span-1" 
+            />
+          </ErrorBoundary>
+        </div>
+      </motion.div>
+
+      {/* Enhanced Social & Gamification Features */}
+      <motion.div variants={itemVariants}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Social Features */}
+          <ErrorBoundary 
+            fallback={<div className="p-4 text-center text-muted-foreground">Social features temporarily unavailable</div>}
+          >
+            <SocialFeatures 
+              userId={currentUser.id}
+              className="lg:col-span-1"
+            />
+          </ErrorBoundary>
+
+          {/* Enhanced Gamification */}
+          <ErrorBoundary 
+            fallback={<div className="p-4 text-center text-muted-foreground">Gamification features temporarily unavailable</div>}
+          >
+            <GamificationSystem 
+              userId={currentUser.id}
+              className="lg:col-span-1"
+            />
+          </ErrorBoundary>
+        </div>
       </motion.div>
 
       {/* Shared Package Test (Development Only) */}
